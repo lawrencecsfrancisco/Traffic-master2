@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:design="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.sumo.traffic.traffic"
+    android:background="#fff"
+    >
+
+
+
+
+
+    <TextView   android:layout_height="20dp" android:layout_width="400dp" android:id="@+id/tv1" android:scrollbars="horizontal" android:textColor="#5DFF5F" android:visibility="gone" />
+    <TextView   android:layout_height="20dp" android:layout_width="400dp" android:id="@+id/tv2"  android:scrollbars="horizontal" android:visibility="gone"/>
+    <TextView   android:layout_height="20dp" android:layout_width="400dp" android:id="@+id/tv3"  android:scrollbars="horizontal" android:visibility="gone" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_gravity="top"
+        android:background="@drawable/shadow"/>
+
+
+    <LinearLayout
+android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+
+        android:background="@drawable/border">
+        <fragment
+            android:id="@+id/place_autocomplete_fragment"
+            android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+android:layout_margin="5dp"
+
+
+            android:background="#87E886" />
+    </LinearLayout>
+
+
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="15"
+        android:orientation="vertical">
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            tools:context="com.sumo.traffic.traffic" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom"
+    android:foregroundGravity="bottom"
+    android:layout_alignParentBottom="true"
+  >
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/Plot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:padding="5dp"
+        android:onClick="navigate"
+        fab:fab_label="Enable StreetMap"
+        android:layout_margin="10dp"
+
+        />
+            <com.github.clans.fab.FloatingActionMenu
+                android:id="@+id/menu_red"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                fab:menu_labels_ellipsize="end"
+                fab:menu_labels_singleLine="true"
+                fab:menu_fab_label="Menu label"
+
+                android:layout_marginBottom="12dp"
+                android:layout_marginRight="15dp">
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/fab1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src = "@drawable/streetmap"
+                    android:padding="5dp"
+                    fab:fab_label="Enable StreetMap"
+                    fab:fab_size="mini"
+                  />
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/fab2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+android:src="@drawable/ic_action_name"
+                    android:onClick="places"
+                    fab:fab_label="Destinations"
+                    fab:fab_size="mini"
+                   />
+
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/fab3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                  android:src="@drawable/schedule"
+                    android:onClick="schedule"
+                    fab:fab_size="mini"
+                    fab:fab_label="My Schedule" />
+
+            </com.github.clans.fab.FloatingActionMenu>
+
+
+</LinearLayout>
+    </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="1">
+
+            <android.support.design.widget.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="#689F38"
+                design:menu="@menu/menu_navigation" />
+        </LinearLayout>
+
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_weight="1"
+        android:background="#689F38">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewStaff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ></android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</android.support.design.widget.CoordinatorLayout>
