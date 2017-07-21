@@ -407,11 +407,11 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                     startActivity(i);
                     mMap.setTrafficEnabled(false);
                 } else if (item.getItemId() == R.id.traffic) {
-                    replot();
-             /*       alternateRoute();
+
+                    alternateRoute();
                     Log.e("Testing", String.valueOf(polylines));
                     Log.e("Testing", String.valueOf(listOfRouteArray));
-                    Log.e("Testing", String.valueOf(listOfIndicesOfCurrentRoutes));*/
+                    Log.e("Testing", String.valueOf(listOfIndicesOfCurrentRoutes));
 
 
                 } else if (item.getItemId() == R.id.reset) {
@@ -722,7 +722,58 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
     }
 
+    public void replot2(View view) {
 
+        //add markers back
+        mMap.clear();
+        // lister.clear();
+        int current = 0;
+        InitialListStaffs.clear();
+        for (
+                MarkerOptions options : mList)
+
+        {
+            Marker m = mMap.addMarker(options);
+            //reset icons
+            m.setIcon(icons[current++]);
+            adapterStaff.notifyDataSetChanged();
+        }
+
+        //add places back
+        for (
+                MarkerOptions place : placeMarkers)
+
+        {
+            Marker m = mMap.addMarker(place);
+        }
+
+
+        String url = null;
+        try
+
+        {
+            url = makeURL3();
+        } catch (
+                UnsupportedEncodingException e)
+
+        {
+            e.printStackTrace();
+        }
+
+        try {
+
+            connectAsyncTask3 downloadTask2 = new connectAsyncTask3(url, this, false);
+            downloadTask2.execute();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //  }
+
+
+    }
     public void replot() {
 
         //add markers back
@@ -3562,7 +3613,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
 
 
-            if (kantolayo < 30) {
+            if (kantolayo < 15) {
 
 
                 replot();
@@ -3573,7 +3624,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             }
 
 
-            if (markarlayo < 100) {
+            if (markarlayo < 80) {
 
 
                 if (mList.size() > 1 && points.size() > 1 && markers.size() > 1) {

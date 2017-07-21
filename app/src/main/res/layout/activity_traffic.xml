@@ -42,7 +42,7 @@ android:orientation="vertical"
             android:id="@+id/place_autocomplete_fragment"
             android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
 android:layout_margin="5dp"
 
 
@@ -68,22 +68,55 @@ android:layout_margin="5dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="bottom"
+    android:orientation="horizontal"
     android:foregroundGravity="bottom"
     android:layout_alignParentBottom="true"
-  >
+    android:layout_alignParentStart="true">
 
-    <com.github.clans.fab.FloatingActionButton
-        android:id="@+id/Plot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:layout_weight="1.4"
+        android:layout_width="match_parent"
 
-        android:padding="5dp"
-        android:onClick="navigate"
-        fab:fab_label="Enable StreetMap"
-        android:layout_margin="10dp"
+        android:layout_height="wrap_content">
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/Plot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginBottom="12dp"
+            android:onClick="navigate"
+            fab:fab_label="Enable StreetMap"
 
-        />
-            <com.github.clans.fab.FloatingActionMenu
+            />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            >
+
+            <Button
+                android:id="@+id/button8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.02"
+                android:textSize="20dp"
+                android:onClick="replot2"
+                android:background="@drawable/rerouteborder"
+                android:text="RE - ROUTE" />
+        </LinearLayout>
+
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_weight="1.4"
+    android:layout_height="wrap_content">
+    <com.github.clans.fab.FloatingActionMenu
                 android:id="@+id/menu_red"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -92,7 +125,9 @@ android:layout_margin="5dp"
                 fab:menu_fab_label="Menu label"
 
                 android:layout_marginBottom="12dp"
-                android:layout_marginRight="15dp">
+              >
+
+
 
                 <com.github.clans.fab.FloatingActionButton
                     android:id="@+id/fab1"
@@ -124,7 +159,7 @@ android:src="@drawable/ic_action_name"
                     fab:fab_label="My Schedule" />
 
             </com.github.clans.fab.FloatingActionMenu>
-
+</LinearLayout>
 
 </LinearLayout>
     </RelativeLayout>
@@ -155,10 +190,9 @@ android:src="@drawable/ic_action_name"
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewStaff"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                ></android.support.v7.widget.RecyclerView>
+                android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 
-    </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
 
