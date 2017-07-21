@@ -28,6 +28,18 @@
     <string name="Route">Route</string>
     <string name="Reset">Reset</string>
     <string name="Traffic">Traffic</string>
+    
+     <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="got_it">GOT IT</string>
+    <string name="slide_1_title">Hello World!</string>
+    <string name="slide_1_desc">Travel more, plan less</string>
+    <string name="slide_2_title">Destination Packages</string>
+    <string name="slide_2_desc">Grab destination packages for your family and friends!</string>
+    <string name="slide_3_title">Free Mode</string>
+    <string name="slide_3_desc">We provide itinerary creator</string>
+    <string name="slide_4_title">User Needs</string>
+    <string name="slide_4_desc">The easiest way to know nearby restaurants, transportation and more!</string>
 
 
     <string name="action_settings">Settings</string>
