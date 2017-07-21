@@ -230,6 +230,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         }
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -576,6 +577,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
             driving = 1;
         }
+        //finalize
 
 
 
@@ -3543,13 +3545,15 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
 
 
-                markerinos++;
-                Location markar = new Location("");
-                markar.setLongitude(markers.get(desto).getPosition().longitude);
-                markar.setLatitude(markers.get(desto).getPosition().latitude);
-                markarlayo = user.distanceTo(markar);
+if (markers.size() > 1) {
 
-
+    Location markar = new Location("");
+    markar.setLongitude(markers.get(1)
+            .getPosition().longitude);
+    markar.setLatitude(markers.get(1)
+            .getPosition().latitude);
+    markarlayo = user.distanceTo(markar);
+}
 
             Log.d("asd123,markar",""+markers.get(markerinos).getPosition().longitude);
             Log.d("asd123,markar",""+markers.get(markerinos).getPosition().latitude);
@@ -3570,23 +3574,25 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             }
 
 
-            if (markarlayo < 60) {
+            if (markarlayo < 100) {
 
 
                 if (mList.size() > 1 && points.size() > 1 && markers.size() > 1) {
 
                     if (mList.size() != 0) {
-                        if (mList.size() >= desto) {
-                            desto--;
-                            markers.remove(desto);
-                            mList.remove(desto);
-                            points.remove(desto);
-                            distances.remove(desto);
-                            reminders.remove(desto);
-                            timestoStay.remove(desto);
+
+                        if (mList.size() > 1) {
+                        //    desto--;
+                            markers.remove(1);
+                            mList.remove(1);
+                            points.remove(1);
+                            distances.remove(1);
+                            reminders.remove(1);
+                            timestoStay.remove(1);
                            // polylines.remove(desto);
                          //   listOfIndicesOfCurrentRoutes.remove(desto);
-                            mins.remove(desto);
+                            mins.remove(1);
+
                             mMap.clear();
 
 
