@@ -488,7 +488,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                                 myLocation.getLongitude());
                         // Log.d("meme",myLatLng.toString());
 
-                        points.add(myLatLng);
+                        points.add(latLng);
 
 
                         getplaces();
@@ -795,12 +795,10 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         }
         Criteria criteria = new Criteria();
         String provider = locationManager.getBestProvider(criteria, true);
-        Location myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
         //onLocationChanged(myLocation);
         // locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 200,1, (android.location.LocationListener) traffic.this);
-        if (myLocation == null) {
-            Log.d("meme", "null location");
-        }
+
        /* mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);*/
         mMap.setMyLocationEnabled(true);
 
@@ -819,18 +817,17 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         mList.addFirst(markerOptions);
 
         // Log.d("meme",myLocation.toString());
-        LatLng myLatLng = new LatLng(myLocation.getLatitude(),
-                myLocation.getLongitude());
+
 
         // Log.d("meme",myLatLng.toString());
 
-        points.add(myLatLng);
+        points.add(latLng);
 /*
         mMap.moveCamera(CameraUpdateFactory.newLatLng(myLatLng));
         mMap.animateCamera(CameraUpdateFactory.zoomBy(20));
         */
 
-        return myLatLng;
+        return latLng;
     }
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -843,10 +840,8 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         if (myLocation == null) {
             Log.d("meme", "null location");
         }
-        LatLng myLatLng = new LatLng(myLocation.getLatitude(),
-                myLocation.getLongitude());
-        Log.d("mbmb", myLatLng.toString());
-        return myLatLng;
+
+        return latLng;
     }
 
     public float distance(LatLng StartP, LatLng EndP) throws Exception {
@@ -3477,7 +3472,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         mLastLocation = location;
         if (mCurrLocationMarker != null) {
             mCurrLocationMarker.remove();
-     //   m.remove();
+            //   m.remove();
         }
 
 
@@ -3485,7 +3480,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                 .position(latLng)
                 .flat(true)
 
-               .icon(BitmapDescriptorFactory.fromResource(R.drawable.userdriver)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.userdriver)));
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
@@ -3526,6 +3521,10 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         Log.d("asd123,elatz", "" + elatz.size());
         Log.d("asd123,elongz", "" + elongz.size());
 
+
+
+
+
         if (!elatz.isEmpty() && !elongz.isEmpty()) {
 
             Location user = new Location("");
@@ -3545,15 +3544,15 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
 
 
-if (markers.size() > 1) {
+            if (markers.size() > 1) {
 
-    Location markar = new Location("");
-    markar.setLongitude(markers.get(1)
-            .getPosition().longitude);
-    markar.setLatitude(markers.get(1)
-            .getPosition().latitude);
-    markarlayo = user.distanceTo(markar);
-}
+                Location markar = new Location("");
+                markar.setLongitude(markers.get(1)
+                        .getPosition().longitude);
+                markar.setLatitude(markers.get(1)
+                        .getPosition().latitude);
+                markarlayo = user.distanceTo(markar);
+            }
 
             Log.d("asd123,markar",""+markers.get(markerinos).getPosition().longitude);
             Log.d("asd123,markar",""+markers.get(markerinos).getPosition().latitude);
@@ -3566,8 +3565,8 @@ if (markers.size() > 1) {
             if (kantolayo < 30) {
 
 
-                    replot();
-                    kantors++;
+                replot();
+                kantors++;
 
 
                 //   adapterStaff.notifyDataSetChanged();
@@ -3582,23 +3581,33 @@ if (markers.size() > 1) {
                     if (mList.size() != 0) {
 
                         if (mList.size() > 1) {
-                        //    desto--;
+                            //    desto--;
                             markers.remove(1);
                             mList.remove(1);
                             points.remove(1);
                             distances.remove(1);
                             reminders.remove(1);
                             timestoStay.remove(1);
-                           // polylines.remove(desto);
-                         //   listOfIndicesOfCurrentRoutes.remove(desto);
+                            // polylines.remove(desto);
+                            //   listOfIndicesOfCurrentRoutes.remove(desto);
                             mins.remove(1);
 
                             mMap.clear();
-
+                            points.set(0,latLng);
 
                             replot();
+
+                            Log.d("asd123,pointsuser", "" + points.get(0).latitude);
+                            Log.d("asd123,pointsuser", "" + points.get(0).longitude);
+
                         }
+
+
+
+
+
                     }
+
 
 
                 }
@@ -3610,13 +3619,13 @@ if (markers.size() > 1) {
         Log.d("onLocationChanged", String.format("latitude:%.9f longitude:%.9f", latitude, longitude));
 
 
-                if (mGoogleApiClient == null) {
-                    LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
-                    Log.d("onLocationChanged", "Removing Location Updates");
-                }
+        if (mGoogleApiClient == null) {
+            LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
+            Log.d("onLocationChanged", "Removing Location Updates");
+        }
 
 
-                Log.d("onLocationChanged", "Exit");
+        Log.d("onLocationChanged", "Exit");
 
     }
 

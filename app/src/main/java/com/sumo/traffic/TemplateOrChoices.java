@@ -90,7 +90,7 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
         int[] images = {
                 R.drawable.img_front,
                 R.drawable.img_destination,
-              //  R.drawable.img_top,
+                R.drawable.img_test,
                 //   R.drawable.image_four,
                 //   R.drawable.image_five
         };
