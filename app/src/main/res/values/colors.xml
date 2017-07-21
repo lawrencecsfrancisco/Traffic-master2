@@ -11,6 +11,8 @@
     <color name="bg_screen3">#B2EBF2</color>
     <color name="bg_screen4">#BCAAA4</color>
 
+    <color name="amoscolor">#FFF0D6</color>
+
     <!-- dots inactive colors d1395c-->
     <color name="dot_dark_screen1">#757575</color>
     <color name="dot_dark_screen2">#757575</color>

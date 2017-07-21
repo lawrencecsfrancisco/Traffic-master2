@@ -2,6 +2,7 @@ package com.sumo.traffic;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GestureDetectorCompat;
@@ -39,7 +40,7 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
     private GestureDetectorCompat detector;
     private Toolbar appBar;
     private String[] messages = {
-            "",
+            "Traveler's Automated Route Application",
             "Destination Packages",   //Top Downloads , Top Viewed
             "Itinerary Creator",
             // "Send Feedback",
@@ -75,6 +76,9 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
             }
         });
         addTilesToContainer();
+        View view = this.getWindow().getDecorView();
+        int selectedColor = Color.rgb(255,240, 214);
+        view.setBackgroundColor(selectedColor);
     }
 
     @Override
@@ -91,7 +95,7 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
                 R.drawable.img_front,
                 R.drawable.img_destination,
                 R.drawable.img_test,
-                //   R.drawable.image_four,
+                //R.drawable.image_four,
                 //   R.drawable.image_five
         };
 

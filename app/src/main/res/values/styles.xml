@@ -37,6 +37,12 @@
 
     </string-array>
 
+    <style name="choices" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/amoscolor</item>
+
+        <item name="android:colorBackground">@color/amoscolor</item>
+    </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
