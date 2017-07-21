@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF0D6"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:textColor="#EE7469"
+        android:text="La Mesa Watershed"
+        android:textSize="30sp"
+        android:textStyle="normal|bold"
+        android:layout_gravity="center_horizontal" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:orientation="vertical"
-        android:background="@drawable/lamesaa"> <!--QUEZONMEMORIALCIRCLE -->
+        android:background="@drawable/lamesaa">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:background="#383732"
+            android:orientation="horizontal">
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratingBar"
+                android:isIndicator="true"
+                android:scaleX=".5"
+                android:scaleY=".5"
+                android:rating="4.7"/>
+        </LinearLayout><!--QUEZONMEMORIALCIRCLE -->
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,12 +50,13 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="About"
             android:id="@+id/textView"
+            android:textColor="#383732"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:textColor="#383732"
             android:textStyle="bold"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="31dp" />
+            android:layout_alignParentStart="true"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +64,7 @@
             android:text="It's a protected area that preserves the only major watershed in Metro Manila. Also known as the Novaliches Watershed."
             android:id="@+id/textView2"
             android:layout_below="@+id/textView"
-            android:textColor="#000"
+            android:textColor="#383732"
             android:layout_toRightOf="@+id/textView"
             android:layout_alignParentEnd="true" />
         <TextView
@@ -42,6 +72,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Contact"
+            android:layout_marginLeft="10dp"
             android:id="@+id/textView3"
             android:textColor="#383732"
             android:textStyle="bold"
@@ -54,7 +85,8 @@
             android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"
             android:text="0977 437 2113"
             android:id="@+id/textView4"
-            android:layout_below="@+id/textView3" android:textColor="#000"
+            android:layout_below="@+id/textView3"
+            android:textColor="#383732"
             android:layout_alignLeft="@+id/textView2"
             android:layout_alignStart="@+id/textView2" />
         <TextView
@@ -62,6 +94,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Address"
+            android:layout_marginLeft="10dp"
             android:id="@+id/textView5"
             android:layout_below="@+id/textView4"
             android:textColor="#383732"
@@ -76,20 +109,8 @@
             android:id="@+id/textView6"
             android:layout_below="@+id/textView5"
             android:layout_toRightOf="@+id/textView"
-            android:textColor="#000"
-            android:layout_toEndOf="@+id/textView" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Reviews"
-            android:id="@+id/textView7"
-            android:layout_below="@+id/textView6"
             android:textColor="#383732"
-            android:textStyle="bold"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
+            android:layout_toEndOf="@+id/textView" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -161,9 +182,9 @@
             android:textColor="#EE7469"
             android:background="@drawable/border"
             android:text="Add Destination"
-            android:layout_marginBottom="6dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/hiders"
             android:id="@+id/ad"
-            android:layout_above="@+id/button2"
             android:layout_alignParentStart="false"
             android:onClick="artadd" />
 
@@ -175,22 +196,8 @@
             android:background="@drawable/border"
             android:text="Delete Destination"
             android:id="@+id/button2"
-            android:layout_marginBottom="2dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true" />
-
-
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ratingBar"
-            android:isIndicator="true"
-            android:scaleX=".5"
-            android:scaleY=".5"
-            android:rating="4.7"
-            android:layout_below="@+id/textView7"
-            android:layout_alignStart="@+id/textView6" />
-
+            android:layout_below="@+id/ad"
+            android:layout_alignEnd="@+id/textView6" />
 
     </RelativeLayout>
 
