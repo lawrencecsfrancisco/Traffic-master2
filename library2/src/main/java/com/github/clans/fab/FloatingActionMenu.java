@@ -25,6 +25,7 @@ import android.view.animation.AnticipateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -166,6 +167,7 @@ public class FloatingActionMenu extends ViewGroup {
         if (mIcon == null) {
             mIcon = getResources().getDrawable(R.drawable.persons);
         }
+
         mLabelsSingleLine = attr.getBoolean(R.styleable.FloatingActionMenu_menu_labels_singleLine, false);
         mLabelsEllipsize = attr.getInt(R.styleable.FloatingActionMenu_menu_labels_ellipsize, 0);
         mLabelsMaxLines = attr.getInt(R.styleable.FloatingActionMenu_menu_labels_maxLines, -1);
@@ -624,8 +626,10 @@ public class FloatingActionMenu extends ViewGroup {
     public void toggle(boolean animate) {
         if (isOpened()) {
             close(animate);
+
         } else {
             open(animate);
+
         }
     }
 
@@ -633,6 +637,7 @@ public class FloatingActionMenu extends ViewGroup {
         if (!isOpened()) {
             if (isBackgroundEnabled()) {
                 mShowBackgroundAnimator.start();
+
             }
 
             if (mIconAnimated) {

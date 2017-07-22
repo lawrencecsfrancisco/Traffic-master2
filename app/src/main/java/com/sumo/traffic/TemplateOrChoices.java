@@ -184,6 +184,11 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
                         if (tilesContainer.getChildAt(2).getLayoutParams().height != firstChildHeight) {
                             downToUpScroll(HelperView.getCurrentView(), HelperView.getFollowingView());
                         }
+                        else{
+                            Intent intent = new Intent(this, ChoicesOfPlace.class);
+                            startActivity(intent);
+                        }
+
                         break;
 
                     case 3:

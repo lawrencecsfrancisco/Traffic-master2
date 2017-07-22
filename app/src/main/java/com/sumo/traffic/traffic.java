@@ -218,6 +218,8 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     int kantors = 0;
     int desto = 2;
     int markerinos = 0;
+static LinearLayout reroute;
+   static int checkreroute = 0;
 
     public static LinkedList<Marker> markerino = new LinkedList<Marker>();
 
@@ -253,6 +255,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
         handler.postAtTime(runnable, System.currentTimeMillis() + interval);
         handler.postDelayed(runnable, interval);
+        reroute = (LinearLayout) findViewById(R.id.reroute);
 
         drivermode = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.Plot);
         drivermode.setImageResource(R.drawable.exploremode);
