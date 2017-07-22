@@ -107,7 +107,7 @@ public class FloatingActionMenu extends ViewGroup {
     private Context mLabelsContext;
     private String mMenuLabelText;
     private boolean mUsingMenuLabel;
-
+public static int test;
 
     float dX;
     float dY;
@@ -627,8 +627,10 @@ public class FloatingActionMenu extends ViewGroup {
         if (isOpened()) {
             close(animate);
 
+
         } else {
             open(animate);
+
 
         }
     }

@@ -218,8 +218,8 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     int kantors = 0;
     int desto = 2;
     int markerinos = 0;
-static LinearLayout reroute;
-   static int checkreroute = 0;
+LinearLayout reroute;
+    int checkreroute = 0;
 
     public static LinkedList<Marker> markerino = new LinkedList<Marker>();
 
@@ -256,7 +256,7 @@ static LinearLayout reroute;
         handler.postAtTime(runnable, System.currentTimeMillis() + interval);
         handler.postDelayed(runnable, interval);
         reroute = (LinearLayout) findViewById(R.id.reroute);
-
+        reroute.setVisibility(View.INVISIBLE);
         drivermode = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.Plot);
         drivermode.setImageResource(R.drawable.exploremode);
 
@@ -579,6 +579,17 @@ static LinearLayout reroute;
             mGoogleApiClient.connect();
 
             driving = 1;
+        }
+
+        if (checkreroute ==0)
+        {
+            reroute.setVisibility(View.INVISIBLE);
+            checkreroute = 1;
+        }
+        else if (checkreroute == 1)
+        {
+            reroute.setVisibility(View.VISIBLE);
+            checkreroute = 0;
         }
         //finalize
 
