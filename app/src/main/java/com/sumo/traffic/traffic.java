@@ -17,6 +17,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.BottomSheetDialogFragment;
@@ -30,14 +31,9 @@ import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -83,7 +79,6 @@ import com.sumo.traffic.InfoOfPlaces.InfoOfQmc;
 import com.sumo.traffic.InfoOfPlaces.InfoOfUp;
 import com.sumo.traffic.InfoOfPlaces.InfoOfVargas;
 import com.sumo.traffic.InfoOfPlaces.InfoOfWatershed;
-import com.sumo.traffic.Services.LocationService;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -95,13 +90,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
 
 public class traffic extends FragmentActivity implements LocationListener, OnMapReadyCallback,
         GoogleMap.OnMapLongClickListener,
-        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, GoogleMap.OnMarkerClickListener {
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, GoogleMap.OnMarkerClickListener, TextToSpeech.OnInitListener {
 
     public static LinkedList<MarkerOptions> mList = new LinkedList<MarkerOptions>();
     public static LinkedList<LatLng> points = new LinkedList<LatLng>();
@@ -149,7 +145,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     public static GoogleMap mMap;
 
     PlaceAutocompleteFragment autocompleteFragment;
-
+    private TextToSpeech tts;
     static int placesnumber;
 
     static LinearLayout hideme;
@@ -210,6 +206,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     List<Double> longz = new ArrayList<Double>();
     List<Double> elatz = new ArrayList<Double>();
     List<Double> elongz = new ArrayList<Double>();
+    List<String> ttsturns = new ArrayList<>();
 
 
     double kantolayo;
@@ -237,7 +234,7 @@ LinearLayout reroute;
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         final ExpandableLayout expandableLayout = (ExpandableLayout) this.findViewById(R.id.expandablelayout);
-
+        tts = new TextToSpeech(this, this);
 
         recyclerViewStaff = (RecyclerView) findViewById(R.id.recyclerViewStaff);
 
@@ -256,7 +253,7 @@ LinearLayout reroute;
         handler.postAtTime(runnable, System.currentTimeMillis() + interval);
         handler.postDelayed(runnable, interval);
         reroute = (LinearLayout) findViewById(R.id.reroute);
-        reroute.setVisibility(View.INVISIBLE);
+        reroute.setVisibility(View.GONE);
         drivermode = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.Plot);
         drivermode.setImageResource(R.drawable.exploremode);
 
@@ -556,6 +553,7 @@ LinearLayout reroute;
     }
 
     public void navigate(View view) {
+
         if (mGoogleApiClient.isConnected()) {
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
@@ -583,7 +581,7 @@ LinearLayout reroute;
 
         if (checkreroute ==0)
         {
-            reroute.setVisibility(View.INVISIBLE);
+            reroute.setVisibility(View.GONE);
             checkreroute = 1;
         }
         else if (checkreroute == 1)
@@ -742,6 +740,7 @@ LinearLayout reroute;
         mMap.clear();
         // lister.clear();
         int current = 0;
+        ttsturns.clear();
         InitialListStaffs.clear();
         for (
                 MarkerOptions options : mList)
@@ -784,6 +783,8 @@ LinearLayout reroute;
             e.printStackTrace();
         }
 
+
+
         //  }
 
 
@@ -794,6 +795,7 @@ LinearLayout reroute;
         mMap.clear();
         // lister.clear();
         int current = 0;
+        ttsturns.clear();
         InitialListStaffs.clear();
         for (
                 MarkerOptions options : mList)
@@ -1270,8 +1272,9 @@ LinearLayout reroute;
                 turnk.setdis(Html.fromHtml(layo.getString("text")).toString());
                 turnk.setdur(Html.fromHtml(oras.getString("text")).toString());
 
-
                 InitialListStaffs.add(turnk);
+                ttsturns.add(Html.fromHtml(t1.getString(ins)).toString());
+
             }
 
 
@@ -1455,6 +1458,7 @@ LinearLayout reroute;
             }
 
             InitialListStaffs.clear();
+            ttsturns.clear();
 
             for (int zxcz = 0; zxcz < turns.length(); zxcz++) {
                 TurnItem turnk = new TurnItem();
@@ -1465,7 +1469,7 @@ LinearLayout reroute;
                 turnk.setdis(Html.fromHtml(layo.getString("text")).toString());
                 turnk.setdur(Html.fromHtml(oras.getString("text")).toString());
                 InitialListStaffs.add(turnk);
-
+ttsturns.add((Html.fromHtml(t1.getString(ins)).toString()));
             }
 
             //Correction starts here
@@ -3627,12 +3631,12 @@ LinearLayout reroute;
 
 
 
-            if (kantolayo < 15) {
+            if (kantolayo < 30) {
 
 
                 replot();
                 kantors++;
-
+                speakOut();
 
                 //   adapterStaff.notifyDataSetChanged();
             }
@@ -3661,6 +3665,7 @@ LinearLayout reroute;
                             points.set(0,latLng);
 
                             replot();
+                            speakOut();
 
                             Log.d("asd123,pointsuser", "" + points.get(0).latitude);
                             Log.d("asd123,pointsuser", "" + points.get(0).longitude);
@@ -3787,9 +3792,33 @@ LinearLayout reroute;
 
     }
 
+    @Override
+    public void onInit(int status) {
+        if (status == TextToSpeech.SUCCESS) {
+
+            int result = tts.setLanguage(Locale.US);
+
+            if (result == TextToSpeech.LANG_MISSING_DATA
+                    || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS", "This Language is not supported");
+            } else {
+
+
+            }
+
+        } else {
+            Log.e("TTS", "Initilization Failed!");
+        }
+    }
+
+    private void speakOut() {
+
+        tts.speak(ttsturns.get(0), TextToSpeech.QUEUE_FLUSH, null);
+    }
+
 
     public class connectAsyncTask3 extends AsyncTask<Void, Void, String> {
-
+        private ProgressDialog progressDialog;
         private traffic traffic;
         private boolean displayDestinationDetails;
         String url;
@@ -3804,9 +3833,16 @@ LinearLayout reroute;
         @Override
         protected void onPreExecute() {
             // TODO Auto-generated method stub
-
+            try {
+                super.onPreExecute();
+                progressDialog = new ProgressDialog(traffic.this);
+                progressDialog.setMessage("Fetching route, Please wait...");
+                progressDialog.setIndeterminate(true);
+                progressDialog.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-
         @Override
         protected String doInBackground(Void... params) {
             JSONParser jParser = new JSONParser();
@@ -3817,11 +3853,11 @@ LinearLayout reroute;
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-
+            progressDialog.hide();
             if (result != null) {
                 Log.d("momo2", " : " + result);
                 traffic.drawPath(result);
-
+                speakOut();
 
 
             }
