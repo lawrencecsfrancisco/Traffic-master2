@@ -574,8 +574,8 @@ LinearLayout reroute;
 
             mMap.animateCamera(
                     CameraUpdateFactory.newCameraPosition(cameraPosition));
-            mGoogleApiClient.connect();
 
+            mGoogleApiClient.connect();
             driving = 1;
         }
 
@@ -3627,18 +3627,20 @@ if (mList.size() == 0)
 
 
         if (!elatz.isEmpty() && !elongz.isEmpty()) {
+if (mList.size() == 2) {
+    Location user = new Location("");
+    user.setLatitude(latitude);
+    user.setLongitude(longitude);
+    Location kanto = new Location("");
+    kanto.setLatitude(elatz.get(0));
+    kanto.setLongitude(elongz.get(0));
+    kantolayo = user.distanceTo(kanto);
+    kantoliko = user.bearingTo(kanto);
 
-            Location user = new Location("");
-            user.setLatitude(latitude);
-            user.setLongitude(longitude);
-            Location kanto = new Location("");
-            kanto.setLongitude(elongz.get(kantors));
-            kantolayo = user.distanceTo(kanto);
-            kantoliko = user.bearingTo(kanto);
+    Log.d("kantolayo", "" + kantolayo);
 
-            Log.d("kantolayo", "" + kantolayo);
+    Log.d("kantolayoliko", "" + kantoliko);
 
-            Log.d("kantolayoliko", "" + kantoliko);
 
 
 
@@ -3660,12 +3662,14 @@ if (mList.size() == 0)
 
 
 
-
-            if (kantolayo < 15) {
+            Log.d("asd123,latskanto",""+elatz.get(0));
+            Log.d("asd123,longskanto",""+elongz.get(0));
+}
+            if (kantolayo <  15) {
 
 
                 replot();
-                kantors++;
+
 
 
                 //   adapterStaff.notifyDataSetChanged();
