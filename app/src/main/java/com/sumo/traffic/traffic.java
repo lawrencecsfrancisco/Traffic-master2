@@ -469,7 +469,7 @@ LinearLayout reroute;
 
                  /*       mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);*/
 
-                        MarkerOptions markerOptions = new MarkerOptions()
+/*                        MarkerOptions markerOptions = new MarkerOptions()
                                 .position(latLng)
                                 .title("My Location")
                                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.kikomarke1r11))
@@ -488,7 +488,7 @@ LinearLayout reroute;
                                 myLocation.getLongitude());
                         // Log.d("meme",myLatLng.toString());
 
-                        points.add(latLng);
+                        points.add(latLng);*/
 
 
                         getplaces();
@@ -874,7 +874,7 @@ LinearLayout reroute;
         mMap.setMyLocationEnabled(true);
 
 
-        MarkerOptions markerOptions = new MarkerOptions()
+   /*     MarkerOptions markerOptions = new MarkerOptions()
                 .position(latLng)
                 .title("My Location")
 
@@ -892,7 +892,7 @@ LinearLayout reroute;
 
         // Log.d("meme",myLatLng.toString());
 
-        points.add(latLng);
+        points.add(latLng);*/
 /*
         mMap.moveCamera(CameraUpdateFactory.newLatLng(myLatLng));
         mMap.animateCamera(CameraUpdateFactory.zoomBy(20));
@@ -3543,7 +3543,6 @@ ttsturns.add((Html.fromHtml(t1.getString(ins)).toString()));
 
         Marker m = mMap.addMarker(markerOptions);*/
 
-/*
 if (mList.size() == 0)
 {
               MarkerOptions markerOptions = new MarkerOptions()
@@ -3567,7 +3566,6 @@ if (mList.size() == 0)
 
                         points.add(latLng);
 }
-*/
 
         mLastLocation = location;
         if (mCurrLocationMarker != null) {
