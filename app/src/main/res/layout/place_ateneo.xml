@@ -1,20 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#FFF0D6"
     android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:textColor="#EE7469"
+        android:text="Ateneo Art Gallery"
+        android:textSize="30sp"
+        android:textStyle="normal|bold"
+        android:layout_gravity="center_horizontal" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:orientation="vertical"
-
-        android:background="@drawable/aten"> <!--QUEZONMEMORIALCIRCLE -->
+        android:background="@drawable/aten">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:background="#383732"
+            android:orientation="horizontal">
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratingBar"
+                android:isIndicator="true"
+                android:scaleX=".5"
+                android:scaleY=".5"
+                android:rating="4.3"/>
+        </LinearLayout><!--QUEZONMEMORIALCIRCLE -->
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_marginTop="0dp"
         android:background="#FFF0D6">
         <TextView
             android:layout_width="wrap_content"
@@ -22,19 +50,20 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="About"
             android:textColor="#383732"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
             android:textStyle="bold"
             android:id="@+id/textView"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="31dp" />
+            android:layout_alignParentStart="true" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"
             android:text="It's free of charge and can only hold limited number of visitors, groups should schedule their visit ahead of time."
             android:id="@+id/textView2"
-            android:textColor="#000"
+            android:textColor="#383732"
             android:layout_below="@+id/textView"
             android:layout_toRightOf="@+id/textView"
             android:layout_alignParentEnd="true" />
@@ -43,6 +72,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Contact"
+            android:layout_marginLeft="10dp"
             android:textColor="#383732"
             android:textStyle="bold"
             android:id="@+id/textView3"
@@ -53,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="(02) 426 6488"
-            android:textColor="#000"
+            android:textColor="#383732"
             android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"
             android:id="@+id/textView4"
             android:layout_below="@+id/textView3"
@@ -64,6 +94,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Address"
+            android:layout_marginLeft="10dp"
             android:textColor="#383732"
             android:textStyle="bold"
             android:id="@+id/textView5"
@@ -75,21 +106,11 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"
             android:text="Ateneo de Manila University Katipunan Avenue, Loyola Heights Quezon City"
-            android:id="@+id/textView6"             android:textColor="#000"
+            android:id="@+id/textView6"
+            android:textColor="#383732"
             android:layout_below="@+id/textView5"
             android:layout_toRightOf="@+id/textView"
             android:layout_toEndOf="@+id/textView" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Reviews"
-            android:textColor="#383732"
-            android:textStyle="bold"
-            android:id="@+id/textView7"
-            android:layout_below="@+id/textView6"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -98,9 +119,9 @@
             android:textColor="#EE7469"
             android:background="@drawable/border"
             android:text="Add Destination"
-            android:layout_marginBottom="6dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/hiders"
             android:id="@+id/ad"
-            android:layout_above="@+id/button2"
             android:layout_alignParentStart="true"
             android:onClick="artadd" />
 
@@ -112,8 +133,7 @@
             android:background="@drawable/border"
             android:text="Delete Destination"
             android:id="@+id/button2"
-            android:layout_marginBottom="2dp"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/ad"
             android:layout_alignParentStart="true" />
 
 
@@ -176,18 +196,8 @@
             android:gravity="center"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true" />
+
     </RelativeLayout>
-        
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ratingBar"
-            android:isIndicator="true"
-            android:scaleX=".5"
-            android:scaleY=".5"
-            android:rating="4.5"
-            android:layout_below="@+id/textView7"
-            android:layout_alignStart="@+id/textView6" />
     </RelativeLayout>
 
     <LinearLayout
@@ -205,4 +215,7 @@
               android:scaleType="center"
               android:background="@drawable/edsav2"/> -->
     </LinearLayout>
+
+
+
 </LinearLayout>
