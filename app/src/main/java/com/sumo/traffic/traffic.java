@@ -740,8 +740,10 @@ LinearLayout reroute;
         mMap.clear();
         // lister.clear();
         int current = 0;
-        ttsturns.clear();
         InitialListStaffs.clear();
+        ttsturns.clear();
+        elatz.clear();
+        elongz.clear();
         for (
                 MarkerOptions options : mList)
 
@@ -797,6 +799,8 @@ LinearLayout reroute;
         int current = 0;
         ttsturns.clear();
         InitialListStaffs.clear();
+        elatz.clear();
+        elongz.clear();
         for (
                 MarkerOptions options : mList)
 
@@ -3416,7 +3420,9 @@ ttsturns.add((Html.fromHtml(t1.getString(ins)).toString()));
 
         mMap.clear();
         InitialListStaffs.clear();
-
+        ttsturns.clear();
+        elatz.clear();
+        elongz.clear();
         //add markers back
         int current = 0;
         for (MarkerOptions options : mList) {
@@ -3537,12 +3543,38 @@ ttsturns.add((Html.fromHtml(t1.getString(ins)).toString()));
 
         Marker m = mMap.addMarker(markerOptions);*/
 
+/*
+if (mList.size() == 0)
+{
+              MarkerOptions markerOptions = new MarkerOptions()
+                                .position(latLng)
+                                .title("My Location")
+                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.kikomarke1r11))
+                                .anchor(0.5f, 1);
+
+                        Marker m = mMap.addMarker(markerOptions);
+
+                        markers.add(m);
+                        //EXTRA CODES
+                        mList.add(markerOptions);
+                        durations.add(new String("0"));
+                        distances.add(new String("0"));
+                     reminders.add(new String(""));
+
+                        // Log.d("meme",myLocation.toString());
+
+                        // Log.d("meme",myLatLng.toString());
+
+                        points.add(latLng);
+}
+*/
 
         mLastLocation = location;
         if (mCurrLocationMarker != null) {
             mCurrLocationMarker.remove();
             //   m.remove();
         }
+
 
 
         mCurrLocationMarker = mMap.addMarker(new MarkerOptions()
@@ -3599,9 +3631,7 @@ ttsturns.add((Html.fromHtml(t1.getString(ins)).toString()));
             Location user = new Location("");
             user.setLatitude(latitude);
             user.setLongitude(longitude);
-
             Location kanto = new Location("");
-            kanto.setLatitude(elatz.get(kantors));
             kanto.setLongitude(elongz.get(kantors));
             kantolayo = user.distanceTo(kanto);
             kantoliko = user.bearingTo(kanto);
@@ -3631,18 +3661,18 @@ ttsturns.add((Html.fromHtml(t1.getString(ins)).toString()));
 
 
 
-            if (kantolayo < 30) {
+            if (kantolayo < 15) {
 
 
                 replot();
                 kantors++;
-                speakOut();
+
 
                 //   adapterStaff.notifyDataSetChanged();
             }
 
 
-            if (markarlayo < 80) {
+            if (markarlayo < 20) {
 
 
                 if (mList.size() > 1 && points.size() > 1 && markers.size() > 1) {
@@ -3663,9 +3693,10 @@ ttsturns.add((Html.fromHtml(t1.getString(ins)).toString()));
 
                             mMap.clear();
                             points.set(0,latLng);
-
+                            String myText1 = "You arrived";
+                            tts.speak(myText1, TextToSpeech.QUEUE_FLUSH, null);
                             replot();
-                            speakOut();
+
 
                             Log.d("asd123,pointsuser", "" + points.get(0).latitude);
                             Log.d("asd123,pointsuser", "" + points.get(0).longitude);
@@ -3919,10 +3950,11 @@ ttsturns.add((Html.fromHtml(t1.getString(ins)).toString()));
             super.onPostExecute(result);
             progressDialog.hide();
             checklist = 1;
+
             if (result != null) {
                 Log.d("momo2", " : " + result);
                 traffic.drawPath(result);
-
+                speakOut();
 
 
             }
