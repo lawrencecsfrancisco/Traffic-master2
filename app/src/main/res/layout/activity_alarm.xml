@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="#87E886"
-  >
+    >
 
 
     <android.support.design.widget.AppBarLayout
@@ -24,7 +24,7 @@
             android:src="@drawable/loaders1"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-      />
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.RecyclerView
+    <ListView
 
 
 
@@ -48,6 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    <include layout="@layout/content_main" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -61,6 +62,5 @@
         app:backgroundTint="@android:color/holo_blue_light"
         app:rippleColor="?attr/colorButtonNormal"
         app:layout_anchorGravity="bottom|center_horizontal" />
-
 
 </android.support.design.widget.CoordinatorLayout>

@@ -110,6 +110,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     public static LinkedList<String> mins = new LinkedList<String>();
     public static LinkedList<String> reminders = new LinkedList<String>();
     public static LinkedList<String> listofturns = new LinkedList<String>();
+    public static ArrayList<HashMap<String, String>> alarmClocks = new ArrayList<>();
     static String placeId;
     LinkedList<MarkerOptions> placeMarkers = new LinkedList<MarkerOptions>();
     static BitmapDescriptor[] icons = null;
@@ -240,7 +241,6 @@ LinearLayout reroute;
 
         recyclerViewStaff.setHasFixedSize(true);
         recyclerViewStaff.setLayoutManager(new LinearLayoutManager(this));
-
         InitialListStaffs = new ArrayList<>();
 
 
@@ -945,9 +945,9 @@ LinearLayout reroute;
 
     public void schedule(View view) {
 
-        Intent i = new Intent(traffic.this, MainActivity.class);
+        Intent i = new Intent(traffic.this, AlarmActivity.class);
         startActivity(i);
-
+        Toast.makeText(this, "alarms"+alarmClocks.size(), Toast.LENGTH_SHORT).show();
     }
 
 
@@ -3545,6 +3545,7 @@ ttsturns.add((Html.fromHtml(t1.getString(ins)).toString()));
 
 if (mList.size() == 0)
 {
+
               MarkerOptions markerOptions = new MarkerOptions()
                                 .position(latLng)
                                 .title("My Location")
@@ -3559,6 +3560,7 @@ if (mList.size() == 0)
                         durations.add(new String("0"));
                         distances.add(new String("0"));
                      reminders.add(new String(""));
+
 
                         // Log.d("meme",myLocation.toString());
 
@@ -3751,7 +3753,8 @@ if (mList.size() == 2) {
         //Add marker on LongClick position
 /*        Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();*/
 
-
+   /*     HashMap<String, String> n = new HashMap<String, String>();
+        n.put("a", "a");*/
 
         MarkerOptions markerOptions = new MarkerOptions()
                 .position(latLng)
@@ -3777,6 +3780,8 @@ if (mList.size() == 2) {
         reminders.add(new String(""));
         timestoStay.add(new String(""));
         mins.add(new String(""));
+
+
 
         String url = null;
         try {

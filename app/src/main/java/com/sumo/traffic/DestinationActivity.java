@@ -6,16 +6,18 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.model.Marker;
 
 import java.util.ArrayList;
 
-public class  DestinationActivity extends AppCompatActivity {
+public class  DestinationActivity extends AppCompatActivity{
     ListView listView;
     ArrayList<String> listViewContent;
     DestinationItemAdapter arrayAdapter;
@@ -64,11 +66,6 @@ public class  DestinationActivity extends AppCompatActivity {
         //handle listview and assign adapter
         listView.setAdapter(arrayAdapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            }
-        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -89,10 +86,10 @@ public class  DestinationActivity extends AppCompatActivity {
         destinationString += marker.getTitle() + System.getProperty("line.separator");
         destinationString += "   Distance: " + traffic.distances.get(index).toString()  + ":"  + System.getProperty("line.separator");
         destinationString += "   Duration: " + traffic.durations.get(index).toString()  +System.getProperty("line.separator");
-/*        destinationString += "   Alarm clock: " + traffic.timestoStay.get(index)  + ":" + traffic.mins.get(index) + System.getProperty("line.separator");*/
+        destinationString += "   Alarm clock: " + traffic.timestoStay.get(index)  + ":" + traffic.mins.get(index) + System.getProperty("line.separator");
         destinationString += "   Reminders: " + traffic.reminders.get(index);
 
-    ;
+        ;
         return destinationString;
     }
 
@@ -101,11 +98,19 @@ public class  DestinationActivity extends AppCompatActivity {
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
 
         int rc = resultCode;
-        int currentMarkerIndex = data.getIntExtra("currentMarkerIndex", -1);
+
+        if(resultCode != RESULT_CANCELED){
+
+            int currentMarkerIndex = data.getIntExtra("currentMarkerIndex", -1);
+            listViewContent.set(currentMarkerIndex-1, buildListViewString(currentMarkerIndex-1));
+            arrayAdapter.notifyDataSetChanged();
+        }
+        else
+        {
+            Toast.makeText(this, "No changes", Toast.LENGTH_SHORT).show();
+        }
 
 
-        listViewContent.set(currentMarkerIndex-1, buildListViewString(currentMarkerIndex-1));
-        arrayAdapter.notifyDataSetChanged();
 
     }
 

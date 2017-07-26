@@ -1,5 +1,7 @@
 package com.sumo.traffic;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -12,7 +14,12 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.sumo.traffic.AlarmCodes.AlarmReceiver;
+import com.sumo.traffic.model.ApplicationConstants;
+
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
 
 /**
  * Created by dalem on 11/17/2016.
@@ -69,7 +76,7 @@ public class DestinationItemAdapter extends BaseAdapter implements ListAdapter {
         Button deleteBtn = (Button)view.findViewById(R.id.delete_btn);
         Button editBtn = (Button)view.findViewById(R.id.edit_btn);
 
-    /*    if (traffic.nodelete == 1)
+ /*       if (traffic.nodelete == 1)
         {
             deleteBtn.setVisibility(View.INVISIBLE);
         }
@@ -96,13 +103,19 @@ public class DestinationItemAdapter extends BaseAdapter implements ListAdapter {
                     traffic.distances.remove(position);
                     traffic.durations.remove(position);
                     traffic.mList.remove(position);
-                   traffic.points.remove(position);
+                    traffic.points.remove(position);
                     traffic.markers.remove(position);
                     traffic.timestoStay.remove(position);
                     traffic.reminders.remove(position);
-
                     list.remove(position);
+                    unsetAlarm(position - 1 );
+                    traffic.alarmClocks.remove(position - 1);
 
+
+                    notifyDataSetChanged();
+                } else if (position == 0) {
+                    unsetAlarm(position);
+                    traffic.alarmClocks.remove(position);
                     notifyDataSetChanged();
                 }
             }
@@ -116,15 +129,31 @@ public class DestinationItemAdapter extends BaseAdapter implements ListAdapter {
 
                 Intent i = new Intent(destination , poppers.class);
                 i.putExtra("currentMarker", position+1);
+                i.putExtra("alarm", position);
                 destination.startActivityForResult(i, 100);
 
                 //do something
-                notifyDataSetChanged();
+                //notifyDataSetChanged();
             }
         });
 
         return view;
     }
 
+    private void unsetAlarm(int position){
+        HashMap<String, String> alarm = traffic.alarmClocks.get(position); // we get the alarm details
+        String reminder = alarm.get(ApplicationConstants.REMINDER);
+        String destination = alarm.get(ApplicationConstants.DESTINATION);
 
+        Intent i;
+        i = new Intent(context, AlarmReceiver.class);
+        i.putExtra(ApplicationConstants._ID, position); // the position should be the notification id
+        i.putExtra(ApplicationConstants.REMINDER, reminder);
+        i.putExtra(ApplicationConstants.DESTINATION, destination);
+        PendingIntent pi = PendingIntent.getBroadcast(context, position, i, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+        //we cancel the notification
+        alarmManager.cancel(pi);
+    }
 }

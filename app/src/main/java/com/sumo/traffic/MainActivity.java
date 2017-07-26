@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     static final String[] PROJECTION = {ApplicationConstants._ID, ApplicationConstants.HOUR, ApplicationConstants.MINUTE
             ,ApplicationConstants.DESTINATION};
     CustomAdapter customAdapter;
-   public static long notificationId;
-    public static ListView listView;
+    long notificationId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onResume();
         //instantiate here the layout to be shown when no notifications are set(probably the user has opened the app for the first time)
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.content_main);
-         listView = (ListView) findViewById(R.id.list_view);
+        final ListView listView = (ListView) findViewById(R.id.list_view);
         Cursor cursor;
         boolean notificationExist = false;
         try {
@@ -87,8 +87,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                     Intent intent = new Intent(getApplicationContext(),EditAlarm.class);
                     intent.putExtra(ApplicationConstants._ID,notificationId);
                     startActivity(intent);
-                    Toast.makeText(MainActivity.this, ""+position, Toast.LENGTH_SHORT).show();
-
                 }
             });
             listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -97,16 +95,15 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                     notificationId = id;
                     registerForContextMenu(listView);
                     openContextMenu(listView);
-                    Toast.makeText(MainActivity.this, ""+notificationId, Toast.LENGTH_SHORT).show();
                     return true;
                 }
             });
 
         }
     }
-/*
-Don't worry about the loader methods here, they're needed to automatically update the listview when the database changes
- */
+    /*
+    Don't worry about the loader methods here, they're needed to automatically update the listview when the database changes
+     */
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         return new CursorLoader(this, ApplicationConstants.CONTENT_URI, PROJECTION, null, null, null);
     }
@@ -129,13 +126,11 @@ Don't worry about the loader methods here, they're needed to automatically updat
     @Override
     public boolean onContextItemSelected(MenuItem item){
         if(item.getTitle().equals("Delete it")){
-            Toast.makeText(MainActivity.this, ""+notificationId, Toast.LENGTH_SHORT).show();
-/*            Intent intent = new Intent(this,AlarmService.class);
+            Intent intent = new Intent(this,AlarmService.class);
             intent.setAction(ApplicationConstants.DELETE);
             intent.putExtra(ApplicationConstants._ID,notificationId);
             startService(intent);
-
-            Toast.makeText(this,R.string.notification_deleted,Toast.LENGTH_SHORT).show();*/
+            Toast.makeText(this,R.string.notification_deleted,Toast.LENGTH_SHORT).show();
         }
         else if(item.getTitle().equals("Change it")){
             Intent intent = new Intent(this, poppers.class);
