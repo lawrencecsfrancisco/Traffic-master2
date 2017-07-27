@@ -947,7 +947,7 @@ LinearLayout reroute;
 
         Intent i = new Intent(traffic.this, AlarmActivity.class);
         startActivity(i);
-        Toast.makeText(this, "alarms"+alarmClocks.size(), Toast.LENGTH_SHORT).show();
+
     }
 
 
@@ -1099,6 +1099,7 @@ LinearLayout reroute;
 
     public static String makeURL3() throws UnsupportedEncodingException {
         String params, waypoints, sensor, main;
+       // String traf = "&departure_time=now";
         int i;
         if (points.size() > 2) {
             waypoints = "waypoints=optimize:true";

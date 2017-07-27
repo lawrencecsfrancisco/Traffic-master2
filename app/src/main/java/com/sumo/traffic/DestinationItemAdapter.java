@@ -108,9 +108,10 @@ public class DestinationItemAdapter extends BaseAdapter implements ListAdapter {
                     traffic.timestoStay.remove(position);
                     traffic.reminders.remove(position);
                     list.remove(position);
-                    unsetAlarm(position - 1 );
-                    traffic.alarmClocks.remove(position - 1);
-
+                    if (!traffic.alarmClocks.isEmpty()) {
+                        unsetAlarm(position - 1);
+                        traffic.alarmClocks.remove(position - 1);
+                    }
 
                     notifyDataSetChanged();
                 } else if (position == 0) {

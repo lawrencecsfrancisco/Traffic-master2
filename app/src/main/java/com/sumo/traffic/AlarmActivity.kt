@@ -17,7 +17,7 @@ import com.sumo.traffic.AlarmCodes.AlarmReceiver
 import com.sumo.traffic.model.ApplicationConstants
 
 class AlarmActivity : AppCompatActivity() {
-
+    var adapter: HashMapAdapter? = null;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alarm)
@@ -40,7 +40,7 @@ class AlarmActivity : AppCompatActivity() {
     }
 
     private fun showListView(listView: ListView) {
-        val adapter = HashMapAdapter(traffic.alarmClocks)
+        adapter = HashMapAdapter(traffic.alarmClocks)
         listView.visibility = View.VISIBLE
         listView.adapter = adapter
 
@@ -64,10 +64,12 @@ class AlarmActivity : AppCompatActivity() {
 
     override fun onContextItemSelected(item: MenuItem?): Boolean {
         if (item?.title == "Delete it") {
-          unsetAlarm(item.itemId )
+         // unsetAlarm(item.itemId )
+            unsetAlarm(1 )
+            adapter!!.notifyDataSetChanged()
 
         } else if (item?.title == "Change it") {
-            editAlarm(1)
+            editAlarm(item.itemId.toLong())
         } else
             return false
         return true
