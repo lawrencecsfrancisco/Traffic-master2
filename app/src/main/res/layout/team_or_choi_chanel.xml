@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/img_front" />
+        android:src="@drawable/front" />
 
     <View
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
         android:shadowColor="#000000"
         android:shadowRadius="5"
         android:text="Top Trending"
-        android:textColor="@android:color/white"
+        android:textColor="#fff"
         android:textSize="15sp" />
 
     <TextView

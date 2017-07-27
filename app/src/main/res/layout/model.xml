@@ -14,33 +14,37 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         android:background="#FFF0D6">
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/playerImage"
             android:padding="10dp"
+            android:foregroundGravity="center"
             android:src="@drawable/darkest"
             android:layout_alignParentTop="true"
             />
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Name"
+            android:gravity="center"
             android:id="@+id/nameTxt"
             android:padding="10dp"
-            android:textColor="#EE7469"
+            android:textColor="#000"
             android:layout_below="@+id/playerImage"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Position"
             android:id="@+id/posTxt"
-            android:textColor="#EE7469"
+            android:textColor="#000"
+            android:textAlignment="center"
             android:padding="10dp"
             android:layout_below="@+id/nameTxt"
             android:layout_alignParentLeft="true"

@@ -16,18 +16,29 @@
         android:orientation="vertical"
         android:layout_height="match_parent">
 
-        <ImageView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="110dp"
-            android:id="@+id/imageView21"
-            android:src="@drawable/bestz"/>
+            android:layout_height="wrap_content"
+            android:text="BEST PLACES IN QUEZON CITY"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="40dp"
+            />
+    </LinearLayout>
 
-        <android.support.v7.widget.SearchView
-            android:id="@+id/mSearch"
+
+        <Button
+            android:id="@+id/fab"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:defaultQueryHint="Search.."
-            ></android.support.v7.widget.SearchView>
+            android:layout_height="40dp"
+
+            android:background="@drawable/border"
+            android:textColor="#EE7469"
+            android:text="PLOT MY DESTINATIONS"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/myRecycler"
             android:layout_width="wrap_content"
@@ -35,4 +46,5 @@
             android:layout_height="wrap_content"
             class="android.support.v7.widget.RecyclerView" />
     </LinearLayout>
+
 </RelativeLayout>

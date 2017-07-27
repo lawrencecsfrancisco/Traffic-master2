@@ -92,7 +92,7 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
     public void addTilesToContainer() {
         View tileView;
         int[] images = {
-                R.drawable.img_front,
+                R.drawable.front,
                 R.drawable.img_destination,
                 R.drawable.img_test,
                 //R.drawable.image_four,

@@ -29,7 +29,7 @@ public class InfoOfEdsa extends AppCompatActivity {
         }*/
 
        wat = (RelativeLayout) findViewById(R.id.hiders);
-        wat.setVisibility(View.INVISIBLE);
+        wat.setVisibility(View.GONE);
 
     }
     public void artadd(View view)

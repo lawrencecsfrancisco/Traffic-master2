@@ -19,7 +19,7 @@ public class introv2  extends AppCompatActivity{
             TimerTask task=new TimerTask() {
                 @Override
                 public void run() {
-                    Intent mainIntent=new Intent().setClass(introv2.this,TemplateOrChoices.class);
+                    Intent mainIntent=new Intent().setClass(introv2.this,WelcomeSlider.class);
                     startActivity(mainIntent);
                     finish();
                 }

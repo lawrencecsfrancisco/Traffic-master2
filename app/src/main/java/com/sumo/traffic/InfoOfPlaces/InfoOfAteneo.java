@@ -34,7 +34,7 @@ static int open = 0;
 
 
       wat = (RelativeLayout) findViewById(R.id.hiders);
-        wat.setVisibility(View.INVISIBLE);
+        wat.setVisibility(View.GONE);
 
 /*
         if (ChoicesOfPlace.open == 1) {

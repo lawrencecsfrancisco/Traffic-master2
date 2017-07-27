@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RatingBar;
 
 import java.util.ArrayList;
@@ -18,10 +19,10 @@ import java.util.ArrayList;
  * Created by kixkikx on 12/20/2016.
  */
 public class ChoicesOfPlace  extends AppCompatActivity {
-    SearchView sv;
+  //  SearchView sv;
     RatingBar rb;
     public static int open = 0;
-    FloatingActionButton fab;
+   Button fab;
     static int hidethis = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +31,11 @@ public class ChoicesOfPlace  extends AppCompatActivity {
         // rb= (RatingBar)findViewById(R.id.ratingBar);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-         fab = (FloatingActionButton) findViewById(R.id.fab);
+         fab = (Button) findViewById(R.id.fab);
 
         if (hidethis == 1)
         {
-            fab.setVisibility(View.INVISIBLE);
+            fab.setVisibility(View.GONE);
         }
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +48,7 @@ public class ChoicesOfPlace  extends AppCompatActivity {
 
         }
         });
-        sv = (SearchView) findViewById(R.id.mSearch);
+    //    sv = (SearchView) findViewById(R.id.mSearch);
         RecyclerView rv = (RecyclerView) findViewById(R.id.myRecycler);
         //SET ITS PROPETRIES
         rv.setLayoutManager(new LinearLayoutManager(this));
@@ -56,7 +57,7 @@ public class ChoicesOfPlace  extends AppCompatActivity {
         final MyAdapter adapter = new MyAdapter(this, getPlayers());
         rv.setAdapter(adapter);
         //SEARCH
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+/*        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
 
@@ -69,7 +70,7 @@ public class ChoicesOfPlace  extends AppCompatActivity {
                 adapter.getFilter().filter(query);
                 return false;
             }
-        });
+        });*/
 
 /*
         if (open == 1) {

@@ -45,13 +45,15 @@
         <activity android:name=".Home" />
         <activity android:name=".DirectionsApi" />
         <activity android:name=".traffic">
+
+        </activity>
+        <activity android:name=".introv2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".introv2"></activity>
         <activity
             android:name=".poppers"
             android:theme="@style/AppTheme.CustomStyle" />
@@ -225,6 +227,7 @@
 
         <activity android:name=".ChoicesOfPackage"></activity>
         <activity android:name=".AlarmActivity"></activity>
+        <activity android:name=".WelcomeSlider"></activity>
     </application>
 
 </manifest>

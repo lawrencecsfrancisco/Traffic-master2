@@ -29,7 +29,7 @@ public class InfoOfQmc extends AppCompatActivity {
         }
 
        wat = (RelativeLayout) findViewById(R.id.hiders);
-wat.setVisibility(View.INVISIBLE);
+wat.setVisibility(View.GONE);
 
     }
 

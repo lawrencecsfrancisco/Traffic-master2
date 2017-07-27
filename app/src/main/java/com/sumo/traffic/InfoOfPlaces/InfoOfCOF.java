@@ -29,7 +29,7 @@ public class InfoOfCOF extends AppCompatActivity {
             getWindow().setLayout((int)(width*.8),(int)(height*.8));
         }*/
      wat = (RelativeLayout) findViewById(R.id.hiders);
-        wat.setVisibility(View.INVISIBLE);
+        wat.setVisibility(View.GONE);
 
 
     }
