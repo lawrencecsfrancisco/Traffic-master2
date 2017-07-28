@@ -30,7 +30,7 @@ public class poppers extends AppCompatActivity {
     static  EditText reminders;
     private  int currentMarkerIndex = 0;
     private int alarmIndex = -1;
-
+static int posit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -148,8 +148,15 @@ public class poppers extends AppCompatActivity {
         alarm.put(ApplicationConstants.REMINDER, reminder);
         alarm.put(ApplicationConstants.DESTINATION, destination);
         setAlarm(hourPicked, minutePicked, notificationId, reminder, destination); // we set the alarm
-        traffic.alarmClocks.add(alarm);
-        Toast.makeText(this,R.string.notification_set,Toast.LENGTH_SHORT).show();
+        if (posit-1 >= 0 && posit-1 < traffic.alarmClocks.size()) {
+            // An entry exists; hey, let's remove it
+            Toast.makeText(this, "Meron na", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            traffic.alarmClocks.add(alarm);
+            Toast.makeText(this,R.string.notification_set,Toast.LENGTH_SHORT).show();
+        }
+
 
 
         //==========================================================================//
@@ -197,5 +204,6 @@ public class poppers extends AppCompatActivity {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
         }
     }
+
 
 }

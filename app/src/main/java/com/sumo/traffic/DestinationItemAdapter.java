@@ -32,6 +32,7 @@ public class DestinationItemAdapter extends BaseAdapter implements ListAdapter {
     private traffic traffic;
     private DestinationActivity destination;
 
+
     public DestinationItemAdapter(ArrayList<String> list, Context context, DestinationActivity destination) {
         this.list = list;
         this.context = context;
@@ -131,6 +132,7 @@ public class DestinationItemAdapter extends BaseAdapter implements ListAdapter {
                 Intent i = new Intent(destination , poppers.class);
                 i.putExtra("currentMarker", position+1);
                 i.putExtra("alarm", position);
+                poppers.posit = position;
                 destination.startActivityForResult(i, 100);
 
                 //do something

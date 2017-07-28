@@ -15,19 +15,29 @@ import android.widget.RelativeLayout
 import android.widget.Toast
 import com.sumo.traffic.AlarmCodes.AlarmReceiver
 import com.sumo.traffic.model.ApplicationConstants
+import java.util.ArrayList
 
 class AlarmActivity : AppCompatActivity() {
     var adapter: HashMapAdapter? = null;
+    internal var positions: Int = 0
+ //  lateinit var destination: DestinationActivity
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_alarm)
 
+        setContentView(R.layout.activity_alarm)
         showData()
     }
+
+
+
 
     private fun showData(){
         val relLayout = findViewById(R.id.content_main) as RelativeLayout
         val listView = findViewById(R.id.list_view) as ListView
+
 
         // if no alarms, show the empty layout, otherwise the listview
         if (traffic.alarmClocks.size == 0){
@@ -36,6 +46,8 @@ class AlarmActivity : AppCompatActivity() {
         } else {
             relLayout.visibility = View.GONE
             showListView(listView)
+
+
         }
     }
 
@@ -44,13 +56,20 @@ class AlarmActivity : AppCompatActivity() {
         listView.visibility = View.VISIBLE
         listView.adapter = adapter
 
-        listView.setOnItemClickListener { parent, view, position, id ->
-            editAlarm(id)
-        }
+ /*       listView.setOnItemClickListener { parent, view, position, id ->
+       //    editAlarm(id)
+            val intent = Intent(applicationContext, poppers::class.java)
+            intent.putExtra("currentMarker", positions  +2)
+            intent.putExtra("alarm", positions )
+            startActivity(intent)
+            finish()
+
+        }*/
 
         listView.setOnItemLongClickListener { parent, view, position, id ->
             registerForContextMenu(listView)
             openContextMenu(listView)
+            positions = position
             true
         }
     }
@@ -58,27 +77,32 @@ class AlarmActivity : AppCompatActivity() {
     override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
         super.onCreateContextMenu(menu, v, menuInfo)
         menu!!.setHeaderTitle("Edit or cancel this notification")
-        menu.add(0, v!!.id , 0, "Change it")
-        menu.add(0, v.id, 0, "Delete it")
+      //  menu.add(0, v!!.id , 0, "Change it")
+        menu.add(0, v!!.id, 0, "Delete it")
+
     }
 
     override fun onContextItemSelected(item: MenuItem?): Boolean {
         if (item?.title == "Delete it") {
-         // unsetAlarm(item.itemId )
-            unsetAlarm(1 )
+            // unsetAlarm(item.itemId )
+            unsetAlarm(positions)
             adapter!!.notifyDataSetChanged()
 
-        } else if (item?.title == "Change it") {
+        }
+     /*    else if (item?.title == "Change it") {
             editAlarm(item.itemId.toLong())
-        } else
+
+        }*/ else
             return false
         return true
     }
 
     private fun editAlarm(id: Long) {
         val intent = Intent(applicationContext, poppers::class.java)
-        intent.putExtra("alarm", id -1)
+        intent.putExtra("currentMarker", positions + 1)
+        intent.putExtra("alarm", positions)
         startActivity(intent)
+        finish()
     }
 
     private fun unsetAlarm(id: Int) {

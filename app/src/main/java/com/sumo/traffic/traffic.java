@@ -219,6 +219,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 LinearLayout reroute;
     int checkreroute = 0;
 
+
     public static LinkedList<Marker> markerino = new LinkedList<Marker>();
 
     @Override
@@ -3800,6 +3801,7 @@ if (mList.size() == 2) {
 
         connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
         downloadTask2.execute();
+        poppers.posit = alarmClocks.size() +1;
 
 
     }
