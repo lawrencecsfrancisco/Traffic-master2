@@ -95,6 +95,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
+
+
 public class traffic extends FragmentActivity implements LocationListener, OnMapReadyCallback,
         GoogleMap.OnMapLongClickListener,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, GoogleMap.OnMarkerClickListener, TextToSpeech.OnInitListener {
@@ -218,7 +220,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     int markerinos = 0;
 LinearLayout reroute;
     int checkreroute = 0;
-
+float speedofuser;
 
     public static LinkedList<Marker> markerino = new LinkedList<Marker>();
 
@@ -636,6 +638,7 @@ LinearLayout reroute;
         AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
                 .setTypeFilter(AutocompleteFilter.TYPE_FILTER_ESTABLISHMENT)
                 .build();
+      //  autocompleteFragment.getView().setVisibility(View.GONE);
         autocompleteFragment.setFilter(typeFilter);
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
@@ -3510,13 +3513,24 @@ ttsturns.add((Html.fromHtml(t1.getString(ins)).toString()));
 
 
     Marker now;
-
+    double curTime= 0;
+    double oldLat = 0.0;
+    double oldLon = 0.0;
     @Override
     public void onLocationChanged(Location location) {
 
         latitude = location.getLatitude();
         longitude = location.getLongitude();
         latLng = new LatLng(location.getLatitude(), location.getLongitude());
+        Location speedofuse = new Location("");
+
+      getspeed(location);
+
+
+
+
+        Log.d("speedofuser",""+ speedofuser);
+
         Log.d("asd123,lat", "" + latitude);
         Log.d("asd123,long", "" + longitude);
         Log.d("asd123,latlng", "" + latLng);
@@ -3633,6 +3647,9 @@ if (mList.size() == 2) {
     Location user = new Location("");
     user.setLatitude(latitude);
     user.setLongitude(longitude);
+
+
+
     Location kanto = new Location("");
     kanto.setLatitude(elatz.get(0));
     kanto.setLongitude(elongz.get(0));
@@ -3736,18 +3753,39 @@ if (mList.size() == 2) {
 
     }
 
+    private void getspeed(Location location){
+        double newTime= System.currentTimeMillis();
+        double newLat = location.getLatitude();
+        double newLon = location.getLongitude();
+        if(location.hasSpeed()){
+            float speed = location.getSpeed();
 
-  /*  @Override
-    public void onPause() {
-        super.onPause();
+          Log.d("speedofusenospeed",""+ speed);
 
-        //stop location updates when Activity is no longer active
-        if (mGoogleApiClient != null) {
-            LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
+        } else {
+            double distance = calculationBydistance(newLat,newLon,oldLat,oldLon);
+            double timeDifferent = newTime - curTime;
+            double speed = (distance/timeDifferent) * 1000;
+            curTime = newTime;
+            oldLat = newLat;
+            oldLon = newLon;
+            Log.d("speedofuse","" + speed);
         }
     }
 
-*/
+    public double calculationBydistance(double lat1, double lon1, double lat2, double lon2){
+        double radius = 6371000;
+        double dLat = Math.toRadians(lat2-lat1);
+        double dLon = Math.toRadians(lon2-lon1);
+        double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                        Math.sin(dLon/2) * Math.sin(dLon/2);
+        double c = 2 * Math.asin(Math.sqrt(a));
+        return radius * c;
+    }
+
+
+
 
 
     @Override
