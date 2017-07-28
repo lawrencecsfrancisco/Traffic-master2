@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sumo.traffic.AlarmCodes.AlarmReceiver;
 import com.sumo.traffic.model.ApplicationConstants;
@@ -113,6 +114,7 @@ public class DestinationItemAdapter extends BaseAdapter implements ListAdapter {
                         if (position - 1 >= 0 && position - 1 < traffic.alarmClocks.size()) {
                             unsetAlarm(position - 1);
                             traffic.alarmClocks.remove(position - 1);
+                            Toast.makeText(context, ""+(position - 1), Toast.LENGTH_SHORT).show();
                         }
                     }
 

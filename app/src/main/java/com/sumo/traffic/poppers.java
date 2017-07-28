@@ -158,6 +158,9 @@ public class poppers extends AppCompatActivity {
             traffic.alarmClocks.add(alarm);
             Toast.makeText(this, R.string.notification_set, Toast.LENGTH_SHORT).show();
         } else {
+            alarm.put(ApplicationConstants.HOUR, "00");
+            alarm.put(ApplicationConstants.MINUTE, "00");
+            traffic.alarmClocks.add(alarm);
             Toast.makeText(this, "No alarm ", Toast.LENGTH_SHORT).show();
         }
 
