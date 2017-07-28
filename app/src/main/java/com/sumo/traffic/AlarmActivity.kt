@@ -86,6 +86,8 @@ class AlarmActivity : AppCompatActivity() {
         if (item?.title == "Delete it") {
             // unsetAlarm(item.itemId )
             unsetAlarm(positions)
+            traffic.timestoStay[poppers.currentMarkerIndex - 1] = "0"
+            traffic.mins[poppers.currentMarkerIndex - 1] = "0"
             adapter!!.notifyDataSetChanged()
 
         }

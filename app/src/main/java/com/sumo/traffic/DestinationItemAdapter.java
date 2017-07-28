@@ -110,8 +110,10 @@ public class DestinationItemAdapter extends BaseAdapter implements ListAdapter {
                     traffic.reminders.remove(position);
                     list.remove(position);
                     if (!traffic.alarmClocks.isEmpty()) {
-                        unsetAlarm(position - 1);
-                        traffic.alarmClocks.remove(position - 1);
+                        if (position - 1 >= 0 && position - 1 < traffic.alarmClocks.size()) {
+                            unsetAlarm(position - 1);
+                            traffic.alarmClocks.remove(position - 1);
+                        }
                     }
 
                     notifyDataSetChanged();
