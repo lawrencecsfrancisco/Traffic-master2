@@ -34,6 +34,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:visibility="gone"
             android:layout_margin="10dp"
             android:background="@drawable/border"
             android:orientation="horizontal"
@@ -49,9 +50,10 @@
                 android:background="#87E886" />
         </LinearLayout>
         <LinearLayout
-            android:visibility="gone"
+
             android:layout_width="match_parent"
             android:layout_height="60dp"
+
             android:layout_margin="10dp"
             android:background="@drawable/border"
             android:orientation="horizontal"
@@ -62,6 +64,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1">
                 <TextView
+                    android:id="@+id/meterpersecond"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"

@@ -203,6 +203,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     private RecyclerView recyclerViewStaff;
     private RecyclerView.Adapter adapterStaff;
     private List<TurnItem> InitialListStaffs;
+    private TextView meterz;
 
 
     List<Double> latz = new ArrayList<Double>();
@@ -241,6 +242,8 @@ float speedofuser;
         tts = new TextToSpeech(this, this);
 
         recyclerViewStaff = (RecyclerView) findViewById(R.id.recyclerViewStaff);
+        meterz = (TextView) findViewById(R.id.meterpersecond);
+
 
         recyclerViewStaff.setHasFixedSize(true);
         recyclerViewStaff.setLayoutManager(new LinearLayoutManager(this));
@@ -3765,11 +3768,14 @@ if (mList.size() == 2) {
         } else {
             double distance = calculationBydistance(newLat,newLon,oldLat,oldLon);
             double timeDifferent = newTime - curTime;
-            double speed = (distance/timeDifferent) * 1000;
+            double speed = (distance/timeDifferent) * 100  ;
+            Log.d("speedofuser",""+speed);
             curTime = newTime;
             oldLat = newLat;
             oldLon = newLon;
-            Log.d("speedofuse","" + speed);
+            double y = (Math.floor(speed * 10000) / 10000) * 3.6;
+            Log.d("speedofuser",""+y);
+            meterz.setText(String.format("%.2f", y));
         }
     }
 
@@ -3783,6 +3789,7 @@ if (mList.size() == 2) {
         double c = 2 * Math.asin(Math.sqrt(a));
         return radius * c;
     }
+
 
 
 
