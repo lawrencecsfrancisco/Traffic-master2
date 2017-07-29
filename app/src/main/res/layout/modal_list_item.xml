@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="56dp"
-    android:background="#FFF0D6">
+    android:background="#96E891">
 
     <ImageButton
         android:id="@+id/imgView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:background="#EE7469" />
+        android:background="#96E891" />
 
     <TextView
         android:id="@+id/txtView"
@@ -19,7 +19,8 @@
         android:text="Call"
         android:gravity="center_vertical"
         android:textSize="22sp"
+        android:textColor="#000"
         android:textStyle="normal"
-        android:textColor="#EE7469"/>
+        android:background="#96E891"/>
 
 </LinearLayout>

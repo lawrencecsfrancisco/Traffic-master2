@@ -5,10 +5,13 @@ import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
+
+import android.icu.util.Calendar;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -25,13 +28,16 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -86,13 +92,19 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import javax.mail.AuthenticationFailedException;
+import javax.mail.MessagingException;
 
 
 public class traffic extends FragmentActivity implements LocationListener, OnMapReadyCallback,
@@ -103,6 +115,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     public static LinkedList<LatLng> points = new LinkedList<LatLng>();
     public static LinkedList<LatLng> place = new LinkedList<LatLng>();
     public static LinkedList<String> placename = new LinkedList<String>();
+    public static LinkedList<String> placevicinity = new LinkedList<String>();
     public static LinkedList<Marker> markers = new LinkedList<Marker>();
     public static LinkedList<String> distances = new LinkedList<String>();
     public static LinkedList<String> durations = new LinkedList<String>();
@@ -208,7 +221,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     List<Double> elatz = new ArrayList<Double>();
     List<Double> elongz = new ArrayList<Double>();
     List<String> ttsturns = new ArrayList<>();
-
+    final Context context = this;
 
     double kantolayo;
     float kantoliko;
@@ -221,9 +234,10 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     float speedofuser;
     private TextView meterz, durationz, distancez;
     int traffik = 0;
-
+    String emailnguser;
     public static LinkedList<Marker> markerino = new LinkedList<Marker>();
-
+    String s;
+    String date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -233,6 +247,44 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         }
+
+        date = DateFormat.getDateTimeInstance().format(new Date());
+        LayoutInflater li = LayoutInflater.from(context);
+        View promptsView = li.inflate(R.layout.prompts, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+        // set prompts.xml to alertdialog builder
+        alertDialogBuilder.setView(promptsView);
+
+        final EditText userInput = (EditText) promptsView
+                .findViewById(R.id.editTextDialogUserInput);
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // get user input and set it to result
+                                // edit text
+                                emailnguser = userInput.getText().toString();
+                            }
+                        })
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                                emailnguser = "";
+                            }
+                        });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -417,11 +469,12 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                     startActivity(i);
                     mMap.setTrafficEnabled(false);
                 } else if (item.getItemId() == R.id.traffic) {
-
-                    alternateRoute();
+                    Toast.makeText(context, "" + date, Toast.LENGTH_SHORT).show();
+                    Log.d("emailnguser",""+emailnguser.toString());
+         /*           alternateRoute();
                     Log.e("Testing", String.valueOf(polylines));
                     Log.e("Testing", String.valueOf(listOfRouteArray));
-                    Log.e("Testing", String.valueOf(listOfIndicesOfCurrentRoutes));
+                    Log.e("Testing", String.valueOf(listOfIndicesOfCurrentRoutes));*/
 
                 } else if (item.getItemId() == R.id.reset) {
                     //Correction starts here
@@ -500,7 +553,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                         points.add(latLng);*/
 
 
-                        getplaces();
                         Log.e("Testing", "hello" + String.valueOf(polylines));
                         Log.e("Testing", "hello" + String.valueOf(listOfRouteArray));
                         Log.e("Testing", "hello" + String.valueOf(listOfIndicesOfCurrentRoutes));
@@ -962,73 +1014,61 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     }
 
 
-
-/*    static String makeURL1() throws UnsupportedEncodingException {
+    static String makeURL1() throws UnsupportedEncodingException {
 
         StringBuilder googlePlacesUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlacesUrl.append("location=" + latitude + "," + longitude);
-        googlePlacesUrl.append("&radius=" + radiusplace.inputtedradius);
-        googlePlacesUrl.append("&type=" + "art_gallery");
+        googlePlacesUrl.append("&radius=" + 500);
+        googlePlacesUrl.append("&type=" + "church");
         googlePlacesUrl.append("&sensor=true");
         googlePlacesUrl.append("&key=" + "AIzaSyCx8-ZK6m5FTgEoTaSRaUuALV-5Vnz1Co4");
         Log.d("getUrl", googlePlacesUrl.toString());
         return (googlePlacesUrl.toString());
-    }*/
+    }
 
-/*    static String makeURL2() throws UnsupportedEncodingException {
+    static String makeURL2() throws UnsupportedEncodingException {
 
         StringBuilder googlePlacesUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlacesUrl.append("location=" + latitude + "," + longitude);
-        googlePlacesUrl.append("&radius=" + radiusplace.inputtedradius);
-        googlePlacesUrl.append("&type=" + "amusement_park");
+        googlePlacesUrl.append("&radius=" + 500);
+        googlePlacesUrl.append("&type=" + "atm");
         googlePlacesUrl.append("&sensor=true");
         googlePlacesUrl.append("&key=" + "AIzaSyCx8-ZK6m5FTgEoTaSRaUuALV-5Vnz1Co4");
         Log.d("getUrl", googlePlacesUrl.toString());
         return (googlePlacesUrl.toString());
-    }*/
+    }
 
-/*    static String urlplace1() throws UnsupportedEncodingException {
+    static String urlplace2() throws UnsupportedEncodingException {
 
         StringBuilder googlePlacesUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlacesUrl.append("location=" + latitude + "," + longitude);
-        googlePlacesUrl.append("&radius=" + radiusplace.inputtedradius);
-        googlePlacesUrl.append("&type=" + "bowling_alley");
+        googlePlacesUrl.append("&radius=" + 500);
+        googlePlacesUrl.append("&type=" + "gas_station");
         googlePlacesUrl.append("&sensor=true");
         googlePlacesUrl.append("&key=" + "AIzaSyCx8-ZK6m5FTgEoTaSRaUuALV-5Vnz1Co4");
         Log.d("getUrl", googlePlacesUrl.toString());
         return (googlePlacesUrl.toString());
-    }*/
+    }
 
-/*    static String urlplace2() throws UnsupportedEncodingException {
+    static String urlplace3() throws UnsupportedEncodingException {
 
         StringBuilder googlePlacesUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlacesUrl.append("location=" + latitude + "," + longitude);
-        googlePlacesUrl.append("&radius=" + radiusplace.inputtedradius);
-        googlePlacesUrl.append("&type=" + "museum");
+        googlePlacesUrl.append("&radius=" + 500);
+        googlePlacesUrl.append("&type=" + "shopping_mall");
         googlePlacesUrl.append("&sensor=true");
         googlePlacesUrl.append("&key=" + "AIzaSyCx8-ZK6m5FTgEoTaSRaUuALV-5Vnz1Co4");
         Log.d("getUrl", googlePlacesUrl.toString());
         return (googlePlacesUrl.toString());
-    }*/
+    }
 
- /*   static String urlplace3() throws UnsupportedEncodingException {
-
-        StringBuilder googlePlacesUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-        googlePlacesUrl.append("location=" + latitude + "," + longitude);
-        googlePlacesUrl.append("&radius=" + radiusplace.inputtedradius);
-        googlePlacesUrl.append("&type=" + "zoo");
-        googlePlacesUrl.append("&sensor=true");
-        googlePlacesUrl.append("&key=" + "AIzaSyCx8-ZK6m5FTgEoTaSRaUuALV-5Vnz1Co4");
-        Log.d("getUrl", googlePlacesUrl.toString());
-        return (googlePlacesUrl.toString());
-    }*/
 
     static String urlplace4() throws UnsupportedEncodingException {
 
         StringBuilder googlePlacesUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlacesUrl.append("location=" + latitude + "," + longitude);
-        googlePlacesUrl.append("&radius=" + 10);
-        googlePlacesUrl.append("&type=" + "stadium");
+        googlePlacesUrl.append("&radius=" + 300);
+        googlePlacesUrl.append("&type=" + "police");
         googlePlacesUrl.append("&sensor=true");
         googlePlacesUrl.append("&key=" + "AIzaSyCx8-ZK6m5FTgEoTaSRaUuALV-5Vnz1Co4");
         Log.d("getUrl", googlePlacesUrl.toString());
@@ -1036,38 +1076,40 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     }
 
     public void getplaces() {
+
         String url = null;
         String url2 = null;
         String url3 = null;
-
         String url4 = null;
         String url5 = null;
-        String url6 = null;
-
 
         try {
-        /*    url = makeURL1();
-       *//*     url2 = makeURL2();*//*
-            url3 = urlplace1();
-            url4 = urlplace2();
-            url5 = urlplace3();*/
-            url6 = urlplace4();
+
+            url = urlplace4();
+            url2 = urlplace3();
+            url3 = urlplace2();
+            url4 = makeURL2();
+            url5 = makeURL1();
+
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
- /*       placesAsyncTask download = new placesAsyncTask(url);
-*//*        placesAsyncTask download2 = new placesAsyncTask(url2);*//*
+
+        placesAsyncTask download = new placesAsyncTask(url);
+        placesAsyncTask download2 = new placesAsyncTask(url2);
         placesAsyncTask download3 = new placesAsyncTask(url3);
         placesAsyncTask download4 = new placesAsyncTask(url4);
-        placesAsyncTask download5 = new placesAsyncTask(url5);*/
-        placesAsyncTask download6 = new placesAsyncTask(url6);
-  /*      download.execute();
-*//*        download2.execute();*//*
+        placesAsyncTask download5 = new placesAsyncTask(url5);
+
+
+        download.execute();
+        download2.execute();
         download3.execute();
         download4.execute();
-        download5.execute();*/
-        download6.execute();
+        download5.execute();
+
+
     }
 
 
@@ -1088,6 +1130,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                 if (!place.contains(temp)) {
                     place.add(temp);
                     placename.add(places.getString("name"));
+                    placevicinity.add(places.getString("vicinity"));
                     MarkerOptions markerOptions =
                             new MarkerOptions()
                                     .position(temp
@@ -1095,8 +1138,8 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.icon4))
                                     .snippet("placeId:" + placeId);
 
-                    Marker placeMarker = mMap.addMarker(markerOptions);
-                    placeMarkers.add(markerOptions);
+                    // Marker placeMarker = mMap.addMarker(markerOptions);
+                    //  placeMarkers.add(markerOptions);
                 }
             }
 
@@ -3568,9 +3611,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         if (durations.size() > 1 && distances.size() > 1) {
             distancez.setText(distances.get(1).toString() + "m");
             durationz.setText(durations.get(1).toString());
-        }
-        else
-        {
+        } else {
             distancez.setText("0");
             durationz.setText("0");
         }
@@ -3583,6 +3624,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                     .anchor(0.5f, 1);
 
             Marker m = mMap.addMarker(markerOptions);
+            getplaces();
 
             markers.add(m);
             //EXTRA CODES
@@ -3631,7 +3673,9 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                     CameraUpdateFactory.newCameraPosition(cameraPosition));
         } else {
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+            mMap.animateCamera(CameraUpdateFactory
+                    .zoomTo(15)
+            );
         }
 
 
@@ -3689,6 +3733,31 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
 
                 //   adapterStaff.notifyDataSetChanged();
+            }
+
+
+            if (markarlayo < 25) {
+                if (mList.size() > 1 && points.size() > 1 && markers.size() > 1) {
+
+                    if (mList.size() != 0) {
+
+                        if (mList.size() > 1) {
+                            if(emailnguser == "")
+                            {
+                                Toast.makeText(context, "No email", Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                sendMessage();
+                            }
+
+                        }
+
+
+                    }
+
+
+                }
             }
 
 
@@ -4325,5 +4394,104 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         }
     }
 
+    private void sendMessage() {
 
+
+
+        if (placename.isEmpty() && placevicinity.isEmpty()) {
+            s = "TARA UPDATES of user: \n\n"
+                    + "Time of arrival: " + date + "\n"
+                    + "Current location:" + latLng + "\n"
+                    + "Total Distance:" + distancez.getText().toString() + "\n"
+                    + "Total Duration:" + durationz.getText().toString() + "\n"
+                    + "Last Driving Instruction:" + ttsturns.get(0).toString() + "\n"
+
+            + "Use this site to find the exact place of the user: https://www.gps-coordinates.net/" + "\n";
+        } else if (placename.size() >= 5 && placevicinity.size() >= 5) {
+            s = "TARA UPDATES of user: \n\n"
+                    + "Time of arrival: " + date + "\n"
+                    + "Current location:" + latLng + "\n"
+                    + "Total Distance:" + distancez.getText().toString() + "\n"
+                    + "Total Duration:" + durationz.getText().toString() + "\n"
+                    + "Last Driving Instruction:" + ttsturns.get(0).toString() + "\n\n"
+                    + "5 Closest Landmark" + "\n"
+                    + placename.get(0).toString() + "-----" + placevicinity.get(0).toString() + "\n"
+                    + placename.get(1).toString() + "-----" + placevicinity.get(1).toString() + "\n"
+                    + placename.get(2).toString() + "-----" + placevicinity.get(2).toString() + "\n"
+                    + placename.get(3).toString() + "-----" + placevicinity.get(3).toString() + "\n"
+                    + placename.get(4).toString() + "-----" + placevicinity.get(4).toString() + "\n"
+
+                    + "Use this site to find the exact place of the user: https://www.gps-coordinates.net/" + "\n";
+
+        } else if (placename.size() >= 2 && placevicinity.size() >= 2) {
+            s = "TARA UPDATES of user: \n\n"
+                    + "Time of arrival: " + date + "\n"
+                    + "Current location:" + latLng + "\n"
+                    + "Total Distance:" + distancez.getText().toString() + "\n"
+                    + "Total Duration:" + durationz.getText().toString() + "\n"
+                    + "Last Driving Instruction:" + ttsturns.get(0).toString() + "\n\n"
+                    + "5 Closest Landmark" + "\n"
+                    + placename.get(0).toString() + "-----" + placevicinity.get(0).toString() + "\n"
+                    + placename.get(1).toString() + "-----" + placevicinity.get(1).toString() + "\n"
+                    + placename.get(2).toString() + "-----" + placevicinity.get(2).toString() + "\n"
+
+                    + "Use this site to find the exact place of the user: https://www.gps-coordinates.net/" + "\n";
+
+        }
+
+
+        String[] recipients = {emailnguser};
+        SendEmailAsyncTask email = new SendEmailAsyncTask();
+        email.activity = this;
+        email.m = new Mail("taramobileappph@gmail.com", "lawrencekiko1");
+        email.m.set_from("taramobileappph@gmail.com");
+        email.m.setBody(s);
+        email.m.set_to(recipients);
+        email.m.set_subject("TARA UPDATES");
+        email.execute();
+
+        Log.d("Email", "" + emailnguser);
+    }
+
+    public void displayMessage(String message) {
+
+    }
+
+
+    class SendEmailAsyncTask extends AsyncTask<Void, Void, Boolean> {
+        Mail m;
+        traffic activity;
+
+        public SendEmailAsyncTask() {
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            try {
+                if (m.send()) {
+                    activity.displayMessage("Email sent.");
+                } else {
+                    activity.displayMessage("Email failed to send.");
+                }
+
+                return true;
+            } catch (AuthenticationFailedException e) {
+                Log.e(SendEmailAsyncTask.class.getName(), "Bad account details");
+                e.printStackTrace();
+                activity.displayMessage("Authentication failed.");
+                return false;
+            } catch (MessagingException e) {
+                Log.e(SendEmailAsyncTask.class.getName(), "Email failed");
+                e.printStackTrace();
+                activity.displayMessage("Email failed to send.");
+                return false;
+            } catch (Exception e) {
+                e.printStackTrace();
+                activity.displayMessage("Unexpected error occured.");
+                return false;
+            }
+        }
+
+
+    }
 }

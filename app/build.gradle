@@ -42,9 +42,9 @@ dependencies {
     compile project(':compoundlayout')
     //   compile 'com.google.android.gms:play-services-appindexing:10.0.1'
 
-    
 
-
+    compile 'com.sun.mail:android-mail:1.5.5'
+    compile 'com.sun.mail:android-activation:1.5.5'
     compile 'com.uncopt:android.justified:1.0'
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
