@@ -216,11 +216,11 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     int kantors = 0;
     int desto = 2;
     int markerinos = 0;
-    LinearLayout reroute;
+    LinearLayout reroute, driversearch, driverspeed;
     int checkreroute = 0;
     float speedofuser;
     private TextView meterz, durationz, distancez;
-
+    int traffik = 0;
 
     public static LinkedList<Marker> markerino = new LinkedList<Marker>();
 
@@ -260,6 +260,9 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         handler.postAtTime(runnable, System.currentTimeMillis() + interval);
         handler.postDelayed(runnable, interval);
         reroute = (LinearLayout) findViewById(R.id.reroute);
+        driversearch = (LinearLayout) findViewById(R.id.driversearch);
+        driverspeed = (LinearLayout) findViewById(R.id.driverspeed);
+        driverspeed.setVisibility(View.GONE);
         reroute.setVisibility(View.GONE);
         drivermode = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.Plot);
         drivermode.setImageResource(R.drawable.exploremode);
@@ -419,7 +422,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                     Log.e("Testing", String.valueOf(polylines));
                     Log.e("Testing", String.valueOf(listOfRouteArray));
                     Log.e("Testing", String.valueOf(listOfIndicesOfCurrentRoutes));
-
 
                 } else if (item.getItemId() == R.id.reset) {
                     //Correction starts here
@@ -588,9 +590,13 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
         if (checkreroute == 0) {
             reroute.setVisibility(View.GONE);
+            driverspeed.setVisibility(View.GONE);
+            driversearch.setVisibility(View.VISIBLE);
             checkreroute = 1;
         } else if (checkreroute == 1) {
             reroute.setVisibility(View.VISIBLE);
+            driverspeed.setVisibility(View.VISIBLE);
+            driversearch.setVisibility(View.GONE);
             checkreroute = 0;
         }
         //finalize
@@ -3560,10 +3566,13 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         Marker m = mMap.addMarker(markerOptions);*/
 
         if (durations.size() > 1 && distances.size() > 1) {
-           distancez.setText(distances.get(1).toString() + "m");
+            distancez.setText(distances.get(1).toString() + "m");
             durationz.setText(durations.get(1).toString());
-
-
+        }
+        else
+        {
+            distancez.setText("0");
+            durationz.setText("0");
         }
         if (mList.size() == 0) {
 
