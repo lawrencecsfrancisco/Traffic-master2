@@ -95,8 +95,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-
-
 public class traffic extends FragmentActivity implements LocationListener, OnMapReadyCallback,
         GoogleMap.OnMapLongClickListener,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, GoogleMap.OnMarkerClickListener, TextToSpeech.OnInitListener {
@@ -203,7 +201,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     private RecyclerView recyclerViewStaff;
     private RecyclerView.Adapter adapterStaff;
     private List<TurnItem> InitialListStaffs;
-    private TextView meterz;
 
 
     List<Double> latz = new ArrayList<Double>();
@@ -219,9 +216,11 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     int kantors = 0;
     int desto = 2;
     int markerinos = 0;
-LinearLayout reroute;
+    LinearLayout reroute;
     int checkreroute = 0;
-float speedofuser;
+    float speedofuser;
+    private TextView meterz, durationz, distancez;
+
 
     public static LinkedList<Marker> markerino = new LinkedList<Marker>();
 
@@ -243,6 +242,8 @@ float speedofuser;
 
         recyclerViewStaff = (RecyclerView) findViewById(R.id.recyclerViewStaff);
         meterz = (TextView) findViewById(R.id.meterpersecond);
+        distancez = (TextView) findViewById(R.id.distancex);
+        durationz = (TextView) findViewById(R.id.durationx);
 
 
         recyclerViewStaff.setHasFixedSize(true);
@@ -585,13 +586,10 @@ float speedofuser;
             driving = 1;
         }
 
-        if (checkreroute ==0)
-        {
+        if (checkreroute == 0) {
             reroute.setVisibility(View.GONE);
             checkreroute = 1;
-        }
-        else if (checkreroute == 1)
-        {
+        } else if (checkreroute == 1) {
             reroute.setVisibility(View.VISIBLE);
             checkreroute = 0;
         }
@@ -641,7 +639,7 @@ float speedofuser;
         AutocompleteFilter typeFilter = new AutocompleteFilter.Builder()
                 .setTypeFilter(AutocompleteFilter.TYPE_FILTER_ESTABLISHMENT)
                 .build();
-      //  autocompleteFragment.getView().setVisibility(View.GONE);
+        //  autocompleteFragment.getView().setVisibility(View.GONE);
         autocompleteFragment.setFilter(typeFilter);
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
@@ -793,11 +791,11 @@ float speedofuser;
         }
 
 
-
         //  }
 
 
     }
+
     public void replot() {
 
         //add markers back
@@ -1106,7 +1104,7 @@ float speedofuser;
 
     public static String makeURL3() throws UnsupportedEncodingException {
         String params, waypoints, sensor, main;
-       // String traf = "&departure_time=now";
+        // String traf = "&departure_time=now";
         int i;
         if (points.size() > 2) {
             waypoints = "waypoints=optimize:true";
@@ -1481,7 +1479,7 @@ float speedofuser;
                 turnk.setdis(Html.fromHtml(layo.getString("text")).toString());
                 turnk.setdur(Html.fromHtml(oras.getString("text")).toString());
                 InitialListStaffs.add(turnk);
-ttsturns.add((Html.fromHtml(t1.getString(ins)).toString()));
+                ttsturns.add((Html.fromHtml(t1.getString(ins)).toString()));
             }
 
             //Correction starts here
@@ -3516,9 +3514,10 @@ ttsturns.add((Html.fromHtml(t1.getString(ins)).toString()));
 
 
     Marker now;
-    double curTime= 0;
+    double curTime = 0;
     double oldLat = 0.0;
     double oldLon = 0.0;
+
     @Override
     public void onLocationChanged(Location location) {
 
@@ -3527,12 +3526,10 @@ ttsturns.add((Html.fromHtml(t1.getString(ins)).toString()));
         latLng = new LatLng(location.getLatitude(), location.getLongitude());
         Location speedofuse = new Location("");
 
-      getspeed(location);
+        getspeed(location);
 
 
-
-
-        Log.d("speedofuser",""+ speedofuser);
+        Log.d("speedofuser", "" + speedofuser);
 
         Log.d("asd123,lat", "" + latitude);
         Log.d("asd123,long", "" + longitude);
@@ -3562,38 +3559,42 @@ ttsturns.add((Html.fromHtml(t1.getString(ins)).toString()));
 
         Marker m = mMap.addMarker(markerOptions);*/
 
-if (mList.size() == 0)
-{
-
-              MarkerOptions markerOptions = new MarkerOptions()
-                                .position(latLng)
-                                .title("My Location")
-                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.kikomarke1r11))
-                                .anchor(0.5f, 1);
-
-                        Marker m = mMap.addMarker(markerOptions);
-
-                        markers.add(m);
-                        //EXTRA CODES
-                        mList.add(markerOptions);
-                        durations.add(new String("0"));
-                        distances.add(new String("0"));
-                     reminders.add(new String(""));
+        if (durations.size() > 1 && distances.size() > 1) {
+           distancez.setText(distances.get(1).toString() + "m");
+            durationz.setText(durations.get(1).toString());
 
 
-                        // Log.d("meme",myLocation.toString());
+        }
+        if (mList.size() == 0) {
 
-                        // Log.d("meme",myLatLng.toString());
+            MarkerOptions markerOptions = new MarkerOptions()
+                    .position(latLng)
+                    .title("My Location")
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.kikomarke1r11))
+                    .anchor(0.5f, 1);
 
-                        points.add(latLng);
-}
+            Marker m = mMap.addMarker(markerOptions);
+
+            markers.add(m);
+            //EXTRA CODES
+            mList.add(markerOptions);
+            durations.add(new String("0"));
+            distances.add(new String("0"));
+            reminders.add(new String(""));
+
+
+            // Log.d("meme",myLocation.toString());
+
+            // Log.d("meme",myLatLng.toString());
+
+            points.add(latLng);
+        }
 
         mLastLocation = location;
         if (mCurrLocationMarker != null) {
             mCurrLocationMarker.remove();
             //   m.remove();
         }
-
 
 
         mCurrLocationMarker = mMap.addMarker(new MarkerOptions()
@@ -3606,8 +3607,7 @@ if (mList.size() == 0)
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 
 
-
-        if(driving == 1) {
+        if (driving == 1) {
 
             CameraPosition cameraPosition =
                     new CameraPosition.Builder()
@@ -3620,14 +3620,10 @@ if (mList.size() == 0)
 
             mMap.animateCamera(
                     CameraUpdateFactory.newCameraPosition(cameraPosition));
-        }
-        else
-        {
+        } else {
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         }
-
-
 
 
         Log.d("asd123", "" + mList.size());
@@ -3642,56 +3638,45 @@ if (mList.size() == 0)
         Log.d("asd123,elongz", "" + elongz.size());
 
 
-
-
-
         if (!elatz.isEmpty() && !elongz.isEmpty()) {
-if (mList.size() == 2) {
-    Location user = new Location("");
-    user.setLatitude(latitude);
-    user.setLongitude(longitude);
+            if (mList.size() == 2) {
+                Location user = new Location("");
+                user.setLatitude(latitude);
+                user.setLongitude(longitude);
 
 
+                Location kanto = new Location("");
+                kanto.setLatitude(elatz.get(0));
+                kanto.setLongitude(elongz.get(0));
+                kantolayo = user.distanceTo(kanto);
+                kantoliko = user.bearingTo(kanto);
 
-    Location kanto = new Location("");
-    kanto.setLatitude(elatz.get(0));
-    kanto.setLongitude(elongz.get(0));
-    kantolayo = user.distanceTo(kanto);
-    kantoliko = user.bearingTo(kanto);
+                Log.d("kantolayo", "" + kantolayo);
 
-    Log.d("kantolayo", "" + kantolayo);
-
-    Log.d("kantolayoliko", "" + kantoliko);
-
+                Log.d("kantolayoliko", "" + kantoliko);
 
 
+                if (markers.size() > 1) {
+
+                    Location markar = new Location("");
+                    markar.setLongitude(markers.get(1)
+                            .getPosition().longitude);
+                    markar.setLatitude(markers.get(1)
+                            .getPosition().latitude);
+                    markarlayo = user.distanceTo(markar);
+                }
+
+                Log.d("asd123,markar", "" + markers.get(markerinos).getPosition().longitude);
+                Log.d("asd123,markar", "" + markers.get(markerinos).getPosition().latitude);
 
 
-            if (markers.size() > 1) {
-
-                Location markar = new Location("");
-                markar.setLongitude(markers.get(1)
-                        .getPosition().longitude);
-                markar.setLatitude(markers.get(1)
-                        .getPosition().latitude);
-                markarlayo = user.distanceTo(markar);
+                Log.d("asd123,latskanto", "" + elatz.get(0));
+                Log.d("asd123,longskanto", "" + elongz.get(0));
             }
-
-            Log.d("asd123,markar",""+markers.get(markerinos).getPosition().longitude);
-            Log.d("asd123,markar",""+markers.get(markerinos).getPosition().latitude);
-
-
-
-
-
-            Log.d("asd123,latskanto",""+elatz.get(0));
-            Log.d("asd123,longskanto",""+elongz.get(0));
-}
-            if (kantolayo <  15) {
+            if (kantolayo < 15) {
 
 
                 replot();
-
 
 
                 //   adapterStaff.notifyDataSetChanged();
@@ -3718,7 +3703,7 @@ if (mList.size() == 2) {
                             mins.remove(1);
 
                             mMap.clear();
-                            points.set(0,latLng);
+                            points.set(0, latLng);
                             String myText1 = "You arrived";
                             tts.speak(myText1, TextToSpeech.QUEUE_FLUSH, null);
                             replot();
@@ -3730,17 +3715,12 @@ if (mList.size() == 2) {
                         }
 
 
-
-
-
                     }
-
 
 
                 }
             }
         }
-
 
 
         Log.d("onLocationChanged", String.format("latitude:%.9f longitude:%.9f", latitude, longitude));
@@ -3756,43 +3736,39 @@ if (mList.size() == 2) {
 
     }
 
-    private void getspeed(Location location){
-        double newTime= System.currentTimeMillis();
+    private void getspeed(Location location) {
+        double newTime = System.currentTimeMillis();
         double newLat = location.getLatitude();
         double newLon = location.getLongitude();
-        if(location.hasSpeed()){
+        if (location.hasSpeed()) {
             float speed = location.getSpeed();
 
-          Log.d("speedofusenospeed",""+ speed);
+            Log.d("speedofusenospeed", "" + speed);
 
         } else {
-            double distance = calculationBydistance(newLat,newLon,oldLat,oldLon);
+            double distance = calculationBydistance(newLat, newLon, oldLat, oldLon);
             double timeDifferent = newTime - curTime;
-            double speed = (distance/timeDifferent) * 100  ;
-            Log.d("speedofuser",""+speed);
+            double speed = (distance / timeDifferent) * 100;
+            Log.d("speedofuser", "" + speed);
             curTime = newTime;
             oldLat = newLat;
             oldLon = newLon;
             double y = (Math.floor(speed * 10000) / 10000) * 3.6;
-            Log.d("speedofuser",""+y);
-            meterz.setText(String.format("%.2f", y));
+            Log.d("speedofuser", "" + y);
+            meterz.setText(String.format("%.2f", y) + "km/h");
         }
     }
 
-    public double calculationBydistance(double lat1, double lon1, double lat2, double lon2){
+    public double calculationBydistance(double lat1, double lon1, double lat2, double lon2) {
         double radius = 6371000;
-        double dLat = Math.toRadians(lat2-lat1);
-        double dLon = Math.toRadians(lon2-lon1);
-        double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLon = Math.toRadians(lon2 - lon1);
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
                 Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
-                        Math.sin(dLon/2) * Math.sin(dLon/2);
+                        Math.sin(dLon / 2) * Math.sin(dLon / 2);
         double c = 2 * Math.asin(Math.sqrt(a));
         return radius * c;
     }
-
-
-
-
 
 
     @Override
@@ -3818,16 +3794,15 @@ if (mList.size() == 2) {
         //EXTRA CODES
         mList.add(markerOptions);
 
-        Log.d("pointsize",""+points.size());
-        Log.d("markerssize",""+markers.size());
-        Log.d("mlistsize",""+mList.size());
+        Log.d("pointsize", "" + points.size());
+        Log.d("markerssize", "" + markers.size());
+        Log.d("mlistsize", "" + mList.size());
 
         distances.add(new String("0"));
         durations.add(new String("0"));
         reminders.add(new String(""));
         timestoStay.add(new String(""));
         mins.add(new String(""));
-
 
 
         String url = null;
@@ -3843,10 +3818,9 @@ if (mList.size() == 2) {
         distanceview.setVisibility(View.VISIBLE);
 
 
-
         connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
         downloadTask2.execute();
-        poppers.posit = alarmClocks.size() +1;
+        poppers.posit = alarmClocks.size() + 1;
 
 
     }
@@ -3929,6 +3903,7 @@ if (mList.size() == 2) {
                 e.printStackTrace();
             }
         }
+
         @Override
         protected String doInBackground(Void... params) {
             JSONParser jParser = new JSONParser();
@@ -3958,12 +3933,8 @@ if (mList.size() == 2) {
             }
 
 
-
-
-
         }
     }
-
 
 
     public class connectAsyncTask2 extends AsyncTask<Void, Void, String> {
@@ -4021,15 +3992,7 @@ if (mList.size() == 2) {
                 traffic.startActivity(i);
 
 
-
-
-
-
-
             }
-
-
-
 
 
         }
@@ -4180,7 +4143,6 @@ if (mList.size() == 2) {
     }
 
 
-
     public static class GetNearbyPlacesData extends AsyncTask<Object, String, String> {
 
         String googlePlacesData;
@@ -4247,183 +4209,93 @@ if (mList.size() == 2) {
 
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.air));
 
-                        }
-                        else if (reminders ==3)
-                        {
+                        } else if (reminders == 3) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_station));
-                        }
-                        else if (reminders ==4)
-                        {
+                        } else if (reminders == 4) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.car_rental));
-                        }
-                        else if (reminders ==5)
-                        {
+                        } else if (reminders == 5) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.taxi_stand));
-                        }
-                        else if (reminders ==6)
-                        {
+                        } else if (reminders == 6) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.train_station));
-                        }
-                        else if (reminders ==7)
-                        {
+                        } else if (reminders == 7) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.transit_station));
-                        }
-                        else if (reminders ==8)
-                        {
+                        } else if (reminders == 8) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.real_state_agency));
-                        }
-                        else if (reminders ==9)
-                        {
+                        } else if (reminders == 9) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.insured));
-                        }
-                        else if (reminders ==10)
-                        {
+                        } else if (reminders == 10) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.travel_agency));
-                        }
-                        else if (reminders ==11)
-                        {
+                        } else if (reminders == 11) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.icon_atm));
-                        }
-                        else if (reminders ==12)
-                        {
+                        } else if (reminders == 12) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.police));
-                        }
-                        else if (reminders ==13)
-                        {
+                        } else if (reminders == 13) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.fireszz));
-                        }
-
-                        else if (reminders ==14)
-                        {
+                        } else if (reminders == 14) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.hospital));
-                        }
-                        else if (reminders ==15)
-                        {
+                        } else if (reminders == 15) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.pharmacy));
-                        }
-                        else if (reminders == 16)
-                        {
+                        } else if (reminders == 16) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.parking));
-                        }
-                        else if (reminders == 17)
-                        {
+                        } else if (reminders == 17) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.meal_delivery));
-                        }
-                        else if (reminders == 18)
-                        {
+                        } else if (reminders == 18) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.hair_care));
-                        }
-                        else if (reminders == 19)
-                        {
+                        } else if (reminders == 19) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.gyn));
-                        }
-                        else if (reminders == 20)
-                        {
+                        } else if (reminders == 20) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.car_wash));
-                        }
-                        else if (reminders == 21)
-                        {
+                        } else if (reminders == 21) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.car_repair));
-                        }
-                        else if (reminders == 23)
-                        {
+                        } else if (reminders == 23) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.laundry));
-                        }
-                        else if (reminders == 24)
-                        {
+                        } else if (reminders == 24) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.gas_station));
-                        }
-                        else if (reminders == 25)
-                        {
+                        } else if (reminders == 25) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.bicycle_store));
-                        }
-                        else if (reminders == 26)
-                        {
+                        } else if (reminders == 26) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.book_store));
-                        }
-                        else if (reminders == 27)
-                        {
+                        } else if (reminders == 27) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.hardware_store));
-                        }
-                        else if (reminders == 28)
-                        {
+                        } else if (reminders == 28) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.furniture_store));
-                        }
-                        else if (reminders == 29)
-                        {
+                        } else if (reminders == 29) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.jewelry_store));
-                        }
-                        else if (reminders == 30)
-                        {
+                        } else if (reminders == 30) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.liquour_store));
-                        }
-                        else if (reminders == 31)
-                        {
+                        } else if (reminders == 31) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.store));
-                        }
-                        else if (reminders == 32)
-                        {
+                        } else if (reminders == 32) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.clothing_store));
-                        }
-                        else if (reminders == 33)
-                        {
+                        } else if (reminders == 33) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.department_store));
-                        }
-                        else if (reminders == 34)
-                        {
+                        } else if (reminders == 34) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.pet_store));
-                        }
-                        else if (reminders == 35)
-                        {
+                        } else if (reminders == 35) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.electronics_store));
-                        }
-                        else if (reminders == 36)
-                        {
+                        } else if (reminders == 36) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.parkor));
-                        }
-                        else if (reminders == 37)
-                        {
+                        } else if (reminders == 37) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.bar));
-                        }
-
-                        else if (reminders == 38)
-                        {
+                        } else if (reminders == 38) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.bowling_alley));
-                        }
-                        else if (reminders == 39)
-                        {
+                        } else if (reminders == 39) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.cafe));
-                        }
-                        else if (reminders == 40)
-                        {
+                        } else if (reminders == 40) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.campground));
-                        }
-                        else if (reminders == 41)
-                        {
+                        } else if (reminders == 41) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.casino));
-                        }
-                        else if (reminders == 42)
-                        {
+                        } else if (reminders == 42) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.night_club));
-                        }
-                        else if (reminders == 43)
-                        {
+                        } else if (reminders == 43) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.art_gallery));
-                        }
-                        else if (reminders == 44)
-                        {
+                        } else if (reminders == 44) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.shoppers));
-                        }
-                        else if (reminders == 45)
-                        {
+                        } else if (reminders == 45) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.museum));
-                        }
-                        else if (reminders == 46)
-                        {
+                        } else if (reminders == 46) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.park1));
-                        }
-                        else if (reminders == 47)
-                        {
+                        } else if (reminders == 47) {
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.spa));
                         }
 
@@ -4437,17 +4309,12 @@ if (mList.size() == 2) {
                     mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
 
                 }
-            }catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 Log.d("tyty", e.getMessage());
             }
         }
     }
-
-
-
-
-
 
 
 }
