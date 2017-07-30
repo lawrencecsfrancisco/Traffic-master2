@@ -119,7 +119,7 @@ public class WelcomeSlider extends AppCompatActivity {
     }
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(true);
-        startActivity(new Intent(WelcomeSlider.this, TemplateOrChoices.class));
+        startActivity(new Intent(WelcomeSlider.this, WeatherActivity.class));
         finish();
     }
 

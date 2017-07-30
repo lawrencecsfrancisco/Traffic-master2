@@ -23,10 +23,10 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <ImageView
-                android:layout_width="100dp"
+                android:layout_width="110dp"
                 android:layout_height="100dp"
                 android:id="@+id/imageView"
-                android:background="@drawable/loaders1"
+                android:background="@drawable/newlogo"
                 android:onClick="gogo"
                 android:layout_gravity="center_horizontal|top" />
 
@@ -43,7 +43,8 @@
                     style="@style/LocationText"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    android:textColor="#BEE8B7"
+                    android:textColor="#EE7469"
+                    android:textStyle="bold"
                     android:layout_width="0dp" />
                 <TextView
                     android:id="@+id/current_temperature"

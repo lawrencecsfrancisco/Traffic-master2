@@ -47,9 +47,9 @@ public class poppers extends AppCompatActivity {
 
         destinationName = (EditText) findViewById(R.id.editText);
         reminders = (EditText) findViewById(R.id.editText2);
-        timetoStay = (TextView) findViewById(R.id.hour_picked);
         distance = (TextView) findViewById(R.id.d1);
         duration = (TextView) findViewById(R.id.t1);
+        timetoStay = (TextView) findViewById(R.id.hour_picked);
         mins = (TextView) findViewById(R.id.minutes_picked);
 
         //set current destination attributes

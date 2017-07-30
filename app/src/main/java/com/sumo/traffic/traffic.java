@@ -85,6 +85,7 @@ import com.sumo.traffic.InfoOfPlaces.InfoOfQmc;
 import com.sumo.traffic.InfoOfPlaces.InfoOfUp;
 import com.sumo.traffic.InfoOfPlaces.InfoOfVargas;
 import com.sumo.traffic.InfoOfPlaces.InfoOfWatershed;
+import com.sumo.traffic.model.ApplicationConstants;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -238,6 +239,11 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     public static LinkedList<Marker> markerino = new LinkedList<Marker>();
     String s;
     String date;
+       HashMap<String, String> n = new HashMap<String, String>();
+
+String alal;
+    private int alarmIndex = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -247,6 +253,8 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         }
+
+        n.put("00:00", alal);
 
         date = DateFormat.getDateTimeInstance().format(new Date());
         LayoutInflater li = LayoutInflater.from(context);
@@ -3411,8 +3419,13 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
 
     public void ArtInIsland() {
-
-
+        int notificationId = (alarmIndex >= 0) ? alarmIndex : alarmClocks.size();
+        HashMap<String, String> alarm = new HashMap<>();
+        alarm.put(ApplicationConstants._ID, String.valueOf(notificationId));
+        alarm.put(ApplicationConstants.HOUR, "00");
+        alarm.put(ApplicationConstants.MINUTE, "00");
+        alarm.put(ApplicationConstants.REMINDER,  "Bring your slippers");
+        alarm.put(ApplicationConstants.DESTINATION, "Art In Island");
 
 
     /*    Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();*/
@@ -3444,6 +3457,8 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         reminders.add(new String("."));
         timestoStay.add(new String("."));
         mins.add(new String("."));
+        alarmClocks.add(alarm);
+
 
 
         placesnumber = 1;
@@ -3854,8 +3869,9 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         //Add marker on LongClick position
 /*        Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();*/
 
-   /*     HashMap<String, String> n = new HashMap<String, String>();
+     /*   HashMap<String, String> n = new HashMap<String, String>();
         n.put("a", "a");*/
+
 
         MarkerOptions markerOptions = new MarkerOptions()
                 .position(latLng)
