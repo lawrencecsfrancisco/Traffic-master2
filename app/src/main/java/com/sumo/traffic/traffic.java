@@ -96,6 +96,7 @@ import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -230,7 +231,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     int kantors = 0;
     int desto = 2;
     int markerinos = 0;
-    LinearLayout reroute, driversearch, driverspeed;
+    LinearLayout reroute, driversearch, driverspeed,mainmenus,turntexter;
     int checkreroute = 0;
     float speedofuser;
     private TextView meterz, durationz, distancez;
@@ -322,6 +323,9 @@ String alal;
         reroute = (LinearLayout) findViewById(R.id.reroute);
         driversearch = (LinearLayout) findViewById(R.id.driversearch);
         driverspeed = (LinearLayout) findViewById(R.id.driverspeed);
+        mainmenus = (LinearLayout) findViewById(R.id.mainmenudriver);
+        turntexter = (LinearLayout) findViewById(R.id.turnmoto);
+        turntexter.setVisibility(View.GONE);
         driverspeed.setVisibility(View.GONE);
         reroute.setVisibility(View.GONE);
         drivermode = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.Plot);
@@ -477,8 +481,8 @@ String alal;
                     startActivity(i);
                     mMap.setTrafficEnabled(false);
                 } else if (item.getItemId() == R.id.traffic) {
-                    Toast.makeText(context, "" + date, Toast.LENGTH_SHORT).show();
-                    Log.d("emailnguser",""+emailnguser.toString());
+                       q1();
+                    Toast.makeText(context, "added", Toast.LENGTH_SHORT).show();
          /*           alternateRoute();
                     Log.e("Testing", String.valueOf(polylines));
                     Log.e("Testing", String.valueOf(listOfRouteArray));
@@ -652,11 +656,15 @@ String alal;
             reroute.setVisibility(View.GONE);
             driverspeed.setVisibility(View.GONE);
             driversearch.setVisibility(View.VISIBLE);
+            mainmenus.setVisibility(View.VISIBLE);
+            turntexter.setVisibility(View.GONE);
             checkreroute = 1;
         } else if (checkreroute == 1) {
             reroute.setVisibility(View.VISIBLE);
             driverspeed.setVisibility(View.VISIBLE);
             driversearch.setVisibility(View.GONE);
+            mainmenus.setVisibility(View.GONE);
+            turntexter.setVisibility(View.VISIBLE);
             checkreroute = 0;
         }
         //finalize
@@ -3414,6 +3422,24 @@ String alal;
         connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
         downloadTask2.execute();
 
+
+    }
+
+    public void q1() {
+          String[] multipleHours = {"9", "11", "13", "14", "15", "17", "18"}; //store here the hours for every alarm you want to set
+        String[] multipleMinutes = {"45", "0", "0", "0", "45", "0", "45"}; //store here the minutes
+       // int[] multipleHours = {9, 11, 13, 14, 15, 17, 18}; //store here the hours for every alarm you want to set
+       // int[] multipleMinutes = {45, 0, 0, 0, 45, 0, 45}; //store here the minutes
+        String[] multipleDestinations = {"Departure", "Quezon Heritage House", "Art In Island", "Quezon City Experience", "Quezon Memorial", " Destination 5", "Destination 6"}; //same thing for destinations
+        String[] multipleReminders = {"You need to go to Destination 1", "Timeout, Go to next destination", "Timeout, Go to next destination", "Timeout, Go to next destination", "Timeout, Go to next destination", "Timeout, Go to next destination", "Package Ended!"}; //and reminders
+        HashMap<String, String> alarm = new HashMap<>();
+        int notificationId = (alarmIndex >= 0) ? alarmIndex : alarmClocks.size();
+        alarm.put(ApplicationConstants._ID, String.valueOf(notificationId));
+        alarm.put(ApplicationConstants.HOUR, Arrays.toString(multipleHours));
+        alarm.put(ApplicationConstants.MINUTE, Arrays.toString(multipleMinutes));
+        alarm.put(ApplicationConstants.REMINDER, String.valueOf(multipleReminders));
+        alarm.put(ApplicationConstants.DESTINATION, String.valueOf(multipleDestinations));
+        alarmClocks.add(alarm);
 
     }
 

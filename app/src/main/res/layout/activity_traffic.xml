@@ -57,8 +57,7 @@
             android:background="@drawable/border"
             android:gravity="center"
 
-            android:orientation="horizontal"
-   >
+            android:orientation="horizontal">
 
             <fragment
                 android:id="@+id/place_autocomplete_fragment"
@@ -296,6 +295,7 @@
 
 
         <LinearLayout
+            android:id="@+id/mainmenudriver"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
@@ -312,9 +312,11 @@
 
 
         <LinearLayout
+            android:id="@+id/turnmoto"
             android:layout_width="match_parent"
             android:layout_height="130dp"
             android:layout_weight="1"
+
             android:background="#689F38">
 
             <android.support.v7.widget.RecyclerView
