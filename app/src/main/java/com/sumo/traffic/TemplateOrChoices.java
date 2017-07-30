@@ -36,6 +36,7 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
     private int defaultChildHeight;
     private boolean toAnimate = true;
     private boolean toFantasticScroll = true;
+    static int packages ;
 
     private GestureDetectorCompat detector;
     private Toolbar appBar;
@@ -52,6 +53,8 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
             "Set of itineraries that can't be modify and delete. Each package contains different variety of destination",
             "Allows the user to freely build and create itinerary by selecting destinations also creating own schedule."
     };
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,6 +179,7 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
                             else{
                                 Intent intent = new Intent(this, ChoicesOfPackage.class);
                                 startActivity(intent);
+                            packages = 1;
                             }
 
                         break;
@@ -187,6 +191,8 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
                         else{
                             Intent intent = new Intent(this, ChoicesOfPlace.class);
                             startActivity(intent);
+                            packages = 0;
+
                         }
 
                         break;

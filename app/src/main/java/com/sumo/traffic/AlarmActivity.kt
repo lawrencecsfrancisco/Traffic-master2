@@ -85,10 +85,16 @@ class AlarmActivity : AppCompatActivity() {
     override fun onContextItemSelected(item: MenuItem?): Boolean {
         if (item?.title == "Delete it") {
             // unsetAlarm(item.itemId )
-            unsetAlarm(positions)
-            traffic.timestoStay[poppers.currentMarkerIndex - 1] = "0"
-            traffic.mins[poppers.currentMarkerIndex - 1] = "0"
-            adapter!!.notifyDataSetChanged()
+            if (TemplateOrChoices.packages == 1)
+            {
+                Toast.makeText(this,"Sorry you cannot delete this",Toast.LENGTH_LONG);
+            }
+            else {
+                unsetAlarm(positions)
+                traffic.timestoStay[poppers.currentMarkerIndex - 1] = "0"
+                traffic.mins[poppers.currentMarkerIndex - 1] = "0"
+                adapter!!.notifyDataSetChanged()
+            }
 
         }
      /*    else if (item?.title == "Change it") {

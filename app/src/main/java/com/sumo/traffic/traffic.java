@@ -3,6 +3,8 @@ package com.sumo.traffic;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -70,6 +72,7 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.model.DirectionsRoute;
 import com.kyo.expandablelayout.ExpandableLayout;
+import com.sumo.traffic.AlarmCodes.AlarmReceiver;
 import com.sumo.traffic.InfoOfPlaces.InfoOfArt;
 import com.sumo.traffic.InfoOfPlaces.InfoOfAteneo;
 import com.sumo.traffic.InfoOfPlaces.InfoOfBayani;
@@ -231,7 +234,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     int kantors = 0;
     int desto = 2;
     int markerinos = 0;
-    LinearLayout reroute, driversearch, driverspeed,mainmenus,turntexter;
+    LinearLayout reroute, driversearch, driverspeed, mainmenus, turntexter;
     int checkreroute = 0;
     float speedofuser;
     private TextView meterz, durationz, distancez;
@@ -240,9 +243,15 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     public static LinkedList<Marker> markerino = new LinkedList<Marker>();
     String s;
     String date;
-       HashMap<String, String> n = new HashMap<String, String>();
 
-String alal;
+    HashMap<String, String> n = new HashMap<String, String>();
+    // String[] multipleHours = {"9", "11", "13", "14", "15", "17", "18"}; //store here the hours for every alarm you want to set
+    //  String[] multipleMinutes = {"45", "0", "0", "0", "45", "0", "45"}; //store here the minutes
+    int[] multipleHours; //= {19, 11, 13, 14, 15, 17, 18}; //store here the hours for every alarm you want to set
+    int[] multipleMinutes; //= {48, 0, 0, 0, 45, 0, 45}; //store here the minutes
+    String[] multipleDestinations; //= {"Departure", "Quezon Heritage House", "Art In Island", "Quezon City Experience", "Quezon Memorial", " Destination 5", "Destination 6"}; //same thing for destinations
+    String[] multipleReminders;// = {"You need to go to Destination 1", "Timeout, Go to next destination", "Timeout, Go to next destination", "Timeout, Go to next destination", "Timeout, Go to next destination", "Timeout, Go to next destination", "Package Ended!"};
+    String alal;
     private int alarmIndex = -1;
 
     @Override
@@ -314,7 +323,7 @@ String alal;
 
         Runnable runnable = new Runnable() {
             public void run() {
-                selected();
+
             }
         };
 
@@ -481,8 +490,7 @@ String alal;
                     startActivity(i);
                     mMap.setTrafficEnabled(false);
                 } else if (item.getItemId() == R.id.traffic) {
-                       q1();
-                    Toast.makeText(context, "added", Toast.LENGTH_SHORT).show();
+                    selected();
          /*           alternateRoute();
                     Log.e("Testing", String.valueOf(polylines));
                     Log.e("Testing", String.valueOf(listOfRouteArray));
@@ -692,6 +700,20 @@ String alal;
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+        if (TemplateOrChoices.packages == 1) {
+            for (int i = 0; i < multipleHours.length; i++) {
+                int notificationId = (alarmIndex >= 0) ? alarmIndex : alarmClocks.size();
+                HashMap<String, String> alarm = new HashMap<>();
+                alarm.put(ApplicationConstants._ID, String.valueOf(notificationId));
+                alarm.put(ApplicationConstants.HOUR, String.valueOf(multipleHours[i]));
+                alarm.put(ApplicationConstants.MINUTE, String.valueOf(multipleMinutes[i]));
+                alarm.put(ApplicationConstants.REMINDER, String.valueOf(multipleReminders[i]));
+                alarm.put(ApplicationConstants.DESTINATION, String.valueOf(multipleDestinations[i]));
+                alarmClocks.add(alarm);
+                setAlarm(multipleHours[i], multipleMinutes[i], notificationId, multipleReminders[i], multipleDestinations[i]);
+            }
+        }
 
 
         try {
@@ -1654,6 +1676,7 @@ String alal;
     public void selected() {
 
 
+
         if (InfoOfUp.select == 1) {
             if (ayala == 0) {
                 ayala();
@@ -1666,6 +1689,7 @@ String alal;
         if (InfoOfArt.select == 1) {
             if (art == 0) {
                 ArtInIsland();
+
                 art = 1;
             } else if (art == 1) {
 
@@ -1676,6 +1700,7 @@ String alal;
             if (parish == 0) {
                 parish();
                 parish = 1;
+
             } else if (parish == 1) {
 
             }
@@ -1752,7 +1777,7 @@ String alal;
                 maginhawa();
                 maginhawa = 1;
             } else if (maginhawa == 1) {
-                Toast.makeText(getApplicationContext(), "Place updated", Toast.LENGTH_LONG).show();
+
             }
         }
 
@@ -1789,22 +1814,11 @@ String alal;
                 MemorialCircle();
                 qmc = 1;
             } else if (qmc == 1) {
-                Toast.makeText(getApplicationContext(), "Place updated", Toast.LENGTH_LONG).show();
+
             }
 
         }
 
-/*        if (InfoOfUp.select == 1) {
-
-
-            if (up == 0) {
-              ayala();
-                up= 1;
-            } else if (up == 1) {
-
-            }
-
-        }*/
         if (InfoOfVargas.select == 1) {
 
 
@@ -1832,6 +1846,18 @@ String alal;
         Toast.makeText(getApplicationContext(), "Place updated", Toast.LENGTH_LONG).show();
 
 
+    }
+
+    public void intervalistics()
+    {
+        new Timer().schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                selected();
+
+            }
+        },3000);
     }
 
 
@@ -3375,7 +3401,17 @@ String alal;
 
     public void MemorialCircle() {
 
+        if (TemplateOrChoices.packages == 1) {
+            int notificationId = (alarmIndex >= 0) ? alarmIndex : alarmClocks.size();
+            HashMap<String, String> alarm = new HashMap<>();
+            alarm.put(ApplicationConstants._ID, String.valueOf(notificationId));
+            alarm.put(ApplicationConstants.HOUR, "00");
+            alarm.put(ApplicationConstants.MINUTE, "00");
+            alarm.put(ApplicationConstants.REMINDER, "Destination Notification");
+            alarm.put(ApplicationConstants.DESTINATION, "Destination");
+            alarmClocks.add(alarm);
 
+        }
         Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();
 
         double wa = 14.6516;
@@ -3396,7 +3432,7 @@ String alal;
 
 
         markers.add(mMap.addMarker(markerOptions));
-
+        markerino.add(mMap.addMarker(markerOptions));
         //EXTRA CODES
         mList.add(markerOptions);
 
@@ -3426,10 +3462,10 @@ String alal;
     }
 
     public void q1() {
-          String[] multipleHours = {"9", "11", "13", "14", "15", "17", "18"}; //store here the hours for every alarm you want to set
+        String[] multipleHours = {"9", "11", "13", "14", "15", "17", "18"}; //store here the hours for every alarm you want to set
         String[] multipleMinutes = {"45", "0", "0", "0", "45", "0", "45"}; //store here the minutes
-       // int[] multipleHours = {9, 11, 13, 14, 15, 17, 18}; //store here the hours for every alarm you want to set
-       // int[] multipleMinutes = {45, 0, 0, 0, 45, 0, 45}; //store here the minutes
+        // int[] multipleHours = {9, 11, 13, 14, 15, 17, 18}; //store here the hours for every alarm you want to set
+        // int[] multipleMinutes = {45, 0, 0, 0, 45, 0, 45}; //store here the minutes
         String[] multipleDestinations = {"Departure", "Quezon Heritage House", "Art In Island", "Quezon City Experience", "Quezon Memorial", " Destination 5", "Destination 6"}; //same thing for destinations
         String[] multipleReminders = {"You need to go to Destination 1", "Timeout, Go to next destination", "Timeout, Go to next destination", "Timeout, Go to next destination", "Timeout, Go to next destination", "Timeout, Go to next destination", "Package Ended!"}; //and reminders
         HashMap<String, String> alarm = new HashMap<>();
@@ -3443,17 +3479,45 @@ String alal;
 
     }
 
+    private void setAlarm(int hour, int minute, int notificationId, String reminder, String destination) {
+        Intent i;
+        PendingIntent pi;
+        java.util.Calendar calendar = java.util.Calendar.getInstance();
+        int currentHour = calendar.get(java.util.Calendar.HOUR_OF_DAY);
+        int monthDay = calendar.get(java.util.Calendar.DAY_OF_YEAR);
+        i = new Intent(this, AlarmReceiver.class);
+        i.putExtra(ApplicationConstants._ID, notificationId);
+        i.putExtra(ApplicationConstants.REMINDER, reminder);
+        i.putExtra(ApplicationConstants.DESTINATION, destination);
+        pi = PendingIntent.getBroadcast(this, notificationId, i, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        if (currentHour > hour) {
+            calendar.set(java.util.Calendar.DAY_OF_YEAR, (monthDay + 1));
+            calendar.set(java.util.Calendar.HOUR_OF_DAY, hour);
+            calendar.set(java.util.Calendar.MINUTE, minute);
+            calendar.set(java.util.Calendar.SECOND, 0);
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
+        } else if (currentHour <= hour) {
+            calendar.set(java.util.Calendar.HOUR_OF_DAY, hour);
+            calendar.set(java.util.Calendar.MINUTE, minute);
+            calendar.set(java.util.Calendar.SECOND, 0);
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pi);
+        }
+    }
 
     public void ArtInIsland() {
-        int notificationId = (alarmIndex >= 0) ? alarmIndex : alarmClocks.size();
-        HashMap<String, String> alarm = new HashMap<>();
-        alarm.put(ApplicationConstants._ID, String.valueOf(notificationId));
-        alarm.put(ApplicationConstants.HOUR, "00");
-        alarm.put(ApplicationConstants.MINUTE, "00");
-        alarm.put(ApplicationConstants.REMINDER,  "Bring your slippers");
-        alarm.put(ApplicationConstants.DESTINATION, "Art In Island");
+   /*     if (TemplateOrChoices.packages == 1) {
+            int notificationId = (alarmIndex >= 0) ? alarmIndex : alarmClocks.size();
+            HashMap<String, String> alarm = new HashMap<>();
+            alarm.put(ApplicationConstants._ID, String.valueOf(notificationId));
+            alarm.put(ApplicationConstants.HOUR, "00");
+            alarm.put(ApplicationConstants.MINUTE, "00");
+            alarm.put(ApplicationConstants.REMINDER, "Destination Notification");
+            alarm.put(ApplicationConstants.DESTINATION, "Destination");
+            alarmClocks.add(alarm);
 
-
+        }
+*/
     /*    Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();*/
 
         double wa = 14.6228;
@@ -3474,7 +3538,7 @@ String alal;
 
 
         markers.add(mMap.addMarker(markerOptions));
-
+        markerino.add(mMap.addMarker(markerOptions));
         //EXTRA CODES
         mList.add(markerOptions);
 
@@ -3483,8 +3547,6 @@ String alal;
         reminders.add(new String("."));
         timestoStay.add(new String("."));
         mins.add(new String("."));
-        alarmClocks.add(alarm);
-
 
 
         placesnumber = 1;
@@ -3680,6 +3742,7 @@ String alal;
             // Log.d("meme",myLatLng.toString());
 
             points.add(latLng);
+
         }
 
         mLastLocation = location;
@@ -3783,12 +3846,9 @@ String alal;
                     if (mList.size() != 0) {
 
                         if (mList.size() > 1) {
-                            if(emailnguser == "")
-                            {
+                            if (emailnguser == "") {
                                 Toast.makeText(context, "No email", Toast.LENGTH_SHORT).show();
-                            }
-                            else
-                            {
+                            } else {
                                 sendMessage();
                             }
 
@@ -3964,8 +4024,9 @@ String alal;
         Intent toMarkerInfo = new Intent(traffic.this, MarkerInfoActivity.class);
         toMarkerInfo.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         toMarkerInfo.putExtra("placeId", placeId);
-        Toast.makeText(traffic.this, " " + placeId, Toast.LENGTH_SHORT).show();
+        //  Toast.makeText(traffic.this, " " + placeId, Toast.LENGTH_SHORT).show();
         startActivity(toMarkerInfo);
+
 
         return true;
 
@@ -4053,6 +4114,10 @@ String alal;
             }
 
 
+
+
+
+
         }
     }
 
@@ -4094,6 +4159,7 @@ String alal;
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
+
             progressDialog.hide();
             checklist = 1;
 
@@ -4107,10 +4173,15 @@ String alal;
 
             if (displayDestinationDetails) {
 
-                Intent i = new Intent(traffic.this, poppers.class);
-                i.putExtra("currentMarker", traffic.markers.size());
-                traffic.startActivity(i);
+                if (TemplateOrChoices.packages == 1) {
+                }
+                else if (TemplateOrChoices.packages == 0) {
 
+                } else {
+                    Intent i = new Intent(traffic.this, poppers.class);
+                    i.putExtra("currentMarker", traffic.markers.size());
+                    traffic.startActivity(i);
+                }
 
             }
 
@@ -4439,7 +4510,6 @@ String alal;
     private void sendMessage() {
 
 
-
         if (placename.isEmpty() && placevicinity.isEmpty()) {
             s = "TARA UPDATES of user: \n\n"
                     + "Time of arrival: " + date + "\n"
@@ -4448,7 +4518,7 @@ String alal;
                     + "Total Duration:" + durationz.getText().toString() + "\n"
                     + "Last Driving Instruction:" + ttsturns.get(0).toString() + "\n"
 
-            + "Use this site to find the exact place of the user: https://www.gps-coordinates.net/" + "\n";
+                    + "Use this site to find the exact place of the user: https://www.gps-coordinates.net/" + "\n";
         } else if (placename.size() >= 5 && placevicinity.size() >= 5) {
             s = "TARA UPDATES of user: \n\n"
                     + "Time of arrival: " + date + "\n"

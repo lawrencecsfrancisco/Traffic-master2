@@ -141,8 +141,9 @@ public class poppers extends AppCompatActivity {
         we'll use the int immediately after the last value in the array list as the notification id
         unless we got the alarmIndex, meaning that the alarm is being edited
          */
-        int notificationId = (alarmIndex >= 0) ? alarmIndex : traffic.alarmClocks.size();
+
         HashMap<String, String> alarm = new HashMap<>();
+        int notificationId = (alarmIndex >= 0) ? alarmIndex : traffic.alarmClocks.size();
         alarm.put(ApplicationConstants._ID, String.valueOf(notificationId));
         alarm.put(ApplicationConstants.HOUR, String.valueOf(hourPicked));
         alarm.put(ApplicationConstants.MINUTE, String.valueOf(minutePicked));
@@ -153,7 +154,7 @@ public class poppers extends AppCompatActivity {
            unsetAlarm(posit - 1);
             traffic.alarmClocks.remove(posit - 1);
             traffic.alarmClocks.add(alarm);
-            Toast.makeText(this, "Meron na" + (posit - 1), Toast.LENGTH_SHORT).show();
+
         } else if (hourPicked != 0 && minutePicked != 0) {
             traffic.alarmClocks.add(alarm);
             Toast.makeText(this, R.string.notification_set, Toast.LENGTH_SHORT).show();
