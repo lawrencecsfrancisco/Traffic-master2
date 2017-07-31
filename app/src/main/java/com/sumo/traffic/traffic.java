@@ -202,7 +202,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     List<String> placesId = new ArrayList<String>();
 
     JSONArray turns;
-    private final int interval = 2000; // 1 Second
+    private final int interval = 10000; // 1 Second
     private Handler handler = new Handler();
     ArrayList<JSONArray> listOfRouteArray = new ArrayList<>();
     private ArrayList<Integer> listOfIndicesOfCurrentRoutes = new ArrayList<>();
@@ -323,7 +323,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
         Runnable runnable = new Runnable() {
             public void run() {
-
+//selected();
             }
         };
 
@@ -486,11 +486,12 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
                     mMap.setTrafficEnabled(false);
                 } else if (item.getItemId() == R.id.directions) {
-                    Intent i = new Intent(traffic.this, Home.class);
-                    startActivity(i);
-                    mMap.setTrafficEnabled(false);
+                   // Intent i = new Intent(traffic.this, Home.class);
+                  //  startActivity(i);
+                  //  mMap.setTrafficEnabled(false);
+                    MemorialCircle();
                 } else if (item.getItemId() == R.id.traffic) {
-                    selected();
+                   ArtInIsland();
          /*           alternateRoute();
                     Log.e("Testing", String.valueOf(polylines));
                     Log.e("Testing", String.valueOf(listOfRouteArray));
@@ -1673,7 +1674,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     }
 
 
-    public void selected() {
+    public void  selected() {
 
 
 
@@ -3506,6 +3507,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     }
 
     public void ArtInIsland() {
+
    /*     if (TemplateOrChoices.packages == 1) {
             int notificationId = (alarmIndex >= 0) ? alarmIndex : alarmClocks.size();
             HashMap<String, String> alarm = new HashMap<>();
@@ -4129,9 +4131,11 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         String url;
         boolean launchDestination;
 
+
         connectAsyncTask2(String urlPass, traffic traffic, boolean displayDestinationDetails) {
             this.url = urlPass;
             this.traffic = traffic;
+
             this.displayDestinationDetails = displayDestinationDetails;
         }
 
@@ -4165,9 +4169,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
             if (result != null) {
                 Log.d("momo2", " : " + result);
-                traffic.drawPath(result);
-                speakOut();
-
+                traffic.drawPath(result);speakOut();
 
             }
 
