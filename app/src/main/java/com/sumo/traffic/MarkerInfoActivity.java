@@ -301,13 +301,13 @@ public class MarkerInfoActivity extends AppCompatActivity implements GoogleApiCl
                 recyclerView.setAdapter(recyclerAdapter);
             } catch (Exception e) {
                 //couldnt fetch the reviews datas, what to do? I'll show an alert dialog for now
-                AlertDialog.Builder builder = new AlertDialog.Builder(MarkerInfoActivity.this);
+            /*    AlertDialog.Builder builder = new AlertDialog.Builder(MarkerInfoActivity.this);
                 builder.setTitle("Error retrieving reviews data")
                         .setMessage("This might either be because of a faulty internet connection or"
                                 + " simply because reviews are not available for this place")
                         .setPositiveButton("Ok", null);
                 AlertDialog dialog = builder.create();
-                dialog.show();
+                dialog.show();*/
             }
         }
     }

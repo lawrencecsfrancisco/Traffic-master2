@@ -115,14 +115,15 @@
 
             <TextView
                 android:id="@+id/place_type_text"
-                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/place_address_text"
                 android:layout_below="@id/powered_by_google"
                 android:layout_marginTop="16dp"
                 android:text="Place type"
                 android:textColor="#383732"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView

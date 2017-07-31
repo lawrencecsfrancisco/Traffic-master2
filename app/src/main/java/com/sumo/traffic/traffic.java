@@ -111,6 +111,8 @@ import java.util.TimerTask;
 import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
 
+import static com.sumo.traffic.traffic.connectAsyncTask2.*;
+
 
 public class traffic extends FragmentActivity implements LocationListener, OnMapReadyCallback,
         GoogleMap.OnMapLongClickListener,
@@ -323,7 +325,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
         Runnable runnable = new Runnable() {
             public void run() {
-//selected();
+                selected();
             }
         };
 
@@ -340,7 +342,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         drivermode = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.Plot);
         drivermode.setImageResource(R.drawable.exploremode);
 
-        fab1 = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fab1);
+       // fab1 = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fab1);
 
         fab2 = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fab2);
 
@@ -348,12 +350,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         fab3 = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fab3);
         menured = (com.github.clans.fab.FloatingActionMenu) findViewById(R.id.menu_red);
 
-        fab1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(traffic.this, "Test1", Toast.LENGTH_SHORT).show();
-            }
-        });
+
 
 
         if (packs == 1) {
@@ -363,7 +360,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             fab2.setLabelText("Add more destination");
         }
 
-        fab1.setLabelText("Enable StreetMap");
+/*        fab1.setLabelText("Enable StreetMap");
 
 
         fab1.setOnClickListener(new View.OnClickListener() {
@@ -382,7 +379,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
 
             }
-        });
+        });*/
 
 
         main = (CoordinatorLayout) findViewById(R.id.activity_main);
@@ -486,12 +483,13 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
                     mMap.setTrafficEnabled(false);
                 } else if (item.getItemId() == R.id.directions) {
-                   // Intent i = new Intent(traffic.this, Home.class);
-                  //  startActivity(i);
-                  //  mMap.setTrafficEnabled(false);
+                    // Intent i = new Intent(traffic.this, Home.class);
+                    //  startActivity(i);
+                    //  mMap.setTrafficEnabled(false);
                     MemorialCircle();
                 } else if (item.getItemId() == R.id.traffic) {
-                   ArtInIsland();
+
+
          /*           alternateRoute();
                     Log.e("Testing", String.valueOf(polylines));
                     Log.e("Testing", String.valueOf(listOfRouteArray));
@@ -1674,8 +1672,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     }
 
 
-    public void  selected() {
-
+    public void selected() {
 
 
         if (InfoOfUp.select == 1) {
@@ -1689,9 +1686,10 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
         if (InfoOfArt.select == 1) {
             if (art == 0) {
-                ArtInIsland();
 
+                ArtInIsland();
                 art = 1;
+
             } else if (art == 1) {
 
             }
@@ -1812,8 +1810,12 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
 
             if (qmc == 0) {
+
+
                 MemorialCircle();
                 qmc = 1;
+
+
             } else if (qmc == 1) {
 
             }
@@ -1849,8 +1851,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
     }
 
-    public void intervalistics()
-    {
+    public void intervalistics() {
         new Timer().schedule(new TimerTask() {
 
             @Override
@@ -1858,7 +1859,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                 selected();
 
             }
-        },3000);
+        }, 3000);
     }
 
 
@@ -3402,7 +3403,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
     public void MemorialCircle() {
 
-        if (TemplateOrChoices.packages == 1) {
+   /*     if (TemplateOrChoices.packages == 1) {
             int notificationId = (alarmIndex >= 0) ? alarmIndex : alarmClocks.size();
             HashMap<String, String> alarm = new HashMap<>();
             alarm.put(ApplicationConstants._ID, String.valueOf(notificationId));
@@ -3412,7 +3413,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             alarm.put(ApplicationConstants.DESTINATION, "Destination");
             alarmClocks.add(alarm);
 
-        }
+        }*/
         Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();
 
         double wa = 14.6516;
@@ -3456,8 +3457,15 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         distanceview.setVisibility(View.VISIBLE);*/
 
 
+        //connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
+        // downloadTask2.execute();
+
         connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
-        downloadTask2.execute();
+        if (downloadTask2.getStatus().equals(AsyncTask.Status.PENDING)) {
+            downloadTask2.execute();
+        } else if (downloadTask2.getStatus().equals(AsyncTask.Status.FINISHED)) {
+            selected();
+        }
 
 
     }
@@ -3541,6 +3549,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
         markers.add(mMap.addMarker(markerOptions));
         markerino.add(mMap.addMarker(markerOptions));
+
         //EXTRA CODES
         mList.add(markerOptions);
 
@@ -3549,9 +3558,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         reminders.add(new String("."));
         timestoStay.add(new String("."));
         mins.add(new String("."));
-
-
-        placesnumber = 1;
 
 
         String url = null;
@@ -3567,7 +3573,11 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         distanceview.setVisibility(View.VISIBLE);*/
 
         connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
-        downloadTask2.execute();
+        if (downloadTask2.getStatus().equals(AsyncTask.Status.PENDING)) {
+            downloadTask2.execute();
+        } else if (downloadTask2.getStatus().equals(AsyncTask.Status.FINISHED)) {
+            selected();
+        }
 
 
     }
@@ -3798,11 +3808,11 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
 
         if (!elatz.isEmpty() && !elongz.isEmpty()) {
-            if (mList.size() == 2) {
+            if (mList.size() > 1) {
+
                 Location user = new Location("");
                 user.setLatitude(latitude);
                 user.setLongitude(longitude);
-
 
                 Location kanto = new Location("");
                 kanto.setLatitude(elatz.get(0));
@@ -3825,8 +3835,8 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                     markarlayo = user.distanceTo(markar);
                 }
 
-                Log.d("asd123,markar", "" + markers.get(markerinos).getPosition().longitude);
-                Log.d("asd123,markar", "" + markers.get(markerinos).getPosition().latitude);
+                Log.d("asd123,markar", "" + markers.get(1).getPosition().longitude);
+                Log.d("asd123,markar", "" + markers.get(1).getPosition().latitude);
 
 
                 Log.d("asd123,latskanto", "" + elatz.get(0));
@@ -4116,10 +4126,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             }
 
 
-
-
-
-
         }
     }
 
@@ -4169,15 +4175,15 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
             if (result != null) {
                 Log.d("momo2", " : " + result);
-                traffic.drawPath(result);speakOut();
-
+                traffic.drawPath(result);
+                speakOut();
             }
+
 
             if (displayDestinationDetails) {
 
                 if (TemplateOrChoices.packages == 1) {
-                }
-                else if (TemplateOrChoices.packages == 0) {
+                } else if (TemplateOrChoices.packages == 0) {
 
                 } else {
                     Intent i = new Intent(traffic.this, poppers.class);
