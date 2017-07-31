@@ -253,6 +253,7 @@
                             android:background="@drawable/border"
                             android:text="Delete Destination"
                             android:id="@+id/button2"
+                            android:onClick="artdelete"
                             android:layout_below="@+id/ad"
                             android:layout_alignParentStart="true" />
                     </LinearLayout>

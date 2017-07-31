@@ -41,6 +41,14 @@ public class InfoOfDam extends AppCompatActivity {
 
 
     }
+    public void artdelete(View view)
+    {
+
+        select = 0;
+        Toast.makeText(getApplicationContext(), "You unselected this destination", Toast.LENGTH_LONG).show();
+
+
+    }
 
 
     public void p1(View view)

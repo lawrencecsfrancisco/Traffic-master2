@@ -353,10 +353,11 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
 
 
-        if (packs == 1) {
+        if (TemplateOrChoices.packages == 1) {
             fab2.setLabelText("Summary of Tour");
 
-        } else if (itc == 1) {
+        }
+        else if (TemplateOrChoices.packages == 0) {
             fab2.setLabelText("Add more destination");
         }
 

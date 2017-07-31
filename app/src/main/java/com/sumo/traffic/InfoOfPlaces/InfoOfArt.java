@@ -16,6 +16,7 @@ public class InfoOfArt extends AppCompatActivity {
 
     public static int select;
     RelativeLayout wat;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.place_art);
@@ -36,34 +37,37 @@ public class InfoOfArt extends AppCompatActivity {
 
     }
 
-    public void artadd(View view)
-    {
+    public void artadd(View view) {
 
         select = 1;
         Toast.makeText(getApplicationContext(), "You added this as One of your Destination", Toast.LENGTH_LONG).show();
         wat.setVisibility(View.VISIBLE);
 
+    }
+
+    public void artdelete(View view) {
+
+        select = 0;
+        Toast.makeText(getApplicationContext(), "You unselected this destination", Toast.LENGTH_LONG).show();
+
 
     }
 
-    public void p1(View view)
-    {
-        Intent i = new Intent(InfoOfArt.this,InfoOfNinoy.class);
+    public void p1(View view) {
+        Intent i = new Intent(InfoOfArt.this, InfoOfNinoy.class);
         startActivity(i);
-finish();
+        finish();
     }
 
-    public void p2(View view)
-    {
-        Intent i = new Intent(InfoOfArt.this,InfoOfDam.class);
+    public void p2(View view) {
+        Intent i = new Intent(InfoOfArt.this, InfoOfDam.class);
         startActivity(i);
         finish();
 
     }
 
-    public void p3(View view)
-    {
-        Intent i = new Intent(InfoOfArt.this,InfoOfVargas.class);
+    public void p3(View view) {
+        Intent i = new Intent(InfoOfArt.this, InfoOfVargas.class);
         startActivity(i);
         finish();
 

@@ -270,6 +270,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:layout_below="@+id/ad"
+                            android:onClick="artdelete"
                             android:background="@drawable/border"
                             android:text="Delete Destination"
                             android:textColor="#EE7469" />

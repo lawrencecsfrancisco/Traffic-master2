@@ -37,7 +37,14 @@ public class InfoOfVargas extends AppCompatActivity {
         select = 1;
         Toast.makeText(getApplicationContext(), "You added this as One of your Destination", Toast.LENGTH_LONG).show();
     }
+    public void artdelete(View view)
+    {
 
+        select = 0;
+        Toast.makeText(getApplicationContext(), "You unselected this destination", Toast.LENGTH_LONG).show();
+
+
+    }
 
     public void p1(View view)
     {
