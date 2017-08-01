@@ -42,9 +42,9 @@ public class ChoicesOfPlace  extends AppCompatActivity {
             public void onClick(View view) {
 
 
-               Intent i = new Intent (ChoicesOfPlace.this, traffic.class);
+               Intent i = new Intent (ChoicesOfPlace.this, ReviewChoiceOfPlace.class);
                 startActivity(i);
-                finish();
+
 
         }
         });

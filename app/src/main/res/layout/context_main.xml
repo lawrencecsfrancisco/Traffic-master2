@@ -38,7 +38,7 @@
 
             android:background="@drawable/border"
             android:textColor="#EE7469"
-            android:text="PLOT MY DESTINATIONS"/>
+            android:text="View selected PLACES"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/myRecycler"
             android:layout_width="wrap_content"

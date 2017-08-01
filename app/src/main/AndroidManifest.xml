@@ -130,7 +130,13 @@
             android:theme="@style/AppTheme.CustomStyle" />
         <activity
             android:name=".ChoicesOfPlace"
-            android:theme="@style/AppTheme.CustomStyle" />
+            android:theme="@style/AppTheme.CustomStyle" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            </activity>
         <activity
             android:name=".TemplateOrChoices"
             android:theme="@style/choices" />
@@ -222,11 +228,9 @@
         <activity android:name=".WelcomeSlider">
 
         </activity>
-        <activity android:name=".ReviewChoiceOfPlace">   <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".ReviewChoiceOfPlace">
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+        </activity>
     </application>
 
 </manifest>

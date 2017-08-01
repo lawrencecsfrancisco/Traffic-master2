@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.widget.Toast;
 
 import com.sumo.traffic.InfoOfPlaces.InfoOfArt;
 import com.sumo.traffic.InfoOfPlaces.InfoOfAteneo;
@@ -58,7 +59,7 @@ int art = 0;
 
         recyclerViewStaff = (RecyclerView) findViewById(R.id.recyclerViewStaff);
 
-        placeitem turnk = new placeitem();
+
 
         recyclerViewStaff.setHasFixedSize(true);
         recyclerViewStaff.setLayoutManager(new LinearLayoutManager(this));
@@ -69,7 +70,10 @@ int art = 0;
 
         if (InfoOfUp.select == 1) {
             if (ayala == 0) {
-
+                placeitem turnk = new placeitem();
+                turnk.setname("UP Technohub");
+                turnk.settype("Food park and Mall");
+                InitialListStaffs.add(turnk);
                 ayala = 1;
             } else if (ayala == 1) {
 
@@ -78,8 +82,10 @@ int art = 0;
 
         if (InfoOfArt.select == 1) {
             if (art == 0) {
-
-
+                placeitem turnk = new placeitem();
+                turnk.setname("Art in Island");
+                turnk.settype("Museum");
+                InitialListStaffs.add(turnk);
                 art = 1;
 
             } else if (art == 1) {
@@ -89,7 +95,10 @@ int art = 0;
 
         if (InfoOfParish.select == 1) {
             if (parish == 0) {
-
+                placeitem turnk = new placeitem();
+                turnk.setname("Parish of Holy Sacrifice");
+                turnk.settype("Church");
+                InitialListStaffs.add(turnk);
                 parish = 1;
 
             } else if (parish == 1) {
@@ -101,7 +110,10 @@ int art = 0;
         if (InfoOfAteneo.select == 1) {
 
             if (ateneo == 0) {
-
+                placeitem turnk = new placeitem();
+                turnk.setname("Ateneo Art Gallery");
+                turnk.settype("Church");
+                InitialListStaffs.add(turnk);
                 ateneo = 1;
             } else if (ateneo == 1) {
 
@@ -110,7 +122,10 @@ int art = 0;
         }
         if (InfoOfBayani.select == 1) {
             if (bayani == 0) {
-
+                placeitem turnk = new placeitem();
+                turnk.setname("Bantayog ng Bayani");
+                turnk.settype("Memorial Park ");
+                InitialListStaffs.add(turnk);
                 bayani = 1;
             } else if (bayani == 1) {
 
@@ -121,7 +136,10 @@ int art = 0;
         if (InfoOfCOF.select == 1) {
 
             if (cof == 0) {
-
+                placeitem turnk = new placeitem();
+                turnk.setname("Circle of Fun");
+                turnk.settype("Amusement park");
+                InitialListStaffs.add(turnk);
                 cof = 1;
             } else if (cof == 1) {
 
@@ -131,7 +149,11 @@ int art = 0;
         if (InfoOfDam.select == 1) {
 
             if (dam == 0) {
+                placeitem turnk = new placeitem();
 
+                turnk.setname("La mesa Ecopark");
+                turnk.settype("Eco Park ");
+                InitialListStaffs.add(turnk);
                 dam = 1;
             } else if (dam == 1) {
 
@@ -142,7 +164,10 @@ int art = 0;
         if (InfoOfEast.select == 1) {
 
             if (east == 0) {
-
+                placeitem turnk = new placeitem();
+                turnk.setname("Eastwood City");
+                turnk.settype("24/7 Shopping Mall");
+                InitialListStaffs.add(turnk);
                 east = 1;
             } else if (east == 1) {
 
@@ -153,7 +178,10 @@ int art = 0;
         if (InfoOfEdsa.select == 1) {
 
             if (edsa == 0) {
-
+                placeitem turnk = new placeitem();
+                turnk.setname("Edsa Shrine");
+                turnk.settype("Church");
+                InitialListStaffs.add(turnk);
                 edsa = 1;
             } else if (edsa == 1) {
 
@@ -165,7 +193,10 @@ int art = 0;
 
 
             if (maginhawa == 0) {
-
+                placeitem turnk = new placeitem();
+                turnk.setname("Maginhawa Food Park");
+                turnk.settype("Food park");
+                InitialListStaffs.add(turnk);
                 maginhawa = 1;
             } else if (maginhawa == 1) {
 
@@ -177,7 +208,10 @@ int art = 0;
 
 
             if (ninoy == 0) {
-
+                placeitem turnk = new placeitem();
+                turnk.setname("Wildife Mini Zoo");
+                turnk.settype("Rescue Center");
+                InitialListStaffs.add(turnk);
                 ninoy = 1;
             } else if (ninoy == 1) {
 
@@ -189,7 +223,10 @@ int art = 0;
 
 
             if (people == 0) {
-
+                placeitem turnk = new placeitem();
+                turnk.setname("People Power Monument");
+                turnk.settype("Monument");
+                InitialListStaffs.add(turnk);
                 people = 1;
             } else if (people == 1) {
 
@@ -202,8 +239,10 @@ int art = 0;
 
 
             if (qmc == 0) {
-
-
+                placeitem turnk = new placeitem();
+                turnk.setname("Quezon Memorial Circle");
+                turnk.settype("National Park");
+                InitialListStaffs.add(turnk);
                 qmc = 1;
 
 
@@ -217,7 +256,10 @@ int art = 0;
 
 
             if (vargas == 0) {
-
+                placeitem turnk = new placeitem();
+                turnk.setname("Jorge B. Vargas");
+                turnk.settype("Museum");
+                InitialListStaffs.add(turnk);
                 vargas = 1;
             } else if (vargas == 1) {
 
@@ -228,18 +270,21 @@ int art = 0;
 
 
             if (watershed == 0) {
-
+                placeitem turnk = new placeitem();
+                turnk.setname("La mesa Watershed");
+                turnk.settype("Eco Park");
+                InitialListStaffs.add(turnk);
                 watershed = 1;
             } else if (watershed == 1) {
 
             }
 
         }
-        turnk.setname("TEST");
-        turnk.settype("TEST");
 
-        InitialListStaffs.add(turnk);
 
+
+
+        Toast.makeText(this, ""+InitialListStaffs.size(), Toast.LENGTH_SHORT).show();
         adapterStaff = new ReviewChoiceOfPlaceAdapter(InitialListStaffs, getApplicationContext());
 
         recyclerViewStaff.setAdapter(adapterStaff);
