@@ -44,12 +44,8 @@
 
         <activity android:name=".Home" />
         <activity android:name=".DirectionsApi" />
-        <activity android:name=".traffic">
-
-        </activity>
-        <activity android:name=".introv2">
-
-        </activity>
+        <activity android:name=".traffic"></activity>
+        <activity android:name=".introv2"></activity>
         <activity
             android:name=".poppers"
             android:theme="@style/AppTheme.CustomStyle" />
@@ -137,7 +133,7 @@
             android:theme="@style/AppTheme.CustomStyle" />
         <activity
             android:name=".TemplateOrChoices"
-            android:theme="@style/choices"></activity>
+            android:theme="@style/choices" />
         <activity android:name=".MyDestinations" />
         <activity android:name=".ItineraryCreator" />
         <activity
@@ -221,16 +217,16 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".ChoicesOfPackage"></activity>
-        <activity android:name=".AlarmActivity"></activity>
+        <activity android:name=".ChoicesOfPackage" />
+        <activity android:name=".AlarmActivity" />
         <activity android:name=".WelcomeSlider">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
+        <activity android:name=".ReviewChoiceOfPlace">   <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
     </application>
 
 </manifest>

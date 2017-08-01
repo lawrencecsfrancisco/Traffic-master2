@@ -358,7 +358,9 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
         }
         else if (TemplateOrChoices.packages == 0) {
-            fab2.setLabelText("Add more destination");
+            fab2.setLabelText("Destinations");
+            Intent i = new Intent(this , ChoicesOfPlace.class);
+            startActivity(i);
         }
 
 /*        fab1.setLabelText("Enable StreetMap");
@@ -3769,7 +3771,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                 .position(latLng)
                 .flat(true)
 
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.userdriver)));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.navigator)));
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));

@@ -344,7 +344,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Department"
                     android:id="@+id/dept1"
-                    android:layout_marginLeft="80dp"/>
+                    android:layout_marginLeft="65dp"/>
             </LinearLayout>
 
             <LinearLayout

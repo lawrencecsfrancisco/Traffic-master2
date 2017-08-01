@@ -113,7 +113,7 @@
                     android:textColor="#fff"
                     android:text="Amusement"
                     android:id="@+id/hard"
-                    android:layout_marginLeft="30dp"/>
+                />
 
                 <TextView
                     android:layout_width="wrap_content"

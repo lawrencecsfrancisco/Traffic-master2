@@ -44,7 +44,7 @@ public class ChoicesOfPlace  extends AppCompatActivity {
 
                Intent i = new Intent (ChoicesOfPlace.this, traffic.class);
                 startActivity(i);
-                hidethis = 1;
+                finish();
 
         }
         });
