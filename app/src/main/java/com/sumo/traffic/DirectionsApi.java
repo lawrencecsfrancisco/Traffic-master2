@@ -269,7 +269,7 @@ public class DirectionsApi extends AppCompatActivity {
             trackingMarker = googleMap.addMarker(new MarkerOptions().position(markerPos)
                     .title("title")
                     .snippet("snippet")
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.drivers)));
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.nav3)));
 
 
             float mapZoom = googleMap.getCameraPosition().zoom >=16 ? googleMap.getCameraPosition().zoom : 16;

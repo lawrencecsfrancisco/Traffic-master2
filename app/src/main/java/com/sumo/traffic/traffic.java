@@ -486,10 +486,10 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
                     mMap.setTrafficEnabled(false);
                 } else if (item.getItemId() == R.id.directions) {
-                    // Intent i = new Intent(traffic.this, Home.class);
-                    //  startActivity(i);
-                    //  mMap.setTrafficEnabled(false);
-                    MemorialCircle();
+                    Intent i = new Intent(traffic.this, Home.class);
+                      startActivity(i);
+
+
                 } else if (item.getItemId() == R.id.traffic) {
 
 
@@ -1729,15 +1729,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
         }
 
-        if (InfoOfCOF.select == 1) {
 
-            if (cof == 0) {
-                circleoffun();
-                cof = 1;
-            } else if (cof == 1) {
-
-            }
-        }
 
         if (InfoOfDam.select == 1) {
 
@@ -1795,19 +1787,15 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             }
 
         }
+        if (InfoOfCOF.select == 1) {
 
-        if (InfoOfPeople.select == 1) {
-
-
-            if (people == 0) {
-                people();
-                people = 1;
-            } else if (people == 1) {
+            if (cof == 0) {
+                circleoffun();
+                cof = 1;
+            } else if (cof == 1) {
 
             }
-
         }
-
 
         if (InfoOfQmc.select == 1) {
 
@@ -1824,6 +1812,21 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             }
 
         }
+
+        if (InfoOfPeople.select == 1) {
+
+
+            if (people == 0) {
+                people();
+                people = 1;
+            } else if (people == 1) {
+
+            }
+
+        }
+
+
+
 
         if (InfoOfVargas.select == 1) {
 
@@ -3684,7 +3687,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     double curTime = 0;
     double oldLat = 0.0;
     double oldLon = 0.0;
-
+    CameraPosition cameraPosition;
     @Override
     public void onLocationChanged(Location location) {
 
@@ -3766,20 +3769,9 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             //   m.remove();
         }
 
-
-        mCurrLocationMarker = mMap.addMarker(new MarkerOptions()
-                .position(latLng)
-                .flat(true)
-
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.navigator)));
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
-
-
         if (driving == 1) {
 
-            CameraPosition cameraPosition =
+           cameraPosition =
                     new CameraPosition.Builder()
                             .target(latLng)
                             .bearing(kantoliko)
@@ -3796,6 +3788,17 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                     .zoomTo(15)
             );
         }
+
+        mCurrLocationMarker = mMap.addMarker(new MarkerOptions()
+                .position(latLng)
+                .flat(true)
+
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.nav3)));
+
+
+
+
+
 
 
         Log.d("asd123", "" + mList.size());

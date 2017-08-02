@@ -2,13 +2,17 @@ package com.sumo.traffic;
 
 /**
  * Created by lawre on 7/13/2017.
+ * <p>
+ * Created by william on 5/29/2017.
  */
 
 /**
  * Created by william on 5/29/2017.
  */
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,6 +26,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.sumo.traffic.InfoOfPlaces.InfoOfArt;
+import com.sumo.traffic.InfoOfPlaces.InfoOfAteneo;
+import com.sumo.traffic.InfoOfPlaces.InfoOfBayani;
+import com.sumo.traffic.InfoOfPlaces.InfoOfCOF;
+import com.sumo.traffic.InfoOfPlaces.InfoOfDam;
+import com.sumo.traffic.InfoOfPlaces.InfoOfEast;
+import com.sumo.traffic.InfoOfPlaces.InfoOfEdsa;
+import com.sumo.traffic.InfoOfPlaces.InfoOfMaginhawa;
+import com.sumo.traffic.InfoOfPlaces.InfoOfNinoy;
+import com.sumo.traffic.InfoOfPlaces.InfoOfParish;
+import com.sumo.traffic.InfoOfPlaces.InfoOfPeople;
+import com.sumo.traffic.InfoOfPlaces.InfoOfQmc;
+import com.sumo.traffic.InfoOfPlaces.InfoOfUp;
+import com.sumo.traffic.InfoOfPlaces.InfoOfVargas;
+import com.sumo.traffic.InfoOfPlaces.InfoOfWatershed;
 
 import java.util.HashMap;
 import java.util.List;
@@ -36,8 +55,8 @@ public class ReviewChoiceOfPlaceAdapter extends RecyclerView.Adapter<ReviewChoic
     int lastPosition = -1;
     private List<placeitem> listStaffs;
     private Context context;
-    public static final String record = "record";
-    String s;
+
+
 
 
     public ReviewChoiceOfPlaceAdapter(List<placeitem> listStaffs, Context context) {
@@ -60,6 +79,7 @@ public class ReviewChoiceOfPlaceAdapter extends RecyclerView.Adapter<ReviewChoic
                 .inflate(R.layout.placeitem, parent, false);
         return new ReviewChoiceOfPlaceAdapter.ViewHolder(v);
     }
+
     @Override
 
     public void onBindViewHolder(ReviewChoiceOfPlaceAdapter.ViewHolder holder, final int position) {
@@ -67,8 +87,6 @@ public class ReviewChoiceOfPlaceAdapter extends RecyclerView.Adapter<ReviewChoic
 
         holder.name.setText(listStaff.getname());
         holder.type.setText(listStaff.gettype());
-
-
 
 
         Animation animation = AnimationUtils.loadAnimation(context,
@@ -91,21 +109,78 @@ public class ReviewChoiceOfPlaceAdapter extends RecyclerView.Adapter<ReviewChoic
         holder.linearLayoutStaff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-         /*       //Toast.makeText(context, "you clicked"+listStaff.getUser_id(), Toast.LENGTH_LONG).show();
-                context = v.getContext();
-                Intent intent = new Intent(context, ViewManager.class );
-                intent.putExtra(Config.EMP_ID, listStaff.getId());
-                s = "Viewed Employee: " + listStaff.getLastname().toString();
-                log();
-                context.startActivity(intent);
-            *//*    ((Activity)context).finish();*/
+
+
+
+                AlertDialog.Builder alertbox = new AlertDialog.Builder(v.getRootView().getContext());
+                alertbox.setMessage("Do you want to delete this place?");
+                alertbox.setTitle("Warning");
+
+
+                alertbox.setNeutralButton("YES",
+                        new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface arg0,
+                                                int arg1) {
+                                Toast.makeText(context, "Item deleted", Toast.LENGTH_SHORT).show();
+                                listStaffs.remove(position);
+
+
+
+                                if (listStaff.getname() == "UP Technohub") {
+                                    InfoOfUp.select = 0;
+                                }
+                                if (listStaff.getname() == "Art in Island") {
+                                    InfoOfArt.select = 0;
+                                }
+                                if (listStaff.getname() == "Parish of Holy Sacrifice") {
+                                    InfoOfParish.select = 0;
+                                }
+
+                                if (listStaff.getname() == "Ateneo Art Gallery") {
+                                    InfoOfAteneo.select = 0;
+                                }
+                                if (listStaff.getname() == "Bantayog ng Bayani") {
+                                    InfoOfBayani.select = 0;
+                                }
+                                if (listStaff.getname() == "Circle of Fun") {
+                                    InfoOfCOF.select = 0;
+                                }
+                                if (listStaff.getname() == "La mesa Ecopark") {
+                                    InfoOfDam.select = 0;
+                                }
+                                if (listStaff.getname() == "Edsa Shrine") {
+                                    InfoOfEdsa.select = 0;
+                                }
+                                if (listStaff.getname() == "Eastwood City") {
+                                    InfoOfEast.select = 0;
+                                }
+                                if (listStaff.getname() == "Maginhawa Food Park") {
+                                    InfoOfMaginhawa.select = 0;
+                                }
+                                if (listStaff.getname() == "Wildife Mini Zoo") {
+                                    InfoOfNinoy.select = 0;
+                                }
+                                if (listStaff.getname() == "People Power Monument") {
+                                    InfoOfPeople.select = 0;
+                                }
+                                if (listStaff.getname() == "Jorge B. Vargas") {
+                                    InfoOfVargas.select = 0;
+                                }
+                                if (listStaff.getname() == "La mesa Watershed") {
+                                    InfoOfWatershed.select = 0;
+                                }
+                                notifyDataSetChanged();
+                                Toast.makeText(context, ""+InfoOfArt.select, Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+                alertbox.show();
+
             }
         });
 
     }
-
-
-
 
 
     @Override
@@ -113,7 +188,7 @@ public class ReviewChoiceOfPlaceAdapter extends RecyclerView.Adapter<ReviewChoic
         return listStaffs.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView name;
         public TextView type;
@@ -124,8 +199,8 @@ public class ReviewChoiceOfPlaceAdapter extends RecyclerView.Adapter<ReviewChoic
         public ViewHolder(View itemView) {
             super(itemView);
 
-            name = (TextView)itemView.findViewById(R.id.name);
-            type = (TextView)itemView.findViewById(R.id.type);
+            name = (TextView) itemView.findViewById(R.id.name);
+            type = (TextView) itemView.findViewById(R.id.type);
 
 
             linearLayoutStaff = (LinearLayout) itemView.findViewById(R.id.linearLayoutStaff);
