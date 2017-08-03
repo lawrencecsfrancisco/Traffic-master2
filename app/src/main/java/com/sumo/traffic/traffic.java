@@ -70,6 +70,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.api.client.repackaged.org.apache.commons.codec.binary.StringUtils;
 import com.google.maps.model.DirectionsRoute;
 import com.kyo.expandablelayout.ExpandableLayout;
 import com.sumo.traffic.AlarmCodes.AlarmReceiver;
@@ -97,6 +98,7 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -246,7 +248,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     String s;
     String date;
 
-    HashMap<String, String> n = new HashMap<String, String>();
+
     // String[] multipleHours = {"9", "11", "13", "14", "15", "17", "18"}; //store here the hours for every alarm you want to set
     //  String[] multipleMinutes = {"45", "0", "0", "0", "45", "0", "45"}; //store here the minutes
     int[] multipleHours; //= {19, 11, 13, 14, 15, 17, 18}; //store here the hours for every alarm you want to set
@@ -256,6 +258,12 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     String alal;
     private int alarmIndex = -1;
 
+    SimpleDateFormat simpleDateFormat;
+    String out;
+    String datex;
+    String currentDateTimeString;
+    Date date1, date2;
+    String test;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -266,7 +274,8 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         }
 
-        n.put("00:00", alal);
+        final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+
 
         date = DateFormat.getDateTimeInstance().format(new Date());
         LayoutInflater li = LayoutInflater.from(context);
@@ -342,7 +351,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         drivermode = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.Plot);
         drivermode.setImageResource(R.drawable.exploremode);
 
-       // fab1 = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fab1);
+        // fab1 = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fab1);
 
         fab2 = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fab2);
 
@@ -351,16 +360,13 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         menured = (com.github.clans.fab.FloatingActionMenu) findViewById(R.id.menu_red);
 
 
-
-
         if (TemplateOrChoices.packages == 1) {
             fab2.setLabelText("Summary of Tour");
 
-        }
-        else if (TemplateOrChoices.packages == 0) {
-            fab2.setLabelText("Destinations");
+        } else if (TemplateOrChoices.packages == 0) {
+    /*        fab2.setLabelText("Destinations");
             Intent i = new Intent(this , ChoicesOfPlace.class);
-            startActivity(i);
+            startActivity(i);*/
         }
 
 /*        fab1.setLabelText("Enable StreetMap");
@@ -430,7 +436,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         durationview = (TextView) findViewById(R.id.tv2);
         distanceview = (TextView) findViewById(R.id.tv3);
 
-
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -487,10 +492,58 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                     mMap.setTrafficEnabled(false);
                 } else if (item.getItemId() == R.id.directions) {
                     Intent i = new Intent(traffic.this, Home.class);
-                      startActivity(i);
+                    startActivity(i);
 
 
                 } else if (item.getItemId() == R.id.traffic) {
+                    Date d = new Date();
+                    currentDateTimeString = simpleDateFormat.format(d);
+                    int v = Integer.parseInt((alarmClocks.get(0).get(ApplicationConstants.HOUR)));
+                    if (v < 10) {
+                        datex = ("0" + alarmClocks.get(0).get(ApplicationConstants.HOUR)+ ":" + alarmClocks.get(0).get(ApplicationConstants.MINUTE));
+                    } else {
+                        datex = (alarmClocks.get(0).get(ApplicationConstants.HOUR)+ ":" + alarmClocks.get(0).get(ApplicationConstants.MINUTE));
+                    }
+                    try {
+                        date1 = simpleDateFormat.parse(datex);
+                        date2 = simpleDateFormat.parse(currentDateTimeString);
+                        long difference = date1.getTime() - date2.getTime() ;
+                        int days = (int) (difference / (1000*60*60*24));
+                        int hours = (int) ((difference - (1000*60*60*24*days)) / (1000*60*60));
+                        int min = (int) (difference - (1000*60*60*24*days) - (1000*60*60*hours)) / (1000*60);
+                        hours = (hours < 0 ? -hours : hours);
+
+                       String f = (poppers.duration.getText().toString());
+
+                        if (f.length() == 11)
+                        {
+                            test = f.substring(0,1);
+                        }
+                        else if (f.length() == 12)
+                        {
+                          test = f.substring(0,2);
+                        }
+
+                        int fx = Integer.parseInt(test);
+
+                        if (min < fx)
+                        {
+                            Toast.makeText(context, "Di makakarating" , Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(context, "ok lang" , Toast.LENGTH_SHORT).show();
+                        }
+
+
+
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+
+                   // Toast.makeText(context, "" + datex, Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(context, "" + currentDateTimeString, Toast.LENGTH_SHORT).show();
 
 
          /*           alternateRoute();
@@ -647,6 +700,8 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             mMap.setMapStyle(
                     MapStyleOptions.loadRawResourceStyle(
                             this, R.raw.style_json));
+
+
         } else if (!mGoogleApiClient.isConnected()) {
             drivermode.setImageResource(R.drawable.exploremode);
             float mapZoom = mMap.getCameraPosition().zoom >= 30 ? mMap.getCameraPosition().zoom : 30;
@@ -723,8 +778,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                 setAlarm(multipleHours[i], multipleMinutes[i], notificationId, multipleReminders[i], multipleDestinations[i]);
             }
         }
-
-
 
 
         try {
@@ -1739,7 +1792,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         }
 
 
-
         if (InfoOfDam.select == 1) {
 
             if (dam == 0) {
@@ -1833,8 +1885,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             }
 
         }
-
-
 
 
         if (InfoOfVargas.select == 1) {
@@ -3697,6 +3747,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     double oldLat = 0.0;
     double oldLon = 0.0;
     CameraPosition cameraPosition;
+
     @Override
     public void onLocationChanged(Location location) {
 
@@ -3778,19 +3829,17 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             //   m.remove();
         }
 
-        mCurrLocationMarker = mMap.addMarker(new MarkerOptions()
-                .position(latLng)
-                .flat(true)
-
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.nav3)));
-
-
-
-
 
         if (driving == 1) {
 
-           cameraPosition =
+            mCurrLocationMarker = mMap.addMarker(new MarkerOptions()
+                    .position(latLng)
+                    .flat(true)
+
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.nav3)));
+
+
+            cameraPosition =
                     new CameraPosition.Builder()
                             .target(latLng)
                             .bearing(kantoliko)
@@ -3803,14 +3852,14 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                     CameraUpdateFactory.newCameraPosition(cameraPosition));
             mCurrLocationMarker.setRotation(kantoliko);
 
-        } else {
+        } else if (driving == 0) {
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             mMap.animateCamera(CameraUpdateFactory
                     .zoomTo(15)
             );
+
+
         }
-
-
 
 
         Log.d("asd123", "" + mList.size());
@@ -3988,6 +4037,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
      /*   HashMap<String, String> n = new HashMap<String, String>();
         n.put("a", "a");*/
 
+        checklist = 1;
 
         MarkerOptions markerOptions = new MarkerOptions()
                 .position(latLng)
@@ -4028,7 +4078,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         distanceview.setVisibility(View.VISIBLE);
 
 
-        connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
+        connectAsyncTask3 downloadTask2 = new connectAsyncTask3(url, this, true);
         downloadTask2.execute();
         poppers.posit = alarmClocks.size() + 1;
 
@@ -4126,6 +4176,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             progressDialog.hide();
+            checklist = 1;
             if (result != null) {
                 Log.d("momo2", " : " + result);
                 traffic.drawPath(result);
@@ -4198,7 +4249,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             }
 
 
-            if (displayDestinationDetails) {
+  /*          if (displayDestinationDetails) {
 
                 if (TemplateOrChoices.packages == 1) {
                 } else if (TemplateOrChoices.packages == 0) {
@@ -4209,7 +4260,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                     traffic.startActivity(i);
                 }
 
-            }
+            }*/
 
 
         }

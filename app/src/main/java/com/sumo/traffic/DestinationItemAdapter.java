@@ -87,6 +87,7 @@ public class DestinationItemAdapter extends BaseAdapter implements ListAdapter {
             deleteBtn.setVisibility(View.VISIBLE);
         }*/
 
+
         Resources res = context.getResources();
         Drawable drawable = res.getDrawable(R.drawable.edit);
         editBtn.setBackground(drawable);

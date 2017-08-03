@@ -150,6 +150,7 @@ public class poppers extends AppCompatActivity {
         alarm.put(ApplicationConstants.REMINDER, reminder);
         alarm.put(ApplicationConstants.DESTINATION, destination);
         setAlarm(hourPicked, minutePicked, notificationId, reminder, destination); // we set the alarm
+
         if (posit - 1 >= 0 && posit - 1 < traffic.alarmClocks.size()) {
            unsetAlarm(posit - 1);
             traffic.alarmClocks.remove(posit - 1);

@@ -44,7 +44,13 @@
 
         <activity android:name=".Home" />
         <activity android:name=".DirectionsApi" />
-        <activity android:name=".traffic"></activity>
+        <activity android:name=".traffic">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".introv2"></activity>
         <activity
             android:name=".poppers"
@@ -129,13 +135,7 @@
             android:label="Sample"
             android:theme="@style/AppTheme.CustomStyle" />
         <activity
-            android:name=".ChoicesOfPlace"
-            android:theme="@style/AppTheme.CustomStyle" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:name=".ChoicesOfPlace">
             </activity>
         <activity
             android:name=".TemplateOrChoices"
@@ -228,7 +228,7 @@
         <activity android:name=".WelcomeSlider">
 
         </activity>
-        <activity android:name=".ReviewChoiceOfPlace">
+        <activity android:name=".ReviewChoiceOfPlace"  >
 
         </activity>
     </application>
