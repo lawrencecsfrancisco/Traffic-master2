@@ -637,13 +637,16 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
     public void navigate(View view) {
 
+
         if (mGoogleApiClient.isConnected()) {
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
             mGoogleApiClient.disconnect();
             driving = 0;
             drivermode.setImageResource(R.drawable.drivermode);
-
+            mMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(
+                            this, R.raw.style_json));
         } else if (!mGoogleApiClient.isConnected()) {
             drivermode.setImageResource(R.drawable.exploremode);
             float mapZoom = mMap.getCameraPosition().zoom >= 30 ? mMap.getCameraPosition().zoom : 30;
@@ -660,6 +663,10 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
             mGoogleApiClient.connect();
             driving = 1;
+            mMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(
+                            this, R.raw.drivingmode));
+
         }
 
         if (checkreroute == 0) {
@@ -716,6 +723,8 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                 setAlarm(multipleHours[i], multipleMinutes[i], notificationId, multipleReminders[i], multipleDestinations[i]);
             }
         }
+
+
 
 
         try {
@@ -3769,6 +3778,16 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             //   m.remove();
         }
 
+        mCurrLocationMarker = mMap.addMarker(new MarkerOptions()
+                .position(latLng)
+                .flat(true)
+
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.nav3)));
+
+
+
+
+
         if (driving == 1) {
 
            cameraPosition =
@@ -3782,21 +3801,14 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
             mMap.animateCamera(
                     CameraUpdateFactory.newCameraPosition(cameraPosition));
+            mCurrLocationMarker.setRotation(kantoliko);
+
         } else {
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             mMap.animateCamera(CameraUpdateFactory
                     .zoomTo(15)
             );
         }
-
-        mCurrLocationMarker = mMap.addMarker(new MarkerOptions()
-                .position(latLng)
-                .flat(true)
-
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.nav3)));
-
-
-
 
 
 
