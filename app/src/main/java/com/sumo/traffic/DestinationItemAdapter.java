@@ -139,7 +139,6 @@ public class DestinationItemAdapter extends BaseAdapter implements ListAdapter {
                 i.putExtra("alarm", position);
                 poppers.posit = position;
                 destination.startActivityForResult(i, 100);
-
                 //do something
                 //notifyDataSetChanged();
             }

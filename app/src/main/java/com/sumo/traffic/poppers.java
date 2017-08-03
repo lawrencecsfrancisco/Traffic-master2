@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -19,7 +20,10 @@ import com.sumo.traffic.AlarmCodes.AlarmPickerFragment;
 import com.sumo.traffic.AlarmCodes.AlarmReceiver;
 import com.sumo.traffic.model.ApplicationConstants;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 public class poppers extends AppCompatActivity {
@@ -31,12 +35,18 @@ public class poppers extends AppCompatActivity {
     static int currentMarkerIndex = 0;
     private int alarmIndex = -1;
     static int posit;
-
+    SimpleDateFormat simpleDateFormat;
+    String out;
+    String datex;
+    String currentDateTimeString;
+    Date date1, date2;
+    String test;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poppers);
 
+       simpleDateFormat = new SimpleDateFormat("HH:mm");
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -111,25 +121,59 @@ public class poppers extends AppCompatActivity {
     public void onTimePickClicked(View view) {
         DialogFragment fragment = new AlarmPickerFragment();
         fragment.show(getFragmentManager(), "Time picker");
+
+
+
     }
 
 
     public void saveDestination(View view) {
+        Date d = new Date();
+        currentDateTimeString = simpleDateFormat.format(d);
         int hourPicked = AlarmPickerFragment.hourPicked;
         int minutePicked = AlarmPickerFragment.minutePicked;
-        EditText destinationEdit = (EditText) findViewById(R.id.editText);
-        EditText reminderEdit = (EditText) findViewById(R.id.editText2);
-        /*
-        you should set a default destination and reminder for the notification and database if the
-        user doesn't write anything. TODO if you don't do it, app is probably going to crash. Example
-         */
-        String destination = destinationEdit.getText().toString();
-        if (destination.equals(""))
-            destination = "Notification"; //this will be the title of the notification
-        String reminder = reminderEdit.getText().toString();
-        if (reminder.equals("")) reminder = "You got a new notification"; //notification's content
-        //Intent service = new Intent(this, AlarmService.class);
-        //we set the action to create the notification in AlarmService, it's just a final String defined in MainActivity
+
+        datex = hourPicked +":"+ minutePicked;
+        try {
+            date1 = simpleDateFormat.parse(datex);
+            date2 = simpleDateFormat.parse(currentDateTimeString);
+            long difference = date1.getTime() - date2.getTime() ;
+            int days = (int) (difference / (1000*60*60*24));
+            int hours = (int) ((difference - (1000*60*60*24*days)) / (1000*60*60));
+            int min = (int) (difference - (1000*60*60*24*days) - (1000*60*60*hours)) / (1000*60);
+            hours = (hours < 0 ? -hours : hours);
+
+            String f = (poppers.duration.getText().toString());
+
+            if (f.length() == 11)
+            {
+                test = f.substring(0,1);
+            }
+            else if (f.length() == 12)
+            {
+                test = f.substring(0,2);
+            }
+
+            int fx = Integer.parseInt(test);
+            if (min < fx)
+            {
+                Toast.makeText(this, "Please change your schedule" , Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                EditText destinationEdit = (EditText) findViewById(R.id.editText);
+                EditText reminderEdit = (EditText) findViewById(R.id.editText2);
+
+              // you should set a default destination and reminder for the notification and database if the
+               // user doesn't write anything.
+
+                        String destination = destinationEdit.getText().toString();
+                if (destination.equals(""))
+                    destination = "Notification"; //this will be the title of the notification
+                String reminder = reminderEdit.getText().toString();
+                if (reminder.equals("")) reminder = "You got a new notification"; //notification's content
+                //Intent service = new Intent(this, AlarmService.class);
+                //we set the action to create the notification in AlarmService, it's just a final String defined in MainActivity
 //        service.setAction(ApplicationConstants.CREATENOTIFICATION);
 //        service.putExtra(ApplicationConstants.HOUR, hourPicked);
 //        service.putExtra(ApplicationConstants.MINUTE,minutePicked);
@@ -137,54 +181,76 @@ public class poppers extends AppCompatActivity {
 //        service.putExtra(ApplicationConstants.DESTINATION,destination);
 //        startService(service);
 
-        /*
-        we'll use the int immediately after the last value in the array list as the notification id
-        unless we got the alarmIndex, meaning that the alarm is being edited
-         */
 
-        HashMap<String, String> alarm = new HashMap<>();
-        int notificationId = (alarmIndex >= 0) ? alarmIndex : traffic.alarmClocks.size();
-        alarm.put(ApplicationConstants._ID, String.valueOf(notificationId));
-        alarm.put(ApplicationConstants.HOUR, String.valueOf(hourPicked));
-        alarm.put(ApplicationConstants.MINUTE, String.valueOf(minutePicked));
-        alarm.put(ApplicationConstants.REMINDER, reminder);
-        alarm.put(ApplicationConstants.DESTINATION, destination);
-        setAlarm(hourPicked, minutePicked, notificationId, reminder, destination); // we set the alarm
+               // we'll use the int immediately after the last value in the array list as the notification id
+              //  unless we got the alarmIndex, meaning that the alarm is being edited
 
-        if (posit - 1 >= 0 && posit - 1 < traffic.alarmClocks.size()) {
-           unsetAlarm(posit - 1);
-            traffic.alarmClocks.remove(posit - 1);
-            traffic.alarmClocks.add(alarm);
 
-        } else if (hourPicked != 0 && minutePicked != 0) {
-            traffic.alarmClocks.add(alarm);
-            Toast.makeText(this, R.string.notification_set, Toast.LENGTH_SHORT).show();
-        } else {
-            alarm.put(ApplicationConstants.HOUR, "00");
-            alarm.put(ApplicationConstants.MINUTE, "00");
-            traffic.alarmClocks.add(alarm);
-            Toast.makeText(this, "No alarm ", Toast.LENGTH_SHORT).show();
+                HashMap<String, String> alarm = new HashMap<>();
+                int notificationId = (alarmIndex >= 0) ? alarmIndex : traffic.alarmClocks.size();
+                alarm.put(ApplicationConstants._ID, String.valueOf(notificationId));
+                alarm.put(ApplicationConstants.HOUR, String.valueOf(hourPicked));
+                alarm.put(ApplicationConstants.MINUTE, String.valueOf(minutePicked));
+                alarm.put(ApplicationConstants.REMINDER, reminder);
+                alarm.put(ApplicationConstants.DESTINATION, destination);
+                setAlarm(hourPicked, minutePicked, notificationId, reminder, destination); // we set the alarm
+
+                if (posit - 1 >= 0 && posit - 1 < traffic.alarmClocks.size()) {
+                    unsetAlarm(posit - 1);
+                    traffic.alarmClocks.remove(posit - 1);
+                    traffic.alarmClocks.add(alarm);
+
+                } else if (hourPicked != 0 && minutePicked != 0) {
+                    traffic.alarmClocks.add(alarm);
+                    Toast.makeText(this, R.string.notification_set, Toast.LENGTH_SHORT).show();
+                } else {
+                    alarm.put(ApplicationConstants.HOUR, "00");
+                    alarm.put(ApplicationConstants.MINUTE, "00");
+                    traffic.alarmClocks.add(alarm);
+                    Toast.makeText(this, "No alarm ", Toast.LENGTH_SHORT).show();
+                }
+
+
+                //==========================================================================//
+
+                Marker marker = (Marker) traffic.markers.get(currentMarkerIndex - 1);
+                marker.setTitle(destinationName.getText().toString());
+                MarkerOptions options = (MarkerOptions) traffic.mList.get(currentMarkerIndex - 1);
+                options.title(destinationName.getText().toString());
+
+                traffic.reminders.set(currentMarkerIndex - 1, reminders.getText().toString());
+                traffic.timestoStay.set(currentMarkerIndex - 1, timetoStay.getText().toString());
+                traffic.mins.set(currentMarkerIndex - 1, mins.getText().toString());
+                traffic.durations.set(currentMarkerIndex - 1, duration.getText().toString());
+                traffic.distances.set(currentMarkerIndex - 1, distance.getText().toString());
+
+                Intent intent = new Intent();
+                intent.putExtra("currentMarkerIndex", currentMarkerIndex);
+                setResult(109, intent);
+                //close the destination activity
+                finish();
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
 
+/*
 
-        //==========================================================================//
 
-        Marker marker = (Marker) traffic.markers.get(currentMarkerIndex - 1);
-        marker.setTitle(destinationName.getText().toString());
-        MarkerOptions options = (MarkerOptions) traffic.mList.get(currentMarkerIndex - 1);
-        options.title(destinationName.getText().toString());
+     {
 
-        traffic.reminders.set(currentMarkerIndex - 1, reminders.getText().toString());
-        traffic.timestoStay.set(currentMarkerIndex - 1, timetoStay.getText().toString());
-        traffic.mins.set(currentMarkerIndex - 1, mins.getText().toString());
-        traffic.durations.set(currentMarkerIndex - 1, duration.getText().toString());
-        traffic.distances.set(currentMarkerIndex - 1, distance.getText().toString());
 
-        Intent intent = new Intent();
-        intent.putExtra("currentMarkerIndex", currentMarkerIndex);
-        setResult(109, intent);
-        //close the destination activity
-        finish();
+
+
+
+
+
+*
+
+        int hourPicked = AlarmPickerFragment.hourPicked;
+        int minutePicked = AlarmPickerFragment.minutePicked;
+
+        */
     }
 
     private void setAlarm(int hour, int minute, int notificationId, String reminder, String destination) {

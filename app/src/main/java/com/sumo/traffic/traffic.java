@@ -496,50 +496,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
 
                 } else if (item.getItemId() == R.id.traffic) {
-                    Date d = new Date();
-                    currentDateTimeString = simpleDateFormat.format(d);
-                    int v = Integer.parseInt((alarmClocks.get(0).get(ApplicationConstants.HOUR)));
-                    if (v < 10) {
-                        datex = ("0" + alarmClocks.get(0).get(ApplicationConstants.HOUR)+ ":" + alarmClocks.get(0).get(ApplicationConstants.MINUTE));
-                    } else {
-                        datex = (alarmClocks.get(0).get(ApplicationConstants.HOUR)+ ":" + alarmClocks.get(0).get(ApplicationConstants.MINUTE));
-                    }
-                    try {
-                        date1 = simpleDateFormat.parse(datex);
-                        date2 = simpleDateFormat.parse(currentDateTimeString);
-                        long difference = date1.getTime() - date2.getTime() ;
-                        int days = (int) (difference / (1000*60*60*24));
-                        int hours = (int) ((difference - (1000*60*60*24*days)) / (1000*60*60));
-                        int min = (int) (difference - (1000*60*60*24*days) - (1000*60*60*hours)) / (1000*60);
-                        hours = (hours < 0 ? -hours : hours);
-
-                       String f = (poppers.duration.getText().toString());
-
-                        if (f.length() == 11)
-                        {
-                            test = f.substring(0,1);
-                        }
-                        else if (f.length() == 12)
-                        {
-                          test = f.substring(0,2);
-                        }
-
-                        int fx = Integer.parseInt(test);
-
-                        if (min < fx)
-                        {
-                            Toast.makeText(context, "Di makakarating" , Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        {
-                            Toast.makeText(context, "ok lang" , Toast.LENGTH_SHORT).show();
-                        }
-
-
-
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
 
 
                    // Toast.makeText(context, "" + datex, Toast.LENGTH_SHORT).show();
