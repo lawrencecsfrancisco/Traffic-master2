@@ -129,10 +129,14 @@ public class poppers extends AppCompatActivity {
     public void onTimePickClicked(View view) {
         DialogFragment fragment = new AlarmPickerFragment();
         fragment.show(getFragmentManager(), "Time picker");
-
+        mayexisting = 0;
+        pasok = 0;
 
     }
 
+    int mayexisting, pasok = 0;
+
+    int fx;
 
     public void saveDestination(View view) {
         Date d = new Date();
@@ -154,12 +158,13 @@ public class poppers extends AppCompatActivity {
 
             if (f.length() == 11) {
                 test = f.substring(0, 1);
+                fx = Integer.parseInt(test);
             } else if (f.length() == 12) {
                 test = f.substring(0, 2);
+                fx = Integer.parseInt(test);
             }
 
 
-            int fx = Integer.parseInt(test);
             if (min < fx) {
                 Toast.makeText(this, "Please change your schedule", Toast.LENGTH_SHORT).show();
             } else {
@@ -167,16 +172,16 @@ public class poppers extends AppCompatActivity {
                     for (int i = 0; i < traffic.alarmClocks.size(); i++) {
                         int v = Integer.parseInt((traffic.alarmClocks.get(i).get(ApplicationConstants.HOUR)));
                         if (v < 10) {
-                            int h = Integer.parseInt("0" + traffic.alarmClocks.get(0).get(ApplicationConstants.HOUR));
-                            int m = Integer.parseInt(traffic.alarmClocks.get(0).get(ApplicationConstants.MINUTE));
-                            datex2 = "0" +h + ":" + m;
+                            int h = Integer.parseInt("0" + traffic.alarmClocks.get(i).get(ApplicationConstants.HOUR));
+                            int m = Integer.parseInt(traffic.alarmClocks.get(i).get(ApplicationConstants.MINUTE));
+                            datex2 = "0" + h + ":" + m;
                             storedalarm = simpleDateFormat2.parse(datex2);
 
                         } else {
-                            int h = Integer.parseInt(traffic.alarmClocks.get(0).get(ApplicationConstants.HOUR));
-                            int m = Integer.parseInt(traffic.alarmClocks.get(0).get(ApplicationConstants.MINUTE));
+                            int h = Integer.parseInt(traffic.alarmClocks.get(i).get(ApplicationConstants.HOUR));
+                            int m = Integer.parseInt(traffic.alarmClocks.get(i).get(ApplicationConstants.MINUTE));
                             datex2 = h + ":" + m;
-                           storedalarm = simpleDateFormat2.parse(datex2);
+                            storedalarm = simpleDateFormat2.parse(datex2);
 
 
                         }
@@ -195,13 +200,92 @@ public class poppers extends AppCompatActivity {
                         Date x = calendar3.getTime();
 
 
-                        if (x.after(calendar1.getTime()) && x.before(calendar2.getTime()))
-                        {
-                            Toast.makeText(this, "Hindi pwede", Toast.LENGTH_SHORT).show();
+                        if (x.after(calendar1.getTime()) && x.before(calendar2.getTime())) {
+
+                            mayexisting = 1;
+
+                        } else {
+
+                            pasok = 1;
+                        }
+                    }
+                    if (mayexisting == 1) {
+                        Toast.makeText(this, "Schedule Conflict", Toast.LENGTH_SHORT).show();
+                    } else if (mayexisting == 0 && pasok == 1) {
+
+
+                        EditText destinationEdit = (EditText) findViewById(R.id.editText);
+                        EditText reminderEdit = (EditText) findViewById(R.id.editText2);
+
+                        // you should set a default destination and reminder for the notification and database if the
+                        // user doesn't write anything.
+
+                        String destination = destinationEdit.getText().toString();
+                        if (destination.equals(""))
+                            destination = "Notification"; //this will be the title of the notification
+                        String reminder = reminderEdit.getText().toString();
+                        if (reminder.equals(""))
+                            reminder = "You got a new notification"; //notification's content
+                        //Intent service = new Intent(this, AlarmService.class);
+                        //we set the action to create the notification in AlarmService, it's just a final String defined in MainActivity
+//        service.setAction(ApplicationConstants.CREATENOTIFICATION);
+//        service.putExtra(ApplicationConstants.HOUR, hourPicked);
+//        service.putExtra(ApplicationConstants.MINUTE,minutePicked);
+//        service.putExtra(ApplicationConstants.REMINDER,reminder);
+//        service.putExtra(ApplicationConstants.DESTINATION,destination);
+//        startService(service);
+
+
+                        // we'll use the int immediately after the last value in the array list as the notification id
+                        //  unless we got the alarmIndex, meaning that the alarm is being edited
+
+
+                        HashMap<String, String> alarm = new HashMap<>();
+                        int notificationId = (alarmIndex >= 0) ? alarmIndex : traffic.alarmClocks.size();
+                        alarm.put(ApplicationConstants._ID, String.valueOf(notificationId));
+                        alarm.put(ApplicationConstants.HOUR, String.valueOf(hourPicked));
+                        alarm.put(ApplicationConstants.MINUTE, String.valueOf(minutePicked));
+                        alarm.put(ApplicationConstants.REMINDER, reminder);
+                        alarm.put(ApplicationConstants.DESTINATION, destination);
+                        setAlarm(hourPicked, minutePicked, notificationId, reminder, destination); // we set the alarm
+
+                        if (posit - 1 >= 0 && posit - 1 < traffic.alarmClocks.size()) {
+                            unsetAlarm(posit - 1);
+                            traffic.alarmClocks.remove(posit - 1);
+                            traffic.alarmClocks.add(alarm);
+
+                        } else if (hourPicked != 0 && minutePicked != 0) {
+                            traffic.alarmClocks.add(alarm);
+                            Toast.makeText(this, R.string.notification_set, Toast.LENGTH_SHORT).show();
+                        } else {
+                            alarm.put(ApplicationConstants.HOUR, "00");
+                            alarm.put(ApplicationConstants.MINUTE, "00");
+                            traffic.alarmClocks.add(alarm);
+                            Toast.makeText(this, "No alarm ", Toast.LENGTH_SHORT).show();
                         }
 
 
+                        //==========================================================================//
+
+                        Marker marker = (Marker) traffic.markers.get(currentMarkerIndex - 1);
+                        marker.setTitle(destinationName.getText().toString());
+                        MarkerOptions options = (MarkerOptions) traffic.mList.get(currentMarkerIndex - 1);
+                        options.title(destinationName.getText().toString());
+
+                        traffic.reminders.set(currentMarkerIndex - 1, reminders.getText().toString());
+                        traffic.timestoStay.set(currentMarkerIndex - 1, timetoStay.getText().toString());
+                        traffic.mins.set(currentMarkerIndex - 1, mins.getText().toString());
+                        traffic.durations.set(currentMarkerIndex - 1, duration.getText().toString());
+                        traffic.distances.set(currentMarkerIndex - 1, distance.getText().toString());
+
+                        Intent intent = new Intent();
+                        intent.putExtra("currentMarkerIndex", currentMarkerIndex);
+                        setResult(109, intent);
+                        //close the destination activity
+                        finish();
                     }
+
+
                 } else if (traffic.alarmClocks.isEmpty()) {
 
 
@@ -277,8 +361,8 @@ public class poppers extends AppCompatActivity {
                 }
             }
         } catch (ParseException e) {
-        e.printStackTrace();
-    }
+            e.printStackTrace();
+        }
     }
 
 
