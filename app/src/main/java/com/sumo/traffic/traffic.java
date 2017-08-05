@@ -498,14 +498,10 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                 } else if (item.getItemId() == R.id.traffic) {
 
 
-                   // Toast.makeText(context, "" + datex, Toast.LENGTH_SHORT).show();
-                  //  Toast.makeText(context, "" + currentDateTimeString, Toast.LENGTH_SHORT).show();
-
-
-         /*           alternateRoute();
+                    alternateRoute();
                     Log.e("Testing", String.valueOf(polylines));
                     Log.e("Testing", String.valueOf(listOfRouteArray));
-                    Log.e("Testing", String.valueOf(listOfIndicesOfCurrentRoutes));*/
+                    Log.e("Testing", String.valueOf(listOfIndicesOfCurrentRoutes));
 
                 } else if (item.getItemId() == R.id.reset) {
                     //Correction starts here
