@@ -125,7 +125,7 @@ public class ReviewChoiceOfPlaceAdapter extends RecyclerView.Adapter<ReviewChoic
                                 Toast.makeText(context, "Item deleted", Toast.LENGTH_SHORT).show();
                                 listStaffs.remove(position);
                                 listStaff.getname();
-                                Toast.makeText(context, ""+listStaff.getname(), Toast.LENGTH_SHORT).show();
+
 
 
 

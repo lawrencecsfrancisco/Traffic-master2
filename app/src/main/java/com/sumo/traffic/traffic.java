@@ -1948,21 +1948,11 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         }
 
 
-        Toast.makeText(getApplicationContext(), "Place updated", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Place Updated!", Toast.LENGTH_LONG).show();
 
 
     }
 
-    public void intervalistics() {
-        new Timer().schedule(new TimerTask() {
-
-            @Override
-            public void run() {
-                selected();
-
-            }
-        }, 3000);
-    }
 
 
     public void destinationclear(View view) {
