@@ -89,6 +89,11 @@ import com.sumo.traffic.InfoOfPlaces.InfoOfQmc;
 import com.sumo.traffic.InfoOfPlaces.InfoOfUp;
 import com.sumo.traffic.InfoOfPlaces.InfoOfVargas;
 import com.sumo.traffic.InfoOfPlaces.InfoOfWatershed;
+import com.sumo.traffic.bestplaces.bestplaces_package1;
+import com.sumo.traffic.bestplaces.bestplaces_package2;
+import com.sumo.traffic.bestplaces.bestplaces_package3;
+import com.sumo.traffic.bestplaces.bestplaces_package4;
+import com.sumo.traffic.bestplaces.bestplaces_package5;
 import com.sumo.traffic.model.ApplicationConstants;
 
 import org.json.JSONArray;
@@ -193,7 +198,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
     static Button nav;
 
-    com.github.clans.fab.FloatingActionButton fab1, fab2, fab3;
+    com.github.clans.fab.FloatingActionButton fab4, fab2, fab3;
     com.github.clans.fab.FloatingActionMenu menured;
     com.github.clans.fab.FloatingActionButton drivermode;
     static int checklist = 0;
@@ -264,6 +269,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     String currentDateTimeString;
     Date date1, date2;
     String test;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -273,8 +279,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         }
-
-        final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
 
 
         date = DateFormat.getDateTimeInstance().format(new Date());
@@ -334,7 +338,11 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
         Runnable runnable = new Runnable() {
             public void run() {
-                selected();
+                if (TemplateOrChoices.packages == 0) {
+                    selected();
+                } else if (TemplateOrChoices.packages == 1) {
+                    packganern();
+                }
             }
         };
 
@@ -351,8 +359,16 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         drivermode = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.Plot);
         drivermode.setImageResource(R.drawable.exploremode);
 
-        // fab1 = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fab1);
+        fab4 = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fab4);
+        fab4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(traffic.this, ChoicesOfPackage.class);
+                startActivity(i);
+                finish();
 
+            }
+        });
         fab2 = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.fab2);
 
 
@@ -361,34 +377,42 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
 
         if (TemplateOrChoices.packages == 1) {
-            fab2.setLabelText("Summary of Tour");
+            fab2.setLabelText("Destinations");
+
 
         } else if (TemplateOrChoices.packages == 0) {
-    /*        fab2.setLabelText("Destinations");
-            Intent i = new Intent(this , ChoicesOfPlace.class);
-            startActivity(i);*/
+            fab2.setLabelText("Destinations");
+            fab4.setVisibility(View.GONE);
         }
 
-/*        fab1.setLabelText("Enable StreetMap");
-
-
-        fab1.setOnClickListener(new View.OnClickListener() {
+        fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (streetmapenabled == 0) {
-                    Toast.makeText(traffic.this, "StreetMap Enabled", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(traffic.this, "Click on any marker", Toast.LENGTH_SHORT).show();
-                    streetmapenabled = 1;
-                    fab1.setLabelText("Disable StreetMap");
-                } else if (streetmapenabled == 1) {
-                    Toast.makeText(traffic.this, "StreetMap Disabled", Toast.LENGTH_SHORT).show();
-                    streetmapenabled = 0;
-                    fab1.setLabelText("Enable StreetMap");
+                if (TemplateOrChoices.packages == 1) {
+                    if (packs == 1) {
+                        Intent i = new Intent(traffic.this, bestplaces_package1.class);
+                        startActivity(i);
+                    } else if (packs == 2) {
+                        Intent i = new Intent(traffic.this, bestplaces_package2.class);
+                        startActivity(i);
+                    } else if (packs == 3) {
+                        Intent i = new Intent(traffic.this, bestplaces_package3.class);
+                        startActivity(i);
+                    } else if (packs == 4) {
+                        Intent i = new Intent(traffic.this, bestplaces_package4.class);
+                        startActivity(i);
+                    } else if (packs == 5) {
+                        Intent i = new Intent(traffic.this, bestplaces_package5.class);
+                        startActivity(i);
+                    }
+
+                } else if (TemplateOrChoices.packages == 0) {
+                    Intent i = new Intent(traffic.this, ReviewChoiceOfPlace.class);
+                    startActivity(i);
+                    finish();
                 }
-
-
             }
-        });*/
+        });
 
 
         main = (CoordinatorLayout) findViewById(R.id.activity_main);
@@ -596,6 +620,64 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
     }
 
+    public void packganern() {
+        if (ChoicesOfPackage.packs == 1) {
+
+
+            ArtInIsland();
+            domingo();
+            qcx();
+            circleoffun();
+
+
+        } else if (ChoicesOfPackage.packs == 2) {
+
+            balara();
+            heritage();
+            uptc();
+            santamaria();
+        } else if (ChoicesOfPackage.packs == 3) {
+
+            edsa();
+            maginhawa();
+            churchgesu();
+            up();
+            eastwood();
+
+        } else if (ChoicesOfPackage.packs == 4) {
+
+            bantayog();
+            wildlife();
+            rita();
+            pagasa();
+            cubaoexpo();
+
+        } else if (ChoicesOfPackage.packs == 5) {
+
+            monasterio();
+            pagasa();
+            maginhawa();
+            ArtInIsland();
+
+
+        }
+
+
+        for (int i = 0; i < multipleHours.length; i++) {
+            int notificationId = (alarmIndex >= 0) ? alarmIndex : alarmClocks.size();
+            HashMap<String, String> alarm = new HashMap<>();
+            alarm.put(ApplicationConstants._ID, String.valueOf(notificationId));
+            alarm.put(ApplicationConstants.HOUR, String.valueOf(multipleHours[i]));
+            alarm.put(ApplicationConstants.MINUTE, String.valueOf(multipleMinutes[i]));
+            alarm.put(ApplicationConstants.REMINDER, String.valueOf(multipleReminders[i]));
+            alarm.put(ApplicationConstants.DESTINATION, String.valueOf(multipleDestinations[i]));
+            alarmClocks.add(alarm);
+            setAlarm(multipleHours[i], multipleMinutes[i], notificationId, multipleReminders[i], multipleDestinations[i]);
+        }
+
+
+    }
+
 
     @Override
     protected void onResume() {
@@ -717,7 +799,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        if (TemplateOrChoices.packages == 1) {
+   /*     if (TemplateOrChoices.packages == 1) {
             for (int i = 0; i < multipleHours.length; i++) {
                 int notificationId = (alarmIndex >= 0) ? alarmIndex : alarmClocks.size();
                 HashMap<String, String> alarm = new HashMap<>();
@@ -730,7 +812,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                 setAlarm(multipleHours[i], multipleMinutes[i], notificationId, multipleReminders[i], multipleDestinations[i]);
             }
         }
-
+*/
 
         try {
             // Customise the styling of the base map using a JSON object defined

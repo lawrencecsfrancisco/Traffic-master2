@@ -280,6 +280,16 @@
                             fab:fab_label="Schedule"
                             fab:fab_size="mini" />
 
+                        <com.github.clans.fab.FloatingActionButton
+                            android:id="@+id/fab4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="schedule"
+                            android:src="@drawable/reselect"
+                            fab:fab_label="Reselect"
+                            fab:fab_size="mini" />
+
+
                     </com.github.clans.fab.FloatingActionMenu>
                 </LinearLayout>
 

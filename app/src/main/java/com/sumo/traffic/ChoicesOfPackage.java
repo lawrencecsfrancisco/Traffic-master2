@@ -1,5 +1,6 @@
 package com.sumo.traffic;
 
+import android.content.Intent;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,17 +21,61 @@ public class ChoicesOfPackage extends Activity {
     private Button qp1,qp2,qp3,qp4,qp5;
     private TextView subtitleTextView, subDesc, subtitleTextView_1, subDesc_1, subtitleTextView_2, subDesc_2, subtitleTextView_3, subDesc_3, subtitleTextView_4, subDesc_4;
     private View descriptionLayout, descriptionLayout_1, descriptionLayout_2, descriptionLayout_3, descriptionLayout_4;
-
+static int packs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_choices_of_package);
 
         qp1 = (Button) findViewById(R.id.p1);
-        qp2 = (Button) findViewById(R.id.p1);
-        qp3 = (Button) findViewById(R.id.p1);
-        qp4 = (Button) findViewById(R.id.p1);
-        qp5 = (Button) findViewById(R.id.p1);
+        qp1.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                packs = 1;
+                Intent i = new Intent(ChoicesOfPackage.this, traffic.class);
+                startActivity(i);
+
+            }
+        });
+        qp2 = (Button) findViewById(R.id.p2);
+        qp2.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                packs = 2;
+                Intent i = new Intent(ChoicesOfPackage.this, traffic.class);
+                startActivity(i);
+            }
+        });
+        qp3 = (Button) findViewById(R.id.p3);
+        qp3.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                packs = 3;
+                Intent i = new Intent(ChoicesOfPackage.this, traffic.class);
+                startActivity(i);
+            }
+        });
+        qp4 = (Button) findViewById(R.id.p4);
+        qp4.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                packs = 4;
+                Intent i = new Intent(ChoicesOfPackage.this, traffic.class);
+                startActivity(i);
+            }
+        });
+        qp5 = (Button) findViewById(R.id.p5);
+        qp5.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                packs = 5;
+                Intent i = new Intent(ChoicesOfPackage.this, traffic.class);
+                startActivity(i);
+            }
+        });
+
+
+
         subtitleTextView = (TextView) findViewById(R.id.subtitle);
         subDesc = (TextView) findViewById(R.id.subdes);
         descriptionLayout = findViewById(R.id.description_layout);
