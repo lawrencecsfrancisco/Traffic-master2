@@ -77,6 +77,8 @@
     <string name="p1_desc">TARA offers package 1, which consists of different tourist attractions. From nature wonders to interesting historic sites, museums and once-in-a-lifetime experiences. Check out the following tourist attractions in Quezon City, Philippines.</string>
     <string name="artin">Art in Island</string>
     <string name="desc_artin">Art in Island allows visitors to interact and have fun with the art pieces. You can take as much pictures and videos as you want!. Here in Art in Island we want you to BE PART OF ART!</string>
+    <string name="santodomingo">Santo Domingo</string>
+    <string name= "desc_domingo">also known as National Shrine of Our Lady of the Holy Rosary of La Naval de Manila, is the largest church in Metro Manila and one of the biggest churches in Asia.</string>
     <string name="qch">Quezon City Heritage</string>
     <string name="desc_heritage">This large circular park is good place to go for a morning walk or jog or simple for stroll. It also has a museum at the center dedicated to the city founder, Manuel L. Quezon.</string>
     <string name="qmx">Quezon City Experience</string>
@@ -126,7 +128,8 @@
     <string name="desc_ritaa">The church frequent for Sunday mass because it is private subdivision. The service is solemn and the choir singers are great.</string>
     <string name="pagasa">PAGASA Planetarium</string>
     <string name="desc_pagasa">It provides a perfect setting for all sorts of econmic educational tours whose most significant task would be present the numerous fascinating and amazing facts to everyone.</string>
-
+    <string name="cubaoexpo">Cubao expo</string>
+    <string name="desc_cubaoexpo">When it comes to all things underground, Cubao Expo is the deal. It’s the hub for all things hip and cool, from cheap eats to quirky art, from novelty items to indie music.</string>
 
     <!--P5-->
     <string name="p5">Package 5</string>
@@ -139,5 +142,8 @@
     <string name="desc_armed">The museum provides an overview of the Philippine army. You will be able to see arms and weapons and get and idea of the history of the AFP.</string>
     <string name="mystery">Mystery Manila</string>
     <string name="desc_mystery">Mystery Manila is the first live role playing game in the Philippines. It is an activity that allows people to try something new and challenging.</string>
+    <string name="monasterio">Monasterio de Santa Clara</string>
+    <string name="desc_monasterio">A place that is very peaceful. You can pray and praise God. A place where you can talk to God and solemnly worship.</string>
+
 </resources>
 
