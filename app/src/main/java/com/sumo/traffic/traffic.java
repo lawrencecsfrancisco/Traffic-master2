@@ -1774,14 +1774,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     public void selected() {
 
 
-        if (InfoOfUp.select == 1) {
-            if (ayala == 0) {
-                ayala();
-                ayala = 1;
-            } else if (ayala == 1) {
 
-            }
-        }
 
         if (InfoOfArt.select == 1) {
             if (art == 0) {
@@ -1793,6 +1786,16 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
             }
         }
+        if (InfoOfUp.select == 1) {
+            if (ayala == 0) {
+                ayala();
+                ayala = 1;
+            } else if (ayala == 1) {
+
+            }
+        }
+
+
 
         if (InfoOfParish.select == 1) {
             if (parish == 0) {

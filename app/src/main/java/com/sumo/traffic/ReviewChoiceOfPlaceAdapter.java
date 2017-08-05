@@ -124,6 +124,8 @@ public class ReviewChoiceOfPlaceAdapter extends RecyclerView.Adapter<ReviewChoic
                                                 int arg1) {
                                 Toast.makeText(context, "Item deleted", Toast.LENGTH_SHORT).show();
                                 listStaffs.remove(position);
+                                listStaff.getname();
+                                Toast.makeText(context, ""+listStaff.getname(), Toast.LENGTH_SHORT).show();
 
 
 
@@ -135,6 +137,10 @@ public class ReviewChoiceOfPlaceAdapter extends RecyclerView.Adapter<ReviewChoic
                                 }
                                 if (listStaff.getname() == "Parish of Holy Sacrifice") {
                                     InfoOfParish.select = 0;
+                                }
+
+                                if (listStaff.getname() == "Quezon Memorial Circle") {
+                                    InfoOfQmc.select = 0;
                                 }
 
                                 if (listStaff.getname() == "Ateneo Art Gallery") {
@@ -171,7 +177,7 @@ public class ReviewChoiceOfPlaceAdapter extends RecyclerView.Adapter<ReviewChoic
                                     InfoOfWatershed.select = 0;
                                 }
                                 notifyDataSetChanged();
-                                Toast.makeText(context, ""+InfoOfArt.select, Toast.LENGTH_SHORT).show();
+
 
                             }
                         });
