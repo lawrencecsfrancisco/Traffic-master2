@@ -2410,6 +2410,167 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
     }
 
+
+    public void domingo() {
+
+
+        Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();
+
+        double wa = 14.6263;
+        double we = 121.0102;
+
+        LatLng was = new LatLng(wa, we);
+
+
+        MarkerOptions markerOptions = new MarkerOptions()
+                .position(was)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.placesz))
+                .title("Santo Domingo Church")
+                .snippet("placeId:" + "ChIJZyfdAEC2lzMRjdk72SmJsyw")
+                .anchor(0.5f, 1);
+
+
+        points.add(was);
+
+
+        markers.add(mMap.addMarker(markerOptions));
+
+        //EXTRA CODES
+        mList.add(markerOptions);
+
+        distances.add(new String("0"));
+        durations.add(new String("0"));
+        reminders.add(new String(""));
+        timestoStay.add(new String(""));
+        mins.add(new String(""));
+
+        String url = null;
+        try {
+            url = makeURL3();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+/*
+
+        pointview.setVisibility(View.VISIBLE);
+        durationview.setVisibility(View.VISIBLE);
+        distanceview.setVisibility(View.VISIBLE);
+*/
+
+        connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
+        downloadTask2.execute();
+
+
+    }
+
+    public void monasterio() {
+
+
+        Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();
+
+        double wa = 14.6303;
+        double we = 121.0746;
+
+        LatLng was = new LatLng(wa, we);
+
+
+        MarkerOptions markerOptions = new MarkerOptions()
+                .position(was)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.placesz))
+                .title("Monasterio De Sta. Clara")
+                .snippet("placeId:" + "ChIJzVQIaoa3lzMR5AnOW2Sdfd0")
+                .anchor(0.5f, 1);
+
+
+        points.add(was);
+
+
+        markers.add(mMap.addMarker(markerOptions));
+
+        //EXTRA CODES
+        mList.add(markerOptions);
+
+        distances.add(new String("0"));
+        durations.add(new String("0"));
+        reminders.add(new String(""));
+        timestoStay.add(new String(""));
+        mins.add(new String(""));
+
+        String url = null;
+        try {
+            url = makeURL3();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+/*
+
+        pointview.setVisibility(View.VISIBLE);
+        durationview.setVisibility(View.VISIBLE);
+        distanceview.setVisibility(View.VISIBLE);
+*/
+
+        connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
+        downloadTask2.execute();
+
+
+    }
+
+    public void cubaoexpo() {
+
+
+        Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();
+
+        double wa = 14.6223;
+        double we = 121.0564;
+
+        LatLng was = new LatLng(wa, we);
+
+
+        MarkerOptions markerOptions = new MarkerOptions()
+                .position(was)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.placesz))
+                .title("Cubao expo")
+                .snippet("placeId:" + "ChIJ7TL-17-3lzMRxP6C7aZp64A")
+                .anchor(0.5f, 1);
+
+
+        points.add(was);
+
+
+        markers.add(mMap.addMarker(markerOptions));
+
+        //EXTRA CODES
+        mList.add(markerOptions);
+
+        distances.add(new String("0"));
+        durations.add(new String("0"));
+        reminders.add(new String(""));
+        timestoStay.add(new String(""));
+        mins.add(new String(""));
+
+        String url = null;
+        try {
+            url = makeURL3();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+/*
+
+        pointview.setVisibility(View.VISIBLE);
+        durationview.setVisibility(View.VISIBLE);
+        distanceview.setVisibility(View.VISIBLE);
+*/
+
+        connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
+        downloadTask2.execute();
+
+
+    }
+
+
     public void lamesa() {
 
 
