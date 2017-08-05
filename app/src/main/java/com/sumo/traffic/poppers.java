@@ -153,7 +153,7 @@ public class poppers extends AppCompatActivity {
             int hours = (int) ((difference - (1000 * 60 * 60 * 24 * days)) / (1000 * 60 * 60));
             int min = (int) (difference - (1000 * 60 * 60 * 24 * days) - (1000 * 60 * 60 * hours)) / (1000 * 60);
             hours = (hours < 0 ? -hours : hours);
-            Toast.makeText(this, "" + hours, Toast.LENGTH_LONG).show();
+
             String f = (poppers.duration.getText().toString());
 
             if (f.length() == 11) {
@@ -170,20 +170,18 @@ public class poppers extends AppCompatActivity {
                 {
 
                     hours = (hours - 12) * 60;
-                    Toast.makeText(this, "new mins"+hours, Toast.LENGTH_LONG).show();
+
                     min = hours;
                 }
                 else
                 {
                     hours = hours * 60;
-                    Toast.makeText(this, "new mins"+hours, Toast.LENGTH_LONG).show();
+
                     min = hours;
                 }
 
             }
 
-            Toast.makeText(this, "difference" + min, Toast.LENGTH_LONG).show();
-            Toast.makeText(this, "duration" + fx, Toast.LENGTH_LONG).show();
             if (min < fx) {
                 Toast.makeText(this, "Please change your schedule", Toast.LENGTH_SHORT).show();
             } else {

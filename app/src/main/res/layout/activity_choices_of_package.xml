@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:background="#EE7469"
         android:textColor="#FFF0D6"
-        android:text="Itinerary Generator (Beta)"/>
+        android:text="List of Itinerary sets"/>
 
     <com.kyo.expandablelayout.ExpandableLayout
         android:id="@+id/expandablelayout"
@@ -143,10 +143,12 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Get Package"
+                    android:text="SELECT THIS SET"
+                    android:textStyle="bold"
                     android:background="@drawable/border"
+                    android:id="@+id/p1"
                     android:textColor="#383732"
-                    android:textSize="10dp" />
+                    android:textSize="15dp" />
             </LinearLayout>
         </LinearLayout>
     </com.kyo.expandablelayout.ExpandableLayout>
@@ -302,11 +304,12 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Get this package"
+                        android:text="SELECT THIS SET"
+                        android:textStyle="bold"
                         android:background="@drawable/border"
+                        android:id="@+id/p2"
                         android:textColor="#383732"
-                        android:textSize="10dp"
-                        android:layout_weight="1.07" />
+                        android:textSize="15dp" />
                 </LinearLayout>
             </LinearLayout>
         </com.kyo.expandablelayout.ExpandableLayout>
@@ -464,11 +467,12 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Get Package"
+                        android:text="SELECT THIS SET"
+                        android:textStyle="bold"
                         android:background="@drawable/border"
+                        android:id="@+id/p3"
                         android:textColor="#383732"
-                        android:textSize="10dp"
-                        android:layout_weight="1.07" />
+                        android:textSize="15dp" />
                 </LinearLayout>
             </LinearLayout>
         </com.kyo.expandablelayout.ExpandableLayout>
@@ -623,11 +627,12 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Get Package"
+                        android:text="SELECT THIS SET"
+                        android:textStyle="bold"
                         android:background="@drawable/border"
+                        android:id="@+id/p4"
                         android:textColor="#383732"
-                        android:textSize="10dp"
-                        android:layout_weight="1.07" />
+                        android:textSize="15dp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -787,11 +792,12 @@
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Get Package"
+                        android:text="SELECT THIS SET"
+                        android:textStyle="bold"
                         android:background="@drawable/border"
+                        android:id="@+id/p5"
                         android:textColor="#383732"
-                        android:textSize="10dp"
-                        android:layout_weight="1.07" />
+                        android:textSize="15dp" />
                 </LinearLayout>
             </LinearLayout>
         </com.kyo.expandablelayout.ExpandableLayout>
