@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-
 import android.widget.TextView;
 import com.example.compoundlayout.CompoundLayout;
 import com.kyo.expandablelayout.ExpandableLayout;
@@ -44,11 +43,13 @@ public class ChoicesOfPackage extends Activity {
         descriptionLayout_4 = findViewById(R.id.description_layout4);
 
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_1), R.string.artin,R.string.desc_artin,R.string._,R.string._ ,R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._);
+        bindCompoundListener((CompoundLayout) findViewById(R.id.profile_22),R.string.santodomingo,R.string.desc_domingo,R.string._,R.string._ ,R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._);
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_2), R.string.qch,R.string.desc_heritage,R.string._,R.string._ ,R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._);
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_3), R.string.qmx,R.string.desc_qmx,R.string._,R.string._ ,R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._);
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_4), R.string.cof,R.string.desc_cof,R.string._,R.string._ ,R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._);
 
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_5),R.string._,R.string._ ,R.string.balara,R.string.desc_balara,R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._);
+        bindCompoundListener((CompoundLayout) findViewById(R.id.profile_2),R.string._,R.string._ ,R.string.qch,R.string.desc_heritage,R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._);
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_6),R.string._,R.string._ ,R.string.uptown,R.string.desc_uptown,R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._);
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_7),R.string._,R.string._ ,R.string.stamaria,R.string.desc_stamaria,R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._);
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_8),R.string._,R.string._ ,R.string.ateneo,R.string.desc_ateneo,R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._);
@@ -63,11 +64,13 @@ public class ChoicesOfPackage extends Activity {
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_15),R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._ ,R.string.zoo,R.string.desc_zoo,R.string._,R.string._);
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_16),R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._,R.string.rita,R.string.desc_ritaa,R.string._,R.string._);
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_17),R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._,R.string.pagasa,R.string.desc_pagasa,R.string._,R.string._);
+        bindCompoundListener((CompoundLayout) findViewById(R.id.profile_23),R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._,R.string.cubaoexpo,R.string.desc_cubaoexpo,R.string._,R.string._);
 
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_18),R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._,R.string._,R.string._ ,R.string.sining,R.string.desc_sining);
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_19),R.string._,R.string._ ,R.string._,R.string._ ,R.string._,R.string._,R.string._,R.string._ ,R.string.fernwood,R.string.desc_fernwood);
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_20),R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._,R.string._,R.string._ ,R.string.armed,R.string.desc_armed);
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_21),R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._,R.string._,R.string._ ,R.string.mystery,R.string.desc_mystery);
+        bindCompoundListener((CompoundLayout) findViewById(R.id.profile_24),R.string._,R.string._,R.string._,R.string._ ,R.string._,R.string._,R.string._,R.string._ ,R.string.monasterio,R.string.desc_monasterio);
 
         final ExpandableLayout expandableLayout = (ExpandableLayout) this.findViewById(R.id.expandablelayout);
         final ExpandableLayout expandableLayout2 = (ExpandableLayout) this.findViewById(R.id.expandablelayout2);
@@ -96,7 +99,7 @@ public class ChoicesOfPackage extends Activity {
                 BounceInterpolator interpolator = new BounceInterpolator(0.2, 20);
                 myAnim.setInterpolator(interpolator);
                 expandableLayout2.startAnimation(myAnim);
-                expandableLayout2.toggleExpansion();
+                        expandableLayout2.toggleExpansion();
                     }
                 });
 
