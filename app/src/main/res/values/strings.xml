@@ -88,7 +88,14 @@
     <string name="duration1">Approximate Duration : \n10 Hrs/day (From 10 AM - 8 PM). \nApproximate Cost \nPhp 3500 - 5500 ,good for 4 - 6 person \nReminder : Approximation might vary depends on user\'s preference \n</string>
     <!--  <string name="reminder1">Reminder : \n</string>-->
 
-
+    <!-- Duration-->
+      
+   
+    <string name="duration11">Approximate Duration : \n12 Hours (From 8 AM - 8 PM). \nApproximate Cost \nPhp 3500 - 5500 ,good for 4 - 6 person. \n</string>
+    <string name="duration2">Approximate Duration : \n12 Hours(From 7 AM - 6 PM). \nApproximate Cost \nPhp 2600 - 6200 ,good for 2 - 5 person \n</string>
+    <string name="duration3">Approximate Duration : \n12 Hours (From 8 AM - 8 PM). \nApproximate Cost \nPhp 4500 - 6500 ,good for 4 persons \n</string>
+    <string name="duration4">Approximate Duration : \n12 Hours (From 8 AM - 7 PM). \nApproximate Cost \nPhp 3500 - 5500 ,good for 2 - 4 persons \n</string>
+    <string name="duration5">Approximate Duration : \n12 Hours (From 8 AM - 8 PM). \nApproximate Cost \nPhp 1500 - 3500 ,good for 2-3 person \n</string>
     <!--P2-->
     <string name="p2">Package 2</string>
     <string name="p2_desc">TARA offers package 2, which consists of different tourist attractions. From nature wonders to interesting historic sites, museums and once-in-a-lifetime experiences. Check out the following tourist attractions in Quezon City, Philippines.</string>
