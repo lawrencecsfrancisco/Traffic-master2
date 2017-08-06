@@ -27,9 +27,10 @@ public class bestplaces_package2 extends AppCompatActivity {
         descriptionLayout = findViewById(R.id.description_layout);
 
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_1), R.string.balara,R.string.desc_balara);
-        bindCompoundListener((CompoundLayout) findViewById(R.id.profile_2), R.string.uptown,R.string.desc_uptown);
-        bindCompoundListener((CompoundLayout) findViewById(R.id.profile_3), R.string.stamaria,R.string.desc_stamaria);
-        bindCompoundListener((CompoundLayout) findViewById(R.id.profile_4), R.string.ateneo,R.string.desc_ateneo);
+        bindCompoundListener((CompoundLayout) findViewById(R.id.profile_2), R.string.qch,R.string.desc_heritage);
+        bindCompoundListener((CompoundLayout) findViewById(R.id.profile_3), R.string.uptown,R.string.desc_uptown);
+        bindCompoundListener((CompoundLayout) findViewById(R.id.profile_4), R.string.stamaria,R.string.desc_stamaria);
+        bindCompoundListener((CompoundLayout) findViewById(R.id.profile_5), R.string.ateneo,R.string.desc_ateneo);
         //  bindCompoundListener((CompoundLayout) findViewById(R.id.profile_5), R.string.jaouan,R.string.hihi);
     }
 
