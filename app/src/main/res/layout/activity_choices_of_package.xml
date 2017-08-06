@@ -134,6 +134,15 @@
                     android:paddingStart="20dp"
                     android:paddingTop="10dp"
                     android:text="@string/desc_artin" />
+                  <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="20dp"
+                    android:paddingEnd="20dp"
+                    android:textStyle="bold"
+                    android:paddingStart="20dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/duration11"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -294,7 +303,16 @@
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:textColor="#383732"
-                        android:text="@string/desc_balara" />  <!--android:id="@+id/subdes" -->
+                        android:text="@string/desc_balara" /> 
+                     <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="20dp"
+                        android:paddingEnd="20dp"
+                        android:textStyle="bold"
+                        android:paddingStart="20dp"
+                        android:paddingTop="10dp"
+                        android:text="@string/duration2"/><!--android:id="@+id/subdes" -->
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -457,7 +475,16 @@
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:textColor="#383732"
-                        android:text="@string/desc_edsa" />  <!--android:id="@+id/subdes" -->
+                        android:text="@string/desc_edsa" /> 
+                     <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="20dp"
+                        android:paddingEnd="20dp"
+                        android:textStyle="bold"
+                        android:paddingStart="20dp"
+                        android:paddingTop="10dp"
+                        android:text="@string/duration3"/><!--android:id="@+id/subdes" -->
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -617,7 +644,16 @@
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:textColor="#383732"
-                        android:text="@string/desc_bayani" />  <!--android:id="@+id/subdes" -->
+                        android:text="@string/desc_bayani" /> 
+                     <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="20dp"
+                        android:paddingEnd="20dp"
+                        android:textStyle="bold"
+                        android:paddingStart="20dp"
+                        android:paddingTop="10dp"
+                        android:text="@string/duration4"/><!--android:id="@+id/subdes" -->
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -782,7 +818,16 @@
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:textColor="#383732"
-                        android:text="@string/desc_sining" />  <!--android:id="@+id/subdes" -->
+                        android:text="@string/desc_sining" /> 
+                     <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="20dp"
+                        android:paddingEnd="20dp"
+                        android:textStyle="bold"
+                        android:paddingStart="20dp"
+                        android:paddingTop="10dp"
+                        android:text="@string/duration5"/><!--android:id="@+id/subdes" -->
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
