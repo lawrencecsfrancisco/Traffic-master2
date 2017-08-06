@@ -30,7 +30,7 @@ public class bestplaces_package1 extends AppCompatActivity {
         descriptionLayout = findViewById(R.id.description_layout);
 
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_1), R.string.artin,R.string.desc_artin);
-        bindCompoundListener((CompoundLayout) findViewById(R.id.profile_2), R.string.qch,R.string.desc_heritage);
+         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_2), R.string.santodomingo,R.string.desc_domingo);
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_3), R.string.qmx,R.string.desc_qmx);
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_4), R.string.cof,R.string.desc_cof);
         //  bindCompoundListener((CompoundLayout) findViewById(R.id.profile_5), R.string.jaouan,R.string.hihi);
