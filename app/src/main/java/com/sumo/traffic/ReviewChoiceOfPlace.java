@@ -357,9 +357,15 @@ public class ReviewChoiceOfPlace extends AppCompatActivity {
 
 
     public void gonow(View view) {
-        Intent i = new Intent(this, traffic.class);
-        startActivity(i);
-        finish();
+        if (InitialListStaffs.size() > 7)
+        {
+            Toast.makeText(this, "Too many destination, Please delete a destination", Toast.LENGTH_LONG).show();
+        }
+        else {
+            Intent i = new Intent(this, traffic.class);
+            startActivity(i);
+            finish();
+        }
 
 
     }

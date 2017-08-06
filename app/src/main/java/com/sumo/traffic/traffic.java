@@ -1786,81 +1786,14 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
             }
         }
-        if (InfoOfUp.select == 1) {
-            if (ayala == 0) {
-                ayala();
-                ayala = 1;
-            } else if (ayala == 1) {
-
-            }
-        }
 
 
 
-        if (InfoOfParish.select == 1) {
-            if (parish == 0) {
-                parish();
-                parish = 1;
-
-            } else if (parish == 1) {
-
-            }
-        }
 
 
-        if (InfoOfAteneo.select == 1) {
-
-            if (ateneo == 0) {
-                ateneogallery();
-                ateneo = 1;
-            } else if (ateneo == 1) {
-
-            }
-
-        }
-        if (InfoOfBayani.select == 1) {
-            if (bayani == 0) {
-                bantayog();
-                bayani = 1;
-            } else if (bayani == 1) {
-
-            }
-
-        }
 
 
-        if (InfoOfDam.select == 1) {
 
-            if (dam == 0) {
-                lamesa();
-                dam = 1;
-            } else if (dam == 1) {
-
-            }
-        }
-
-
-        if (InfoOfEast.select == 1) {
-
-            if (east == 0) {
-                eastwood();
-                east = 1;
-            } else if (east == 1) {
-
-            }
-        }
-
-
-        if (InfoOfEdsa.select == 1) {
-
-            if (edsa == 0) {
-                edsa();
-                edsa = 1;
-            } else if (edsa == 1) {
-
-            }
-
-        }
 
         if (InfoOfMaginhawa.select == 1) {
 
@@ -1911,6 +1844,61 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
         }
 
+        if (InfoOfAteneo.select == 1) {
+
+            if (ateneo == 0) {
+                ateneogallery();
+                ateneo = 1;
+            } else if (ateneo == 1) {
+
+            }
+
+        }
+
+
+        if (InfoOfUp.select == 1) {
+            if (ayala == 0) {
+                ayala();
+                ayala = 1;
+            } else if (ayala == 1) {
+
+            }
+        }
+        if (InfoOfVargas.select == 1) {
+
+
+            if (vargas == 0) {
+                vargas();
+                vargas = 1;
+            } else if (vargas == 1) {
+
+            }
+
+        }
+
+        if (InfoOfParish.select == 1) {
+            if (parish == 0) {
+                parish();
+                parish = 1;
+
+            } else if (parish == 1) {
+
+            }
+        }
+
+
+
+
+        if (InfoOfEdsa.select == 1) {
+
+            if (edsa == 0) {
+                edsa();
+                edsa = 1;
+            } else if (edsa == 1) {
+
+            }
+
+        }
         if (InfoOfPeople.select == 1) {
 
 
@@ -1924,17 +1912,30 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         }
 
 
-        if (InfoOfVargas.select == 1) {
+        if (InfoOfEast.select == 1) {
+
+            if (east == 0) {
+                eastwood();
+                east = 1;
+            } else if (east == 1) {
+
+            }
+        }
 
 
-            if (vargas == 0) {
-                vargas();
-                vargas = 1;
-            } else if (vargas == 1) {
+        if (InfoOfBayani.select == 1) {
+            if (bayani == 0) {
+                bantayog();
+                bayani = 1;
+            } else if (bayani == 1) {
 
             }
 
         }
+
+
+
+
         if (InfoOfWatershed.select == 1) {
 
 
@@ -1946,6 +1947,19 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             }
 
         }
+
+
+        if (InfoOfDam.select == 1) {
+
+            if (dam == 0) {
+                lamesa();
+                dam = 1;
+            } else if (dam == 1) {
+
+            }
+        }
+
+
 
 
         Toast.makeText(getApplicationContext(), "Place Updated!", Toast.LENGTH_LONG).show();
