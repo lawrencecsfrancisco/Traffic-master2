@@ -26,7 +26,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingStart="20dp"
-        android:paddingTop="20dp"  android:textStyle="bold"
+        android:paddingTop="20dp"
+        android:textColor="#fff"
         android:text="@string/p3"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -48,88 +49,74 @@
             android:layout_height="wrap_content"
             app:orientation="horizontal">
 
-            <com.example.compoundlayout.CircleGradientRadioLayout
+            <com.example.compoundlayout.RadioLayout
                 android:id="@+id/profile_1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="10dp"
                 android:elevation="2dp"
-                app:angle="45"
-                app:checked="true"
-                app:colorA="#AAFFA726"
-                app:colorB="#AAEC407A">
+                app:checked="true">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baguhan_edsa" />
-            </com.example.compoundlayout.CircleGradientRadioLayout>
+            </com.example.compoundlayout.RadioLayout>
 
-            <com.example.compoundlayout.CircleGradientRadioLayout
+            <com.example.compoundlayout.RadioLayout
                 android:id="@+id/profile_2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="10dp"
-                android:background="@drawable/rounded"
-                android:elevation="2dp"
-                app:colorA="#AA42A5F5"
-                app:colorB="#AAAB47BC">
+                android:background="@drawable/rounded">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baguhan_maginhawa" />
-            </com.example.compoundlayout.CircleGradientRadioLayout>
+            </com.example.compoundlayout.RadioLayout>
 
-            <com.example.compoundlayout.CircleGradientRadioLayout
+            <com.example.compoundlayout.RadioLayout
                 android:id="@+id/profile_3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/rounded"
-                android:elevation="2dp"
-                app:angle="45"
-                app:colorA="#BBAB47BC"
-                app:colorB="#BBEF5350">
+                android:elevation="2dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baguhan_gesu" />
-            </com.example.compoundlayout.CircleGradientRadioLayout>
+            </com.example.compoundlayout.RadioLayout>
 
-            <com.example.compoundlayout.CircleGradientRadioLayout
+            <com.example.compoundlayout.RadioLayout
                 android:id="@+id/profile_4"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/rounded"
-                android:elevation="2dp"
-                app:angle="70"
-                app:colorA="#00FFFFFF"
-                app:colorB="#FF26C6DA">
+                android:elevation="2dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baguhan_up" />
-            </com.example.compoundlayout.CircleGradientRadioLayout>
+            </com.example.compoundlayout.RadioLayout>
 
-         <com.example.compoundlayout.CircleGradientRadioLayout
+         <com.example.compoundlayout.RadioLayout
                      android:id="@+id/profile_5"
                      android:layout_width="100dp"
                      android:layout_height="100dp"
                      android:layout_margin="10dp"
                      android:background="@drawable/rounded"
-                     android:elevation="2dp"
-                     app:colorA="#55EF5350"
-                     app:colorB="#88EC407A">
+                     android:elevation="2dp">
 
              <ImageView
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:src="@drawable/eastwood_baguhan" />
-                 </com.example.compoundlayout.CircleGradientRadioLayout>
+                 </com.example.compoundlayout.RadioLayout>
 
 
 
@@ -146,8 +133,10 @@
             android:id="@+id/subtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingEnd="20dp"  android:textStyle="bold"
+            android:paddingEnd="20dp"
+            android:textStyle="bold"
             android:paddingStart="20dp"
+            android:textColor="#fff"
             android:paddingTop="20dp"
             android:text="Edsa Shrine"
             android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -170,7 +159,7 @@
             android:paddingEnd="20dp"
             android:paddingStart="20dp"
             android:paddingTop="10dp"  android:textStyle="bold"
-            android:text="@string/duration1" />
+            android:text="@string/duration3" />
     </LinearLayout>
 
 </LinearLayout>
