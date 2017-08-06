@@ -165,13 +165,15 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignTop="@+id/recyclerView"
                 android:layout_marginTop="48dp"
                 android:background="@drawable/border"
                 android:onClick="street"
-                android:text="Street View"
+                android:text="Show using Street View"
                 android:textColor="#EE7469" />
 
             <android.support.v7.widget.RecyclerView

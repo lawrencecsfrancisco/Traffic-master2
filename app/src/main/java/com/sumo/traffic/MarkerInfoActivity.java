@@ -46,7 +46,7 @@ import me.relex.circleindicator.CircleIndicator;
 public class MarkerInfoActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     ProgressDialog progressDialog;
     GoogleApiClient mGoogleApiClient;
-   static TextView placeNameTV, placeTypeTV, placeAddressTV, placeNumberTV,placeIsOpenTV,placeOpeningHoursTV;
+    static TextView placeNameTV, placeTypeTV, placeAddressTV, placeNumberTV,placeIsOpenTV,placeOpeningHoursTV;
     private RatingBar ratingBar;
     private RelativeLayout pagerLayout;
     private String placeId;
@@ -136,10 +136,10 @@ public class MarkerInfoActivity extends AppCompatActivity implements GoogleApiCl
         reviewAuthorNames = new ArrayList<>();
         authorTexts = new ArrayList<>();
         profilePictureUrl = new HashMap<>();
-     reviewRating = new ArrayList<>();
+        reviewRating = new ArrayList<>();
         if (viewPager != null) viewPager = new ViewPager(this);
         photoMetadataBuffer.release();
-      mGoogleApiClient.disconnect();
+        mGoogleApiClient.disconnect();
 
     }
 
@@ -284,14 +284,14 @@ public class MarkerInfoActivity extends AppCompatActivity implements GoogleApiCl
                 JSONArray reviews = result.getJSONArray("reviews");
                 for (int i = 0; i < reviews.length(); i++) {
                     JSONObject singleReviews = reviews.getJSONObject(i);
-                    JSONObject aspects = singleReviews.getJSONArray("aspects").getJSONObject(0);
-                    reviewRating.add(aspects.getInt("rating"));
+                //    JSONObject aspects = singleReviews.getJSONArray("aspects").getJSONObject(0);
+                    reviewRating.add(singleReviews.getInt("rating"));
                     String authorName = singleReviews.getString("author_name");
                     reviewAuthorNames.add(authorName);
                     if(singleReviews.has("profile_photo_url")){
                         String profilePicture = singleReviews.getString("profile_photo_url");
-                        String url ="http:".concat(profilePicture);
-                        profilePictureUrl.put(authorName,url);
+                      //  String url ="http:".concat(profilePicture);
+                        profilePictureUrl.put(authorName,profilePicture);
                     } else profilePictureUrl.put(authorName,null);
                     authorTexts.add(singleReviews.getString("text"));
                 }
@@ -299,7 +299,11 @@ public class MarkerInfoActivity extends AppCompatActivity implements GoogleApiCl
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerAdapter = new RecyclerAdapter(reviewAuthorNames, profilePictureUrl, authorTexts, reviewRating);
                 recyclerView.setAdapter(recyclerAdapter);
+                Log.d("ZXC2",""+result);
+                Log.d("ZXC2",""+reviews);
             } catch (Exception e) {
+                Log.d("ZXC2",""+e);
+
                 //couldnt fetch the reviews datas, what to do? I'll show an alert dialog for now
             /*    AlertDialog.Builder builder = new AlertDialog.Builder(MarkerInfoActivity.this);
                 builder.setTitle("Error retrieving reviews data")
