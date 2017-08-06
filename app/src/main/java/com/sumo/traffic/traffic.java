@@ -632,32 +632,39 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
         } else if (ChoicesOfPackage.packs == 2) {
 
-            balara();
-            heritage();
-            uptc();
+
             santamaria();
+            balara();
+            uptc();
+            heritage();
+
+
         } else if (ChoicesOfPackage.packs == 3) {
 
             edsa();
+            eastwood();
             maginhawa();
             churchgesu();
             up();
-            eastwood();
+
 
         } else if (ChoicesOfPackage.packs == 4) {
 
-            bantayog();
-            wildlife();
+
+
             rita();
+            wildlife();
+            bantayog();
             pagasa();
             cubaoexpo();
 
         } else if (ChoicesOfPackage.packs == 5) {
 
-            monasterio();
+
             pagasa();
             maginhawa();
             ArtInIsland();
+            monasterio();
 
 
         }
@@ -3205,7 +3212,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         MarkerOptions markerOptions = new MarkerOptions()
                 .position(was)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.placesz))
-                .title("Santa Maria Church")
+                .title("Sta Maria Dela Strada")
                 .snippet("placeId:" + "ChIJazWVwHy3lzMRAUHR5Esc9AA")
                 .anchor(0.5f, 1);
 
