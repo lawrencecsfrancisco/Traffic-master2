@@ -55,7 +55,7 @@
                         android:textColor="#EE7469"
                         android:onClick="p1"
                         android:id="@+id/p1"
-                        android:layout_below="@+id/SXXXX"
+
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="35dp" />
 
@@ -94,7 +94,7 @@
                         android:layout_marginTop="5dp"
                         android:id="@+id/textView21"
                         android:gravity="center"
-                        android:layout_below="@+id/SXXXX"
+
                         android:layout_alignParentStart="true"
                         android:layout_alignParentEnd="true" />
 
@@ -254,6 +254,12 @@ Quezon City, Philippines"
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/number_layout"
+                android:layout_marginTop="10dp" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
