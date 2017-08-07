@@ -1,74 +1,86 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="40dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginLeft="35dp"
-    android:layout_marginRight="35dp"
     android:layout_marginTop="40dp"
+    android:layout_marginRight="35dp"
+    android:layout_marginBottom="40dp"
     android:background="#99B288"
-    android:orientation="vertical"
-    tools:context="com.sumo.traffic.AreaFilter.placestogo">
+    tools:context="com.sumo.traffic.AreaFilter.placestogo"
+    android:orientation="vertical">
 
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-
-            android:weightSum="1"
-
-            >
+            android:weightSum="1">
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.40"
-                android:gravity="center"
                 android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_weight="0.40"
                 android:weightSum="1">
 
                 <ImageButton
-                    android:id="@+id/button1"
-                    android:layout_width="72dp"
-                    android:layout_height="wrap_content"
                     android:background="@null"
-                    android:onClick="prev"
                     android:src="@drawable/prev"
-                    android:text="&lt;-" />
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="&lt;-"
+                    android:onClick="prev"/>
 
 
                 <TextView
-                    android:id="@+id/transpo"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="15dp"
-                    android:text="Places"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-
-                    android:textColor="#fff" />
+                    android:text="Places"
+                    android:textColor="#fff"
+                    android:id="@+id/transpo"
+                    android:layout_marginTop="15dp"/>
 
                 <ImageButton
+                    android:background="@null"
+                    android:src="@drawable/next"
                     android:id="@+id/button2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="->"
+                    android:onClick="next"/>
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="50dp">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                <ImageButton
                     android:background="@null"
-                    android:onClick="next"
-                    android:src="@drawable/next"
-                    android:text="->" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+                    android:src="@drawable/buttonamuse"
+                    android:id="@+id/amuse"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"/>
+                    </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -76,33 +88,13 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/amuse"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:background="@null"
-                        android:src="@drawable/buttonamuse" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/bar"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-
-                        android:background="@null"
-                        android:src="@drawable/buttonbar">
-
-                    </ImageButton>
-                </LinearLayout>
-
+                <ImageButton
+                    android:background="@null"
+                    android:src="@drawable/buttonbar"
+                    android:id="@+id/bar"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"/>
+                    </LinearLayout>
 
             </LinearLayout>
 
@@ -110,7 +102,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal" >
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -119,14 +111,15 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/hard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Amusement"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#fff" />
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#fff"
+                    android:text="Amusement"
+                    android:id="@+id/hard" />
+                    </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -134,24 +127,39 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/furniture"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:text="Bar"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#fff" />
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Bar"
+                    android:textColor="#fff"
+                    android:id="@+id/furniture"/>
+                    </LinearLayout>
             </LinearLayout>
+
+
+
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:orientation="horizontal"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_marginTop="50dp">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                <ImageButton
+                    android:background="@null"
+                    android:src="@drawable/buttonbowl"
+                    android:id="@+id/bowl"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"/>
+                    </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -160,196 +168,62 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/bowl"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:background="@null"
-                        android:src="@drawable/buttonbowl" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/cafe"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-
-                        android:background="@null"
-                        android:src="@drawable/buttoncafe" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center">
-
-                    <TextView
-                        android:id="@+id/airsz"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Bowling"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#fff" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center">
-
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Cafe"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#fff" />
-                </LinearLayout>
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:gravity="center">
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/camp"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:background="@null"
-                        android:src="@drawable/buttoncamp"
-
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/casino"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-
-                        android:background="@null"
-                        android:src="@drawable/buttoncasino" />
-                </LinearLayout>
+                <ImageButton
+                    android:background="@null"
+                    android:src="@drawable/buttoncafe"
+                    android:id="@+id/cafe"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp" />
+                    </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
-
+                android:orientation="horizontal" >
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/pett"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:text="Camp"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#fff" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#fff"
+                    android:text="Bowling"
+                    android:id="@+id/airsz"/>
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/buszs"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-
-                        android:text="Casino"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#fff" />
-                </LinearLayout>
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Cafe"
+                    android:textColor="#fff"
+                    android:id="@+id/textView"/>
+                        </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:gravity="center"
-                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/club"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
 
-                        android:background="@null"
-                        android:src="@drawable/buttonclub" />
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/gallery"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-
-                        android:background="@null"
-                        android:src="@drawable/buttongallery" />
-                </LinearLayout>
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="50dp">
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -357,16 +231,13 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/clubb"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:text="Club"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#fff" />
-                </LinearLayout>
+                <ImageButton
+                    android:background="@null"
+                    android:src="@drawable/buttoncamp"
+                    android:id="@+id/camp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"/>
+                    </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -374,188 +245,35 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/galleryy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:text="Gallery"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#fff" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/mall"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-
-                        android:background="@null"
-                        android:src="@drawable/buttonmall" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/museum"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-
-                        android:background="@null"
-                        android:src="@drawable/buttonmuseum"></ImageButton>
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/clothing"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:text=" Mall"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#fff" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/dept"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Museum"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#fff" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/park"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-
-                        android:background="@null"
-                        android:src="@drawable/buttonpark" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/spa"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-
-                        android:background="@null"
-                        android:src="@drawable/buttonspa" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/parkk"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:text="Park"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#fff" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/spaa"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:text="Spa"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#fff" />
-                </LinearLayout>
+                <ImageButton
+                    android:background="@null"
+                    android:src="@drawable/buttoncasino"
+                    android:id="@+id/casino"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"/>
+                    </LinearLayout>
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal" >
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Camp"
+                    android:textColor="#fff"
+                    android:id="@+id/pett"/>
+                    </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -563,15 +281,22 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Casino"
+                    android:textColor="#fff"
+                    android:id="@+id/buszs"/>
+                    </LinearLayout>
+            </LinearLayout>
 
-                    <ImageButton
-                        android:id="@+id/stadium"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-
-                        android:background="@null"
-                        android:src="@drawable/buttonstadium" />
-                </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="50dp">
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -579,15 +304,247 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="horizontal">
+                <ImageButton
+                    android:id="@+id/club"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:background= "@null"
+                    android:src="@drawable/buttonclub"/>
+                    </LinearLayout>
 
-                    <ImageButton
-                        android:id="@+id/zoo"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                <ImageButton
+                    android:background="@null"
+                    android:src="@drawable/buttongallery"
+                    android:id="@+id/gallery"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"/>
+                    </LinearLayout>
+            </LinearLayout>
 
-                        android:background="@null"
-                        android:src="@drawable/buttonzoo" />
-                </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                <TextView
+                    android:textColor="#fff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Club"
+                    android:id="@+id/clubb"/>
+                    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                <TextView
+                    android:textColor="#fff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Gallery"
+                    android:id="@+id/galleryy"/>
+                    </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="50dp">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                <ImageButton
+                    android:background="@null"
+                    android:src="@drawable/buttonmall"
+                    android:id="@+id/mall"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"/>
+                    </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                <ImageButton
+                    android:background="@null"
+                    android:src="@drawable/buttonmuseum"
+                    android:id="@+id/museum"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"/>
+                    </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                <TextView
+                    android:textColor="#fff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Mall"
+                    android:id="@+id/clothing"/>
+                    </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                <TextView
+                    android:textColor="#fff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Museum"
+                    android:id="@+id/dept"/>
+                    </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="50dp">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                <ImageButton
+                    android:background="@null"
+                    android:src="@drawable/buttonpark"
+                    android:id="@+id/park"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"/>
+                    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                <ImageButton
+                    android:background="@null"
+                    android:src="@drawable/buttonspa"
+                    android:id="@+id/spa"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"/>
+                    </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                <TextView
+                    android:textColor="#fff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Park"
+                    android:id="@+id/parkk"/>
+                    </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                <TextView
+                    android:textColor="#fff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Spa"
+                    android:id="@+id/spaa"/>
+                    </LinearLayout>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="50dp">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                <ImageButton
+                    android:background="@null"
+                    android:src="@drawable/buttonstadium"
+                    android:id="@+id/stadium"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"/>
+                    </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                <ImageButton
+                    android:background="@null"
+                    android:src="@drawable/buttonzoo"
+                    android:id="@+id/zoo"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"/>
+                    </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -602,36 +559,29 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/stadiumm"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:text="Stadium"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#fff" />
-                </LinearLayout>
-
+                <TextView
+                    android:textColor="#fff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Stadium"
+                    android:id="@+id/stadiumm"/>
+                    </LinearLayout>
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/zoop"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:text="Zoo"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="#fff" />
-                </LinearLayout>
+                <TextView
+                    android:textColor="#fff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Zoo"
+                    android:id="@+id/zoop"/>
+                    </LinearLayout>
             </LinearLayout>
-
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
