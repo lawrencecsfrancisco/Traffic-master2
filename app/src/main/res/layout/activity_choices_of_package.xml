@@ -33,7 +33,7 @@
             android:layout_marginTop="6dp"
             android:contentDescription="@null"
             android:orientation="vertical"
-            app:canExpand="">
+            app:canExpand="true">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
