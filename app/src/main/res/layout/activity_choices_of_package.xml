@@ -42,8 +42,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/p1_desc"
-                    android:textColor="#000"
-                    android:textSize="15dp" />
+                    android:textColor="#383732"
+                    android:textStyle='bold'
+                    android:textSize="12dp" />
             </LinearLayout>
 
             <HorizontalScrollView
@@ -224,8 +225,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@string/p2_desc"
-                        android:textColor="#000"
-                        android:textSize="15dp" />
+                        android:textColor="#383732"
+                        android:textStyle='bold'
+                        android:textSize="12dp" />
                 </LinearLayout>
 
                 <HorizontalScrollView
@@ -408,8 +410,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@string/p3_desc"
-                        android:textColor="#000"
-                        android:textSize="15dp" />
+                        android:textColor="#383732"
+                        android:textStyle='bold'
+                        android:textSize="12dp" />
                 </LinearLayout>
 
                 <HorizontalScrollView
@@ -589,8 +592,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@string/p4_desc"
-                        android:textColor="#000"
-                        android:textSize="15dp" />
+                        android:textColor="#383732"
+                        android:textStyle='bold'
+                        android:textSize="12dp" />
                 </LinearLayout>
 
                 <HorizontalScrollView
@@ -773,8 +777,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@string/p5_desc"
-                        android:textColor="#000"
-                        android:textSize="15dp" />
+                        android:textColor="#383732"
+                        android:textStyle='bold'
+                        android:textSize="12dp" />
                 </LinearLayout>
 
                 <HorizontalScrollView
