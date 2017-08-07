@@ -139,7 +139,7 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="20dp"
                     android:paddingEnd="20dp"
-                    android:textStyle="bold"
+                    android:textStyle="bold" android:textColor="#383732"
                     android:paddingStart="20dp"
                     android:paddingTop="10dp"
                     android:text="@string/duration11"/>
@@ -310,6 +310,7 @@
                         android:paddingBottom="20dp"
                         android:paddingEnd="20dp"
                         android:textStyle="bold"
+                         android:textColor="#383732"
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:text="@string/duration2"/><!--android:id="@+id/subdes" -->
@@ -483,6 +484,7 @@
                         android:paddingEnd="20dp"
                         android:textStyle="bold"
                         android:paddingStart="20dp"
+                         android:textColor="#383732"
                         android:paddingTop="10dp"
                         android:text="@string/duration3"/><!--android:id="@+id/subdes" -->
                 </LinearLayout>
@@ -651,6 +653,7 @@
                         android:paddingBottom="20dp"
                         android:paddingEnd="20dp"
                         android:textStyle="bold"
+                         android:textColor="#383732"
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:text="@string/duration4"/><!--android:id="@+id/subdes" -->
@@ -827,6 +830,7 @@
                         android:textStyle="bold"
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
+                         android:textColor="#383732"
                         android:text="@string/duration5"/><!--android:id="@+id/subdes" -->
                 </LinearLayout>
                 <LinearLayout
