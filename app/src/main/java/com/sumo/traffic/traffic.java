@@ -114,6 +114,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ThreadFactory;
 
 import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
@@ -379,7 +380,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         if (TemplateOrChoices.packages == 1) {
             fab2.setLabelText("Destinations");
 
-
         } else if (TemplateOrChoices.packages == 0) {
             fab2.setLabelText("Destinations");
             fab4.setVisibility(View.GONE);
@@ -388,20 +388,21 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if (TemplateOrChoices.packages == 1) {
-                    if (packs == 1) {
+                    if (ChoicesOfPackage.packs == 1) {
                         Intent i = new Intent(traffic.this, bestplaces_package1.class);
                         startActivity(i);
-                    } else if (packs == 2) {
+                    } else if (ChoicesOfPackage.packs == 2) {
                         Intent i = new Intent(traffic.this, bestplaces_package2.class);
                         startActivity(i);
-                    } else if (packs == 3) {
+                    } else if (ChoicesOfPackage.packs == 3) {
                         Intent i = new Intent(traffic.this, bestplaces_package3.class);
                         startActivity(i);
-                    } else if (packs == 4) {
+                    } else if (ChoicesOfPackage.packs == 4) {
                         Intent i = new Intent(traffic.this, bestplaces_package4.class);
                         startActivity(i);
-                    } else if (packs == 5) {
+                    } else if (ChoicesOfPackage.packs == 5) {
                         Intent i = new Intent(traffic.this, bestplaces_package5.class);
                         startActivity(i);
                     }
@@ -632,7 +633,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
         } else if (ChoicesOfPackage.packs == 2) {
 
-
+            ateneogallery();
             santamaria();
             balara();
             uptc();
@@ -651,7 +652,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         } else if (ChoicesOfPackage.packs == 4) {
 
 
-
             rita();
             wildlife();
             bantayog();
@@ -660,17 +660,17 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
         } else if (ChoicesOfPackage.packs == 5) {
 
-
-            pagasa();
-            maginhawa();
-            ArtInIsland();
+            kamalig();
+            armedforces();
+            mystery();
             monasterio();
+            fernwood();
 
 
         }
 
 
-        for (int i = 0; i < multipleHours.length; i++) {
+       /* for (int i = 0; i < multipleHours.length; i++) {
             int notificationId = (alarmIndex >= 0) ? alarmIndex : alarmClocks.size();
             HashMap<String, String> alarm = new HashMap<>();
             alarm.put(ApplicationConstants._ID, String.valueOf(notificationId));
@@ -680,7 +680,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             alarm.put(ApplicationConstants.DESTINATION, String.valueOf(multipleDestinations[i]));
             alarmClocks.add(alarm);
             setAlarm(multipleHours[i], multipleMinutes[i], notificationId, multipleReminders[i], multipleDestinations[i]);
-        }
+        }*/
 
 
     }
@@ -999,6 +999,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
     public void replot() {
 
+
         //add markers back
         mMap.clear();
         // lister.clear();
@@ -1042,6 +1043,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
             connectAsyncTask3 downloadTask2 = new connectAsyncTask3(url, this, false);
             downloadTask2.execute();
+            //   Thread.sleep(7000);
 
 
         } catch (Exception e) {
@@ -1781,8 +1783,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     public void selected() {
 
 
-
-
         if (InfoOfArt.select == 1) {
             if (art == 0) {
 
@@ -1793,13 +1793,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
             }
         }
-
-
-
-
-
-
-
 
 
         if (InfoOfMaginhawa.select == 1) {
@@ -1894,8 +1887,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         }
 
 
-
-
         if (InfoOfEdsa.select == 1) {
 
             if (edsa == 0) {
@@ -1941,8 +1932,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         }
 
 
-
-
         if (InfoOfWatershed.select == 1) {
 
 
@@ -1967,13 +1956,10 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         }
 
 
-
-
         Toast.makeText(getApplicationContext(), "Place Updated!", Toast.LENGTH_LONG).show();
 
 
     }
-
 
 
     public void destinationclear(View view) {
@@ -2295,13 +2281,14 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
     }
 
-    public void intramuros() {
+
+    public void armedforces() {
 
 
         Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();
 
-        double wa = 14.5896;
-        double we = 120.9747;
+        double wa = 14.6110;
+        double we = 121.0619;
 
         LatLng was = new LatLng(wa, we);
 
@@ -2309,166 +2296,8 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         MarkerOptions markerOptions = new MarkerOptions()
                 .position(was)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.placesz))
-                .title("Destination " + mList.size())
-                .anchor(0.5f, 1);
-
-
-        points.add(was);
-
-
-        markers.add(mMap.addMarker(markerOptions));
-
-        //EXTRA CODES
-        mList.add(markerOptions);
-
-        distances.add(new String("0"));
-        durations.add(new String("0"));
-        reminders.add(new String(""));
-        timestoStay.add(new String(""));
-        mins.add(new String(""));
-
-        String url = null;
-        try {
-            url = makeURL3();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-/*
-
-        pointview.setVisibility(View.VISIBLE);
-        durationview.setVisibility(View.VISIBLE);
-        distanceview.setVisibility(View.VISIBLE);
-*/
-
-        connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
-        downloadTask2.execute();
-
-
-    }
-
-
-    public void manila() {
-
-
-        Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();
-
-        double wa = 14.5915;
-        double we = 120.9736;
-
-        LatLng was = new LatLng(wa, we);
-
-
-        MarkerOptions markerOptions = new MarkerOptions()
-                .position(was)
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.placesz))
-                .title("Destination " + mList.size())
-                .anchor(0.5f, 1);
-
-
-        points.add(was);
-
-
-        markers.add(mMap.addMarker(markerOptions));
-
-        //EXTRA CODES
-        mList.add(markerOptions);
-
-        distances.add(new String("0"));
-        durations.add(new String("0"));
-        reminders.add(new String(""));
-        timestoStay.add(new String(""));
-        mins.add(new String(""));
-
-        String url = null;
-        try {
-            url = makeURL3();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-/*
-
-        pointview.setVisibility(View.VISIBLE);
-        durationview.setVisibility(View.VISIBLE);
-        distanceview.setVisibility(View.VISIBLE);
-*/
-
-        connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
-        downloadTask2.execute();
-
-
-    }
-
-
-    public void casa() {
-
-
-        Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();
-
-        double wa = 14.591496;
-        double we = 120.9794;
-
-        LatLng was = new LatLng(wa, we);
-
-
-        MarkerOptions markerOptions = new MarkerOptions()
-                .position(was)
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.placesz))
-                .title("Destination " + mList.size())
-                .anchor(0.5f, 1);
-
-
-        points.add(was);
-
-
-        markers.add(mMap.addMarker(markerOptions));
-
-        //EXTRA CODES
-        mList.add(markerOptions);
-
-        distances.add(new String("0"));
-        durations.add(new String("0"));
-        reminders.add(new String(""));
-        timestoStay.add(new String(""));
-        mins.add(new String(""));
-
-        String url = null;
-        try {
-            url = makeURL3();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-/*
-
-        pointview.setVisibility(View.VISIBLE);
-        durationview.setVisibility(View.VISIBLE);
-        distanceview.setVisibility(View.VISIBLE);
-*/
-
-        connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
-        downloadTask2.execute();
-
-
-    }
-
-
-    public void luneta() {
-
-
-        Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();
-
-        double wa = 14.5831;
-        double we = 120.9794;
-
-        LatLng was = new LatLng(wa, we);
-
-
-        MarkerOptions markerOptions = new MarkerOptions()
-                .position(was)
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.placesz))
-                .title("Destination " + mList.size())
+                .title("Armed Forces of the Philippines Museum")
+                .snippet("placeId:" + "ChIJK725zei3lzMRdjehQsQsUKw")
                 .anchor(0.5f, 1);
 
 
@@ -3264,7 +3093,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         MarkerOptions markerOptions = new MarkerOptions()
                 .position(was)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.placesz))
-                .title("Destination " + mList.size())
+                .title("UP Town Center")
                 .snippet("placeId:" + "ChIJHao_OWO3lzMRjOuMs_XND84")
                 .anchor(0.5f, 1);
 
@@ -3571,123 +3400,10 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
     }
 
-    public void streat() {
-
-
-        Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();
-
-        double wa = 14.6467;
-        double we = 121.0588;
-
-        LatLng was = new LatLng(wa, we);
-
-
-        MarkerOptions markerOptions = new MarkerOptions()
-                .position(was)
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.placesz))
-                .title("Maginhawa Streat")
-                .snippet("placeId:" + "ChIJLyKHcHO3lzMRkPD3eaV8zo4")
-                .anchor(0.5f, 1);
-
-
-        points.add(was);
-
-
-        markers.add(mMap.addMarker(markerOptions));
-
-        //EXTRA CODES
-        mList.add(markerOptions);
-
-        distances.add(new String("0"));
-        durations.add(new String("0"));
-        reminders.add(new String(""));
-        timestoStay.add(new String(""));
-        mins.add(new String(""));
-        String url = null;
-        try {
-            url = makeURL3();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-/*
-
-        pointview.setVisibility(View.VISIBLE);
-        durationview.setVisibility(View.VISIBLE);
-        distanceview.setVisibility(View.VISIBLE);
-*/
-
-        connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
-        downloadTask2.execute();
-
-
-    }
-
-    public void WildLife() {
-
-
-        Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();
-
-        double wa = 14.6509;
-        double we = 121.0440;
-
-        LatLng was = new LatLng(wa, we);
-
-
-        MarkerOptions markerOptions = new MarkerOptions()
-                .position(was)
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.placesz))
-                .title("Destination " + mList.size())
-                .anchor(0.5f, 1);
-
-
-        points.add(was);
-
-
-        markers.add(mMap.addMarker(markerOptions));
-
-        //EXTRA CODES
-        mList.add(markerOptions);
-
-        distances.add(new String("0"));
-        durations.add(new String("0"));
-        reminders.add(new String(""));
-        timestoStay.add(new String(""));
-        mins.add(new String(""));
-
-        String url = null;
-        try {
-            url = makeURL3();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-/*
-
-        pointview.setVisibility(View.VISIBLE);
-        durationview.setVisibility(View.VISIBLE);
-        distanceview.setVisibility(View.VISIBLE);
-*/
-
-        connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
-        downloadTask2.execute();
-
-
-    }
 
     public void MemorialCircle() {
 
-   /*     if (TemplateOrChoices.packages == 1) {
-            int notificationId = (alarmIndex >= 0) ? alarmIndex : alarmClocks.size();
-            HashMap<String, String> alarm = new HashMap<>();
-            alarm.put(ApplicationConstants._ID, String.valueOf(notificationId));
-            alarm.put(ApplicationConstants.HOUR, "00");
-            alarm.put(ApplicationConstants.MINUTE, "00");
-            alarm.put(ApplicationConstants.REMINDER, "Destination Notification");
-            alarm.put(ApplicationConstants.DESTINATION, "Destination");
-            alarmClocks.add(alarm);
 
-        }*/
         Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();
 
         double wa = 14.6516;
@@ -3735,14 +3451,179 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         // downloadTask2.execute();
 
         connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
-        if (downloadTask2.getStatus().equals(AsyncTask.Status.PENDING)) {
-            downloadTask2.execute();
-        } else if (downloadTask2.getStatus().equals(AsyncTask.Status.FINISHED)) {
-            selected();
-        }
+        downloadTask2.execute();
 
 
     }
+
+
+    public void mystery() {
+
+
+        Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();
+
+        double wa = 14.6063;
+        double we = 121.0787;
+
+        LatLng was = new LatLng(wa, we);
+
+
+        MarkerOptions markerOptions = new MarkerOptions()
+                .position(was)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.placesz))
+                .title("Mystery Manila")
+                .snippet("placeId:" + "ChIJ3bGhD_i3lzMROoN7udn8v30")
+                .anchor(0.5f, 1);
+
+
+        points.add(was);
+
+
+        markers.add(mMap.addMarker(markerOptions));
+        markerino.add(mMap.addMarker(markerOptions));
+        //EXTRA CODES
+        mList.add(markerOptions);
+
+        distances.add(new String("0"));
+        durations.add(new String("0"));
+        reminders.add(new String(""));
+        timestoStay.add(new String(""));
+        mins.add(new String(""));
+
+        String url = null;
+        try {
+            url = makeURL3();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+
+/*        pointview.setVisibility(View.VISIBLE);
+        durationview.setVisibility(View.VISIBLE);
+        distanceview.setVisibility(View.VISIBLE);*/
+
+
+        //connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
+        // downloadTask2.execute();
+
+        connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
+        downloadTask2.execute();
+
+
+    }
+
+
+    public void kamalig() {
+
+
+        Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();
+
+        double wa = 14.6192;
+        double we = 121.0564;
+
+        LatLng was = new LatLng(wa, we);
+
+
+        MarkerOptions markerOptions = new MarkerOptions()
+                .position(was)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.placesz))
+                .title("Sining Kamalig")
+                .snippet("placeId:" + "ChIJ3xrTH8C3lzMReJnE6215ffA")
+                .anchor(0.5f, 1);
+
+
+        points.add(was);
+
+
+        markers.add(mMap.addMarker(markerOptions));
+        markerino.add(mMap.addMarker(markerOptions));
+        //EXTRA CODES
+        mList.add(markerOptions);
+
+        distances.add(new String("0"));
+        durations.add(new String("0"));
+        reminders.add(new String(""));
+        timestoStay.add(new String(""));
+        mins.add(new String(""));
+
+        String url = null;
+        try {
+            url = makeURL3();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+
+/*        pointview.setVisibility(View.VISIBLE);
+        durationview.setVisibility(View.VISIBLE);
+        distanceview.setVisibility(View.VISIBLE);*/
+
+
+        //connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
+        // downloadTask2.execute();
+
+        connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
+        downloadTask2.execute();
+
+
+    }
+
+
+    public void fernwood() {
+
+
+        Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();
+
+        double wa = 14.6690;
+        double we = 121.0481;
+
+        LatLng was = new LatLng(wa, we);
+
+
+        MarkerOptions markerOptions = new MarkerOptions()
+                .position(was)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.placesz))
+                .title("Fernwood Gardens")
+                .snippet("placeId:" + "ChIJ5222gju3lzMRTgrD9gxfVko")
+                .anchor(0.5f, 1);
+
+
+        points.add(was);
+
+
+        markers.add(mMap.addMarker(markerOptions));
+        markerino.add(mMap.addMarker(markerOptions));
+        //EXTRA CODES
+        mList.add(markerOptions);
+
+        distances.add(new String("0"));
+        durations.add(new String("0"));
+        reminders.add(new String(""));
+        timestoStay.add(new String(""));
+        mins.add(new String(""));
+
+        String url = null;
+        try {
+            url = makeURL3();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+
+/*        pointview.setVisibility(View.VISIBLE);
+        durationview.setVisibility(View.VISIBLE);
+        distanceview.setVisibility(View.VISIBLE);*/
+
+
+        //connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
+        // downloadTask2.execute();
+
+        connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
+        downloadTask2.execute();
+
+
+    }
+
 
     public void q1() {
         String[] multipleHours = {"9", "11", "13", "14", "15", "17", "18"}; //store here the hours for every alarm you want to set
@@ -3790,19 +3671,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
     public void ArtInIsland() {
 
-   /*     if (TemplateOrChoices.packages == 1) {
-            int notificationId = (alarmIndex >= 0) ? alarmIndex : alarmClocks.size();
-            HashMap<String, String> alarm = new HashMap<>();
-            alarm.put(ApplicationConstants._ID, String.valueOf(notificationId));
-            alarm.put(ApplicationConstants.HOUR, "00");
-            alarm.put(ApplicationConstants.MINUTE, "00");
-            alarm.put(ApplicationConstants.REMINDER, "Destination Notification");
-            alarm.put(ApplicationConstants.DESTINATION, "Destination");
-            alarmClocks.add(alarm);
-
-        }
-*/
-    /*    Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();*/
 
         double wa = 14.6228;
         double we = 121.0581;
@@ -3956,6 +3824,8 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     double oldLat = 0.0;
     double oldLon = 0.0;
     CameraPosition cameraPosition;
+    int exisitingx;
+    Marker m;
 
     @Override
     public void onLocationChanged(Location location) {
@@ -3963,12 +3833,10 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         latitude = location.getLatitude();
         longitude = location.getLongitude();
         latLng = new LatLng(location.getLatitude(), location.getLongitude());
-        Location speedofuse = new Location("");
+
 
         getspeed(location);
 
-
-        Log.d("speedofuser", "" + speedofuser);
 
         Log.d("asd123,lat", "" + latitude);
         Log.d("asd123,long", "" + longitude);
@@ -4013,7 +3881,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.kikomarke1r11))
                     .anchor(0.5f, 1);
 
-            Marker m = mMap.addMarker(markerOptions);
+            m = mMap.addMarker(markerOptions);
             getplaces();
 
             markers.add(m);
@@ -4040,7 +3908,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
 
         if (driving == 1) {
-
+            m.remove();
             mCurrLocationMarker = mMap.addMarker(new MarkerOptions()
                     .position(latLng)
                     .flat(true)
@@ -4085,6 +3953,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
         if (!elatz.isEmpty() && !elongz.isEmpty()) {
             if (mList.size() > 1) {
+
 
                 Location user = new Location("");
                 user.setLatitude(latitude);

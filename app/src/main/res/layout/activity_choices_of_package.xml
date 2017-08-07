@@ -43,7 +43,7 @@
                     android:layout_height="match_parent"
                     android:text="@string/p1_desc"
                     android:textColor="#000"
-                    android:textSize="10dp" />
+                    android:textSize="15dp" />
             </LinearLayout>
 
             <HorizontalScrollView
@@ -134,15 +134,18 @@
                     android:paddingStart="20dp"
                     android:paddingTop="10dp"
                     android:text="@string/desc_artin" />
-                  <TextView
+
+                <TextView
+                    android:id="@+id/textView27"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="20dp"
                     android:paddingEnd="20dp"
-                    android:textStyle="bold"
                     android:paddingStart="20dp"
                     android:paddingTop="10dp"
-                    android:text="@string/duration11"/>
+                    android:text="@string/duration11"
+                    android:textColor="#383732"
+                    android:textStyle="bold" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -199,7 +202,7 @@
                         android:layout_height="match_parent"
                         android:text="@string/p2_desc"
                         android:textColor="#000"
-                        android:textSize="10dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <HorizontalScrollView
@@ -303,13 +306,14 @@
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:textColor="#383732"
-                        android:text="@string/desc_balara" /> 
-                     <TextView
+                        android:text="@string/desc_balara" />
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="20dp"
                         android:paddingEnd="20dp"
                         android:textStyle="bold"
+                        android:textColor="#383732"
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:text="@string/duration2"/><!--android:id="@+id/subdes" -->
@@ -371,7 +375,7 @@
                         android:layout_height="match_parent"
                         android:text="@string/p3_desc"
                         android:textColor="#000"
-                        android:textSize="10dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <HorizontalScrollView
@@ -475,14 +479,15 @@
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:textColor="#383732"
-                        android:text="@string/desc_edsa" /> 
-                     <TextView
+                        android:text="@string/desc_edsa" />
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="20dp"
                         android:paddingEnd="20dp"
                         android:textStyle="bold"
                         android:paddingStart="20dp"
+                        android:textColor="#383732"
                         android:paddingTop="10dp"
                         android:text="@string/duration3"/><!--android:id="@+id/subdes" -->
                 </LinearLayout>
@@ -540,7 +545,7 @@
                         android:layout_height="match_parent"
                         android:text="@string/p4_desc"
                         android:textColor="#000"
-                        android:textSize="10dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <HorizontalScrollView
@@ -644,13 +649,14 @@
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:textColor="#383732"
-                        android:text="@string/desc_bayani" /> 
-                     <TextView
+                        android:text="@string/desc_bayani" />
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="20dp"
                         android:paddingEnd="20dp"
                         android:textStyle="bold"
+                        android:textColor="#383732"
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:text="@string/duration4"/><!--android:id="@+id/subdes" -->
@@ -709,7 +715,7 @@
                         android:layout_height="match_parent"
                         android:text="@string/p5_desc"
                         android:textColor="#000"
-                        android:textSize="10dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <HorizontalScrollView
@@ -818,8 +824,8 @@
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:textColor="#383732"
-                        android:text="@string/desc_sining" /> 
-                     <TextView
+                        android:text="@string/desc_sining" />
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="20dp"
@@ -827,6 +833,7 @@
                         android:textStyle="bold"
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
+                        android:textColor="#383732"
                         android:text="@string/duration5"/><!--android:id="@+id/subdes" -->
                 </LinearLayout>
                 <LinearLayout
