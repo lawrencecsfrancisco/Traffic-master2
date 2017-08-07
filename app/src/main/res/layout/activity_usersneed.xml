@@ -16,7 +16,7 @@
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:weightSum="1">
@@ -26,13 +26,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_weight="0.40"
+                android:gravity="center"
                 android:weightSum="1">
 
                 <ImageButton
                     android:id="@+id/button1"
-                    android:layout_width="72dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                 android:src="@drawable/prev"
+                    android:src="@drawable/prev"
                     android:background="#2a873e"
                     android:onClick="prev" />
 
@@ -42,6 +43,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="User&apos;s Need"
+                    android:layout_marginTop="15dp"
                     android:id="@+id/transpo"
                     android:textSize ="25dp"/>
 
@@ -51,7 +53,6 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/next"
                     android:background="#2a873e"
-                    android:layout_marginLeft="10dp"
                     android:onClick="next" />
             </LinearLayout>
 
