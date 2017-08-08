@@ -164,17 +164,13 @@ public class poppers extends AppCompatActivity {
                 fx = Integer.parseInt(test);
             }
 
-            if (hours > 0 )
-            {
-                if (hours > 12)
-                {
+            if (hours > 0) {
+                if (hours > 12) {
 
                     hours = (hours - 12) * 60;
 
                     min = hours;
-                }
-                else
-                {
+                } else {
                     hours = hours * 60;
 
                     min = hours;
@@ -216,9 +212,17 @@ public class poppers extends AppCompatActivity {
 
                         Date x = calendar3.getTime();
 
+                    /*    int z = );
+                        if (z == 0)
+                        {
+                            Toast.makeText(this, "MAY KAPAREHO!!", Toast.LENGTH_SHORT).show();
+                        }
+*/
 
-                        if (x.after(calendar1.getTime()) && x.before(calendar2.getTime())) {
 
+                        if (x.after(calendar1.getTime()) && x.before(calendar2.getTime())    || x.compareTo(calendar2.getTime())==0
+                                ) {
+                            Toast.makeText(this, "MAY KAPAREHO!!", Toast.LENGTH_SHORT).show();
                             mayexisting = 1;
 
                         } else {
