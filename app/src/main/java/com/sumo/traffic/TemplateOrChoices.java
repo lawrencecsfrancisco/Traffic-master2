@@ -212,14 +212,14 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
                 break;
 
             case "1":
-                Toast.makeText(this, "Test Destination", Toast.LENGTH_SHORT).show();
+
                 if (tilesContainer.getChildAt(1).getLayoutParams().height != firstChildHeight) {
                     downToUpScroll(HelperView.getCurrentView(), HelperView.getFollowingView());
                 }
                 break;
 
             case "2":
-                Toast.makeText(this, "Test Creator", Toast.LENGTH_SHORT).show();
+
                 if (tilesContainer.getChildAt(2).getLayoutParams().height != firstChildHeight) {
                     downToUpScroll(HelperView.getCurrentView(), HelperView.getFollowingView());
                 }

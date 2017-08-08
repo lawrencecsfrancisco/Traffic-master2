@@ -626,9 +626,11 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
 
             ArtInIsland();
-            domingo();
             qcx();
             circleoffun();
+            domingo();
+            amoranto();
+
 
 
         } else if (ChoicesOfPackage.packs == 2) {
@@ -2564,7 +2566,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                 .position(was)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.placesz))
                 .title("Pagasa Planetarium")
-                .snippet("placeId:" + "ChIJjZ0Jtga3lzMRD6aUuSpC_-g")
+                .snippet("placeId:" + "ChIJn9JPuQe3lzMRn3Wi8utObiI")
                 .anchor(0.5f, 1);
 
 
@@ -3625,6 +3627,63 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     }
 
 
+    public void amoranto() {
+
+
+        Toast.makeText(getApplicationContext(), loadingToasts[mList.size() - 1], Toast.LENGTH_LONG).show();
+
+        double wa = 14.6300;
+        double we = 121.0231;
+
+        LatLng was = new LatLng(wa, we);
+
+
+        MarkerOptions markerOptions = new MarkerOptions()
+                .position(was)
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.placesz))
+                .title("Amoranto Sports Complex")
+                .snippet("placeId:" + "ChIJsZziyUi2lzMR3jzSSV_20S0")
+                .anchor(0.5f, 1);
+
+
+        points.add(was);
+
+
+        markers.add(mMap.addMarker(markerOptions));
+        markerino.add(mMap.addMarker(markerOptions));
+        //EXTRA CODES
+        mList.add(markerOptions);
+
+        distances.add(new String("0"));
+        durations.add(new String("0"));
+        reminders.add(new String(""));
+        timestoStay.add(new String(""));
+        mins.add(new String(""));
+
+        String url = null;
+        try {
+            url = makeURL3();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+
+/*        pointview.setVisibility(View.VISIBLE);
+        durationview.setVisibility(View.VISIBLE);
+        distanceview.setVisibility(View.VISIBLE);*/
+
+
+        //connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
+        // downloadTask2.execute();
+
+        connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, this, true);
+        downloadTask2.execute();
+
+
+    }
+
+
+
     public void q1() {
         String[] multipleHours = {"9", "11", "13", "14", "15", "17", "18"}; //store here the hours for every alarm you want to set
         String[] multipleMinutes = {"45", "0", "0", "0", "45", "0", "45"}; //store here the minutes
@@ -3987,7 +4046,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                 Log.d("asd123,latskanto", "" + elatz.get(0));
                 Log.d("asd123,longskanto", "" + elongz.get(0));
             }
-            if (kantolayo < 15) {
+            if (kantolayo < 8) {
 
 
                 replot();
