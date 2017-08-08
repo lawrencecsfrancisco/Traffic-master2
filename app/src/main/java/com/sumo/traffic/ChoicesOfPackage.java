@@ -103,7 +103,8 @@ static int packs;
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_2), R.string.qch, R.string.desc_heritage, R.string._, R.string._, R.string._, R.string._, R.string._, R.string._, R.string._, R.string._);
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_3), R.string.qmx, R.string.desc_qmx, R.string._, R.string._, R.string._, R.string._, R.string._, R.string._, R.string._, R.string._);
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_4), R.string.cof, R.string.desc_cof, R.string._, R.string._, R.string._, R.string._, R.string._, R.string._, R.string._, R.string._);
-
+        bindCompoundListener((CompoundLayout) findViewById(R.id.profile_25), R.string.amoranto, R.string.desc_amoranto, R.string._, R.string._, R.string._, R.string._, R.string._, R.string._, R.string._, R.string._);
+        
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_5), R.string._, R.string._, R.string.balara, R.string.desc_balara, R.string._, R.string._, R.string._, R.string._, R.string._, R.string._);
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_2), R.string._, R.string._, R.string.qch, R.string.desc_heritage, R.string._, R.string._, R.string._, R.string._, R.string._, R.string._);
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_6), R.string._, R.string._, R.string.uptown, R.string.desc_uptown, R.string._, R.string._, R.string._, R.string._, R.string._, R.string._);
