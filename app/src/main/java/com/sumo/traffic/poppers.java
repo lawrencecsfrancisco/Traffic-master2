@@ -222,7 +222,7 @@ public class poppers extends AppCompatActivity {
 
                         if (x.after(calendar1.getTime()) && x.before(calendar2.getTime())    || x.compareTo(calendar2.getTime())==0
                                 ) {
-                            Toast.makeText(this, "MAY KAPAREHO!!", Toast.LENGTH_SHORT).show();
+
                             mayexisting = 1;
 
                         } else {

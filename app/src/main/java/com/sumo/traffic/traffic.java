@@ -364,6 +364,11 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         fab4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mMap.clear();
+                InitialListStaffs.clear();
+                ttsturns.clear();
+                elatz.clear();
+                elongz.clear();
                 Intent i = new Intent(traffic.this, ChoicesOfPackage.class);
                 startActivity(i);
                 finish();
@@ -3967,6 +3972,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
 
         if (driving == 1) {
+            mMap.setMyLocationEnabled(false);
             m.remove();
             mCurrLocationMarker = mMap.addMarker(new MarkerOptions()
                     .position(latLng)
@@ -3989,6 +3995,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             mCurrLocationMarker.setRotation(kantoliko);
 
         } else if (driving == 0) {
+            mMap.setMyLocationEnabled(true);
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             mMap.animateCamera(CameraUpdateFactory
                     .zoomTo(15)
@@ -4063,7 +4070,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
                         if (mList.size() > 1) {
                             if (emailnguser == "") {
-                                Toast.makeText(context, "No email", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Reaching your destination", Toast.LENGTH_SHORT).show();
                             } else {
                                 sendMessage();
                             }
