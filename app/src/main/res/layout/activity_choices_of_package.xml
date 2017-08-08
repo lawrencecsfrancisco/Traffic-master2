@@ -42,8 +42,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/p1_desc"
-                    android:textColor="#000"
-                    android:textSize="15dp" />
+                    android:textColor="#383732"
+                    android:textStyle='bold'
+                    android:textSize="12dp" />
             </LinearLayout>
 
             <HorizontalScrollView
@@ -53,57 +54,83 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:orientation="horizontal">
-                    <com.example.compoundlayout.RadioLayout
+                    <com.example.compoundlayout.CircleGradientRadioLayout
                         android:id="@+id/profile_1"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_margin="10dp"
                         android:elevation="2dp"
-                        app:checked="true">
+                        app:angle="45"
+                        app:checked="true"
+                        app:colorA="#AAFFA726"
+                        app:colorB="#AAEC407A">
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/baguhan_art" />
-                    </com.example.compoundlayout.RadioLayout>
+                    </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                    <com.example.compoundlayout.RadioLayout
+                    <com.example.compoundlayout.CircleGradientRadioLayout
                         android:id="@+id/profile_22"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_margin="10dp"
                         android:background="@drawable/rounded"
-                        android:elevation="2dp">
-                        <ImageView
+                        android:elevation="2dp"
+                        app:colorA="#AA42A5F5"
+                        app:colorB="#AAAB47BC">
+
+                    <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/baguhan_santo" />
-                    </com.example.compoundlayout.RadioLayout>
+                    </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                    <com.example.compoundlayout.RadioLayout
+                    <com.example.compoundlayout.CircleGradientRadioLayout
                         android:id="@+id/profile_3"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_margin="10dp"
                         android:background="@drawable/rounded"
-                        android:elevation="2dp">
+                        app:angle="45"
+                        app:colorA="#BBAB47BC"
+                        app:colorB="#BBEF5350">
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/baguhan_qmx" />
-                    </com.example.compoundlayout.RadioLayout>
+                    </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                    <com.example.compoundlayout.RadioLayout
+                    <com.example.compoundlayout.CircleGradientRadioLayout
                         android:id="@+id/profile_4"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_margin="10dp"
                         android:background="@drawable/rounded"
-                        android:elevation="2dp">
+                        app:angle="70"
+                        app:colorA="#00FFFFFF"
+                        app:colorB="#FF26C6DA">
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/baguhan_cof" />
-                    </com.example.compoundlayout.RadioLayout>
+                    </com.example.compoundlayout.CircleGradientRadioLayout>
+
+                    <com.example.compoundlayout.CircleGradientRadioLayout
+                        android:id="@+id/profile_25"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/rounded"
+                        android:elevation="2dp"
+                        app:colorA="#55EF5350"
+                        app:colorB="#88EC407A">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/baguhan_amoranto" />
+                    </com.example.compoundlayout.CircleGradientRadioLayout>
+
                 </com.example.compoundlayout.RadioLayoutGroup>
             </HorizontalScrollView>
 
@@ -134,18 +161,15 @@
                     android:paddingStart="20dp"
                     android:paddingTop="10dp"
                     android:text="@string/desc_artin" />
-
-                <TextView
-                    android:id="@+id/textView27"
+                  <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="20dp"
                     android:paddingEnd="20dp"
+                    android:textStyle="bold" android:textColor="#383732"
                     android:paddingStart="20dp"
                     android:paddingTop="10dp"
-                    android:text="@string/duration11"
-                    android:textColor="#383732"
-                    android:textStyle="bold" />
+                    android:text="@string/duration11"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -201,8 +225,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@string/p2_desc"
-                        android:textColor="#000"
-                        android:textSize="15dp" />
+                        android:textColor="#383732"
+                        android:textStyle='bold'
+                        android:textSize="12dp" />
                 </LinearLayout>
 
                 <HorizontalScrollView
@@ -212,71 +237,82 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:orientation="horizontal">
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_5"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:elevation="2dp"
-                            app:checked="true">
+                            app:angle="45"
+                            app:checked="true"
+                            app:colorA="#AAFFA726"
+                            app:colorB="#AAEC407A">
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_balara" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_2"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:background="@drawable/rounded"
-                            android:elevation="2dp">
+                            android:elevation="2dp"
+                            app:colorA="#AA42A5F5"
+                            app:colorB="#AAAB47BC">
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_heritage" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_6"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:background="@drawable/rounded"
-                            android:elevation="2dp">
+                            android:elevation="2dp"
+                            app:angle="70"
+                            app:colorA="#00FFFFFF"
+                            app:colorB="#FF26C6DA">
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_uptown" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_7"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:background="@drawable/rounded"
                             android:elevation="2dp"
-                            app:angle="45">
+                            app:colorA="#AA42A5F5"
+                            app:colorB="#AAAB47BC">
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_stamaria" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_8"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:background="@drawable/rounded"
-                            android:elevation="2dp">
+                            android:elevation="2dp"
+                            app:colorA="#55EF5350"
+                            app:colorB="#88EC407A">
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_ateneo" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
                     </com.example.compoundlayout.RadioLayoutGroup>
                 </HorizontalScrollView>
 
@@ -306,14 +342,14 @@
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:textColor="#383732"
-                        android:text="@string/desc_balara" />
-                    <TextView
+                        android:text="@string/desc_balara" /> 
+                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="20dp"
                         android:paddingEnd="20dp"
                         android:textStyle="bold"
-                        android:textColor="#383732"
+                         android:textColor="#383732"
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:text="@string/duration2"/><!--android:id="@+id/subdes" -->
@@ -374,8 +410,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@string/p3_desc"
-                        android:textColor="#000"
-                        android:textSize="15dp" />
+                        android:textColor="#383732"
+                        android:textStyle='bold'
+                        android:textSize="12dp" />
                 </LinearLayout>
 
                 <HorizontalScrollView
@@ -386,70 +423,81 @@
                         android:layout_height="wrap_content"
                         app:orientation="horizontal">
 
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_9"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:elevation="2dp"
-                            app:checked="true">
+                            app:angle="45"
+                            app:checked="true"
+                            app:colorA="#AAFFA726"
+                            app:colorB="#AAEC407A">
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_edsa" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_10"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:background="@drawable/rounded"
-                            android:elevation="2dp">
+                            android:elevation="2dp"
+                            app:colorA="#AA42A5F5"
+                            app:colorB="#AAAB47BC">
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_maginhawa" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_11"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:background="@drawable/rounded"
-                            android:elevation="2dp">
+                            app:angle="45"
+                            app:colorA="#BBAB47BC"
+                            app:colorB="#BBEF5350">
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_gesu" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_12"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:background="@drawable/rounded"
-                            android:elevation="2dp">
+                            app:angle="70"
+                            app:colorA="#00FFFFFF"
+                            app:colorB="#FF26C6DA">
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_up" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_13"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:background="@drawable/rounded"
-                            android:elevation="2dp">
+                            android:elevation="2dp"
+                            app:colorA="#55EF5350"
+                            app:colorB="#88EC407A">
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/eastwood_baguhan" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
                     </com.example.compoundlayout.RadioLayoutGroup>
                 </HorizontalScrollView>
 
@@ -479,15 +527,15 @@
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:textColor="#383732"
-                        android:text="@string/desc_edsa" />
-                    <TextView
+                        android:text="@string/desc_edsa" /> 
+                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="20dp"
                         android:paddingEnd="20dp"
                         android:textStyle="bold"
                         android:paddingStart="20dp"
-                        android:textColor="#383732"
+                         android:textColor="#383732"
                         android:paddingTop="10dp"
                         android:text="@string/duration3"/><!--android:id="@+id/subdes" -->
                 </LinearLayout>
@@ -544,8 +592,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@string/p4_desc"
-                        android:textColor="#000"
-                        android:textSize="15dp" />
+                        android:textColor="#383732"
+                        android:textStyle='bold'
+                        android:textSize="12dp" />
                 </LinearLayout>
 
                 <HorizontalScrollView
@@ -555,70 +604,84 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:orientation="horizontal">
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_14"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:elevation="2dp"
-                            app:checked="true">
+                            app:angle="45"
+                            app:checked="true"
+                            app:colorA="#AAFFA726"
+                            app:colorB="#AAEC407A">
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_bayani" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_15"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:background="@drawable/rounded"
-                            android:elevation="2dp">
+                            android:elevation="2dp"
+                            app:colorA="#AA42A5F5"
+                            app:colorB="#AAAB47BC">
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_zoo" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_16"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:background="@drawable/rounded"
-                            android:elevation="2dp">
+                            android:elevation="2dp"
+                            app:angle="45"
+                            app:colorA="#BBAB47BC"
+                            app:colorB="#BBEF5350">
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_starita" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_17"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:background="@drawable/rounded"
-                            android:elevation="2dp">
-                            <ImageView
+                            android:elevation="2dp"
+                            app:angle="70"
+                            app:colorA="#00FFFFFF"
+                            app:colorB="#FF26C6DA">
+
+                        <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_pagasa" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_23"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:background="@drawable/rounded"
-                            android:elevation="2dp">
+                            android:elevation="2dp"
+                            app:colorA="#55EF5350"
+                            app:colorB="#88EC407A">
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_cubao" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
                     </com.example.compoundlayout.RadioLayoutGroup>
                 </HorizontalScrollView>
 
@@ -649,14 +712,14 @@
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:textColor="#383732"
-                        android:text="@string/desc_bayani" />
-                    <TextView
+                        android:text="@string/desc_bayani" /> 
+                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="20dp"
                         android:paddingEnd="20dp"
                         android:textStyle="bold"
-                        android:textColor="#383732"
+                         android:textColor="#383732"
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:text="@string/duration4"/><!--android:id="@+id/subdes" -->
@@ -714,8 +777,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@string/p5_desc"
-                        android:textColor="#000"
-                        android:textSize="15dp" />
+                        android:textColor="#383732"
+                        android:textStyle='bold'
+                        android:textSize="12dp" />
                 </LinearLayout>
 
                 <HorizontalScrollView
@@ -725,73 +789,87 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:orientation="horizontal">
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_18"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:elevation="2dp"
-                            app:checked="true">
+                            app:angle="45"
+                            app:checked="true"
+                            app:colorA="#AAFFA726"
+                            app:colorB="#AAEC407A">
 
-                            <ImageView
+
+                        <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_sining" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_24"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:background="@drawable/rounded"
-                            android:elevation="2dp">
+                            android:elevation="2dp"
+                            app:colorA="#AA42A5F5"
+                            app:colorB="#AAAB47BC">
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_mones" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_19"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:background="@drawable/rounded"
-                            android:elevation="2dp">
+                            android:elevation="2dp"
+                            app:colorA="#55EF5350"
+                            app:colorB="#88EC407A">
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_fernwood" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_20"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:background="@drawable/rounded"
-                            android:elevation="2dp">
+                            android:elevation="2dp"
+                            app:angle="45"
+                            app:colorA="#BBAB47BC"
+                            app:colorB="#BBEF5350">
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_armed" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
 
-                        <com.example.compoundlayout.RadioLayout
+                        <com.example.compoundlayout.CircleGradientRadioLayout
                             android:id="@+id/profile_21"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:layout_margin="10dp"
                             android:background="@drawable/rounded"
-                            android:elevation="2dp">
+                            android:elevation="2dp"
+                            app:angle="70"
+                            app:colorA="#00FFFFFF"
+                            app:colorB="#FF26C6DA">
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/baguhan_mystery" />
-                        </com.example.compoundlayout.RadioLayout>
+                        </com.example.compoundlayout.CircleGradientRadioLayout>
 
 
 
@@ -824,8 +902,8 @@
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
                         android:textColor="#383732"
-                        android:text="@string/desc_sining" />
-                    <TextView
+                        android:text="@string/desc_sining" /> 
+                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="20dp"
@@ -833,7 +911,7 @@
                         android:textStyle="bold"
                         android:paddingStart="20dp"
                         android:paddingTop="10dp"
-                        android:textColor="#383732"
+                         android:textColor="#383732"
                         android:text="@string/duration5"/><!--android:id="@+id/subdes" -->
                 </LinearLayout>
                 <LinearLayout
