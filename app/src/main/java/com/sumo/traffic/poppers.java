@@ -230,6 +230,7 @@ public class poppers extends AppCompatActivity {
                             pasok = 1;
                         }
                     }
+
                     if (mayexisting == 1) {
                         Toast.makeText(this, "Schedule Conflict", Toast.LENGTH_SHORT).show();
                     } else if (mayexisting == 0 && pasok == 1) {

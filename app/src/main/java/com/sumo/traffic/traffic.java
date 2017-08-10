@@ -364,12 +364,29 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         fab4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mList = new LinkedList<MarkerOptions>();
+                points = new LinkedList<LatLng>();
+                place = new LinkedList<LatLng>();
+                placename = new LinkedList<String>();
+                placevicinity = new LinkedList<String>();
+                markers = new LinkedList<Marker>();
+                distances = new LinkedList<String>();
+                durations = new LinkedList<String>();
+                timestoStay = new LinkedList<String>();
+                mins = new LinkedList<String>();
+                reminders = new LinkedList<String>();
+                listofturns = new LinkedList<String>();
+                alarmClocks = new ArrayList<>();
                 mMap.clear();
-                InitialListStaffs.clear();
-                ttsturns.clear();
-                elatz.clear();
-                elongz.clear();
+                mMap.clear();
+                InitialListStaffs = new ArrayList<TurnItem>();
+                latz = new ArrayList<Double>();
+                longz = new ArrayList<Double>();
+                elatz = new ArrayList<Double>();
+                elongz = new ArrayList<Double>();
+                ttsturns = new ArrayList<>();
                 Intent i = new Intent(traffic.this, ChoicesOfPackage.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
                 finish();
 
@@ -413,9 +430,31 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                     }
 
                 } else if (TemplateOrChoices.packages == 0) {
+                    mList = new LinkedList<MarkerOptions>();
+                    points = new LinkedList<LatLng>();
+                    place = new LinkedList<LatLng>();
+                    placename = new LinkedList<String>();
+                    placevicinity = new LinkedList<String>();
+                    markers = new LinkedList<Marker>();
+                    distances = new LinkedList<String>();
+                    durations = new LinkedList<String>();
+                    timestoStay = new LinkedList<String>();
+                    mins = new LinkedList<String>();
+                    reminders = new LinkedList<String>();
+                    listofturns = new LinkedList<String>();
+                    alarmClocks = new ArrayList<>();
+                    InitialListStaffs = new ArrayList<TurnItem>();
+                    latz = new ArrayList<Double>();
+                    longz = new ArrayList<Double>();
+                    elatz = new ArrayList<Double>();
+                    elongz = new ArrayList<Double>();
+                    ttsturns = new ArrayList<>();
+                    mMap.clear();
                     Intent i = new Intent(traffic.this, ReviewChoiceOfPlace.class);
+                    // set the new task and clear flags
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(i);
-                    finish();
+
                 }
             }
         });
@@ -496,7 +535,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                             e.printStackTrace();
                         }
                         pointview.setVisibility(View.VISIBLE);
-                        durationview.setVisibility(View.VISIBLE);
+                        durationview.setVisibility(Vmesiew.VISIBLE);
                         distanceview.setVisibility(View.VISIBLE);
 
                         connectAsyncTask downloadTask = new connectAsyncTask(url);
@@ -637,7 +676,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             amoranto();
 
 
-
         } else if (ChoicesOfPackage.packs == 2) {
 
             ateneogallery();
@@ -658,12 +696,14 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
         } else if (ChoicesOfPackage.packs == 4) {
 
-
+            cubaoexpo();
             rita();
-            wildlife();
             bantayog();
             pagasa();
-            cubaoexpo();
+            wildlife();
+
+
+
 
         } else if (ChoicesOfPackage.packs == 5) {
 
@@ -1671,6 +1711,12 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             InitialListStaffs.clear();
             ttsturns.clear();
 
+            polylines.get(indexOfRouteToAlternate).remove();
+            polylines.set(indexOfRouteToAlternate, mMap.addPolyline(options));
+
+
+            listOfIndicesOfCurrentRoutes.set(indexOfRouteToAlternate, indexOfNewPolyline);
+
             for (int zxcz = 0; zxcz < turns.length(); zxcz++) {
                 TurnItem turnk = new TurnItem();
                 JSONObject t1 = turns.getJSONObject(zxcz);
@@ -1685,11 +1731,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
             //Correction starts here
 //            line = mMap.addPolyline(options);
-            polylines.get(indexOfRouteToAlternate).remove();
-            polylines.set(indexOfRouteToAlternate, mMap.addPolyline(options));
 
-
-            listOfIndicesOfCurrentRoutes.set(indexOfRouteToAlternate, indexOfNewPolyline);
             //Correction ends here
 
         } catch (JSONException e) {
@@ -1802,29 +1844,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         }
 
 
-        if (InfoOfMaginhawa.select == 1) {
-
-
-            if (maginhawa == 0) {
-                maginhawa();
-                maginhawa = 1;
-            } else if (maginhawa == 1) {
-
-            }
-        }
-
-
-        if (InfoOfNinoy.select == 1) {
-
-
-            if (ninoy == 0) {
-                wildlife();
-                ninoy = 1;
-            } else if (ninoy == 1) {
-
-            }
-
-        }
         if (InfoOfCOF.select == 1) {
 
             if (cof == 0) {
@@ -1850,13 +1869,37 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             }
 
         }
+        if (InfoOfNinoy.select == 1) {
 
-        if (InfoOfAteneo.select == 1) {
 
-            if (ateneo == 0) {
-                ateneogallery();
-                ateneo = 1;
-            } else if (ateneo == 1) {
+            if (ninoy == 0) {
+                wildlife();
+                ninoy = 1;
+            } else if (ninoy == 1) {
+
+            }
+
+        }
+
+        if (InfoOfMaginhawa.select == 1) {
+
+
+            if (maginhawa == 0) {
+                maginhawa();
+                maginhawa = 1;
+            } else if (maginhawa == 1) {
+
+            }
+        }
+
+
+        if (InfoOfVargas.select == 1) {
+
+
+            if (vargas == 0) {
+                vargas();
+                vargas = 1;
+            } else if (vargas == 1) {
 
             }
 
@@ -1871,17 +1914,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
             }
         }
-        if (InfoOfVargas.select == 1) {
 
-
-            if (vargas == 0) {
-                vargas();
-                vargas = 1;
-            } else if (vargas == 1) {
-
-            }
-
-        }
 
         if (InfoOfParish.select == 1) {
             if (parish == 0) {
@@ -1891,6 +1924,16 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             } else if (parish == 1) {
 
             }
+        }
+        if (InfoOfAteneo.select == 1) {
+
+            if (ateneo == 0) {
+                ateneogallery();
+                ateneo = 1;
+            } else if (ateneo == 1) {
+
+            }
+
         }
 
 
@@ -3686,7 +3729,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
 
     }
-
 
 
     public void q1() {

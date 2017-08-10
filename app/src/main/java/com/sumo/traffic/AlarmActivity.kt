@@ -76,7 +76,7 @@ class AlarmActivity : AppCompatActivity() {
 
     override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
         super.onCreateContextMenu(menu, v, menuInfo)
-        menu!!.setHeaderTitle("Edit or cancel this notification")
+        menu!!.setHeaderTitle("Cancel this notification")
       //  menu.add(0, v!!.id , 0, "Change it")
         menu.add(0, v!!.id, 0, "Delete it")
 
@@ -85,16 +85,11 @@ class AlarmActivity : AppCompatActivity() {
     override fun onContextItemSelected(item: MenuItem?): Boolean {
         if (item?.title == "Delete it") {
             // unsetAlarm(item.itemId )
-            if (TemplateOrChoices.packages == 1)
-            {
-                Toast.makeText(this,"Sorry you cannot delete this",Toast.LENGTH_LONG);
-            }
-            else {
                 unsetAlarm(positions)
                 traffic.timestoStay[poppers.currentMarkerIndex - 1] = "0"
                 traffic.mins[poppers.currentMarkerIndex - 1] = "0"
                 adapter!!.notifyDataSetChanged()
-            }
+
 
         }
      /*    else if (item?.title == "Change it") {
