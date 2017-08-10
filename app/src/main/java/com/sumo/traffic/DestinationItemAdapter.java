@@ -89,10 +89,10 @@ public class DestinationItemAdapter extends BaseAdapter implements ListAdapter {
 
 
         Resources res = context.getResources();
-        Drawable drawable = res.getDrawable(R.drawable.edit);
+        Drawable drawable = res.getDrawable(R.drawable.aa_edit);
         editBtn.setBackground(drawable);
 
-        Drawable drawable2 = res.getDrawable(R.drawable.delete);
+        Drawable drawable2 = res.getDrawable(R.drawable.aa_delete);
         deleteBtn.setBackground(drawable2);
 
 
