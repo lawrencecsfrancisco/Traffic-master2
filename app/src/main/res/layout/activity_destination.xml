@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.sumo.traffic.DestinationActivity"
-    android:background="#2a873e">
+    android:background="#FFF0D6">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
