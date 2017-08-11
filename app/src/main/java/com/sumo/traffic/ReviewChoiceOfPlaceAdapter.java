@@ -164,7 +164,7 @@ public class ReviewChoiceOfPlaceAdapter extends RecyclerView.Adapter<ReviewChoic
                                 if (listStaff.getname() == "Maginhawa Food Park") {
                                     InfoOfMaginhawa.select = 0;
                                 }
-                                if (listStaff.getname() == "Wildife Mini Zoo") {
+                                if (listStaff.getname() == "Wildlife Mini Zoo") {
                                     InfoOfNinoy.select = 0;
                                 }
                                 if (listStaff.getname() == "People Power Monument") {

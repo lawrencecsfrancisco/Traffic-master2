@@ -4760,7 +4760,10 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
                     //move map camera
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-                    mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+                    mMap.animateCamera(CameraUpdateFactory
+                            .zoomTo(15)
+                    );
+
 
                 }
             } catch (Exception e) {

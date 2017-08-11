@@ -39,7 +39,7 @@ public class usersneed extends AppCompatActivity {
                 Log.d("onClick", url);
                 traffic.GetNearbyPlacesData getNearbyPlacesData = new traffic.GetNearbyPlacesData();
                 getNearbyPlacesData.execute(DataTransfer);
-                Toast.makeText(usersneed.this,"Nearby Bus", Toast.LENGTH_LONG).show();
+                Toast.makeText(usersneed.this,"Nearby ATM", Toast.LENGTH_LONG).show();
                 traffic.GetNearbyPlacesData.reminders  = 11;
                 finish();
             }
