@@ -704,8 +704,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             wildlife();
 
 
-
-
         } else if (ChoicesOfPackage.packs == 5) {
 
             kamalig();
@@ -4007,6 +4005,20 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
         }
 
+//major change in the onlocation change. other than that nothing else.
+        if (mList.size() == 1) {
+            if (!InitialListStaffs.isEmpty()) {
+                InitialListStaffs.clear();
+                adapterStaff.notifyDataSetChanged();
+                polylines.clear();
+                points.set(0, latLng);
+
+
+            }
+        }
+// end of major change
+
+
         mLastLocation = location;
         if (mCurrLocationMarker != null) {
             mCurrLocationMarker.remove();
@@ -4660,7 +4672,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                                         .snippet("placeId:" + placeId);
 
 
-
                         if (reminders == 2) {
 
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.air));
@@ -4766,9 +4777,9 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                             .zoomTo(15)
                     );
 
-                    Log.d("REMINDERS",""+reminders);
-                    Log.d("REMINDERS",""+reminders);
-                    Log.d("REMINDERS",""+reminders);
+                    Log.d("REMINDERS", "" + reminders);
+                    Log.d("REMINDERS", "" + reminders);
+                    Log.d("REMINDERS", "" + reminders);
 
 
                 }
