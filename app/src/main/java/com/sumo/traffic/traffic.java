@@ -64,6 +64,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
@@ -4659,6 +4660,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                                         .snippet("placeId:" + placeId);
 
 
+
                         if (reminders == 2) {
 
                             markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.air));
@@ -4763,6 +4765,10 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                     mMap.animateCamera(CameraUpdateFactory
                             .zoomTo(15)
                     );
+
+                    Log.d("REMINDERS",""+reminders);
+                    Log.d("REMINDERS",""+reminders);
+                    Log.d("REMINDERS",""+reminders);
 
 
                 }
