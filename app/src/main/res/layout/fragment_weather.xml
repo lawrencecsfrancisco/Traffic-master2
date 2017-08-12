@@ -29,6 +29,17 @@
                 android:background="@drawable/newlogo"
                 android:onClick="gogo"
                 android:layout_gravity="center_horizontal|top" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="This is the current weather of Quezon city, To continue please click the TARA logo."
+                android:id="@+id/textView20"
+                android:textColor="#EE7469"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="17dp"
+                android:layout_gravity="center_horizontal" />
 
             <!-- Header -->
             <LinearLayout
@@ -53,17 +64,7 @@
                     style="@style/CurrentTemperatureText" />
             </LinearLayout>
             <!-- Forecasts -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="This is the current weather of Quezon city, To continue please click the TARA logo."
-                android:id="@+id/textView20"
-                android:textColor="#EE7469"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textSize="17dp"
-                android:layout_gravity="center_horizontal" />
+
             <ListView
                 android:id="@+id/weather_forecast_list"
                 android:layout_width="match_parent"

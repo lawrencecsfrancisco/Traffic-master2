@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainDrawerLayout"
     android:layout_width="match_parent"
-    android:background="#B05F6D"
+    android:background="@drawable/img_frontliner"
     android:layout_height="match_parent"
     android:focusableInTouchMode="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="#B05F6D"
+        android:background="@drawable/img_frontliner"
         android:layout_height="match_parent">
 
         <ScrollView
@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="none"
-            android:background="#B05F6D">
+            android:background="@drawable/img_frontliner">
 
             <LinearLayout
                 android:id="@+id/tileContainer"
@@ -38,10 +38,12 @@
             android:layout_height="match_parent">
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Travel more, Plan less"
+                android:textAlignment="center"
+                android:text="Contact us at taramobileappph@gmail.com"
                 android:id="@+id/textView25"
                 android:layout_gravity="center_horizontal|bottom" />
         </FrameLayout>

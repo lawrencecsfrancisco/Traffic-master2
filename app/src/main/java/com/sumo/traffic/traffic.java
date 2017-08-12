@@ -282,7 +282,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         }
 
-
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         date = DateFormat.getDateTimeInstance().format(new Date());
         LayoutInflater li = LayoutInflater.from(context);
         View promptsView = li.inflate(R.layout.prompts, null);
@@ -403,8 +403,15 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         if (TemplateOrChoices.packages == 1) {
             fab2.setLabelText("Destinations");
 
+            bottomNavigationView.findViewById(R.id.directions).setVisibility(View.GONE);
+            bottomNavigationView.findViewById(R.id.places).setVisibility(View.GONE);
+            bottomNavigationView.findViewById(R.id.reset).setVisibility(View.GONE);
+
         } else if (TemplateOrChoices.packages == 0) {
-            fab2.setLabelText("Destinations");
+            fab2.setLabelText("Reselect");
+            bottomNavigationView.findViewById(R.id.directions).setVisibility(View.GONE);
+            bottomNavigationView.findViewById(R.id.places).setVisibility(View.GONE);
+            bottomNavigationView.findViewById(R.id.reset).setVisibility(View.GONE);
             fab4.setVisibility(View.GONE);
         }
 
@@ -506,7 +513,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         durationview = (TextView) findViewById(R.id.tv2);
         distanceview = (TextView) findViewById(R.id.tv3);
 
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -522,39 +529,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
                     }
 
-
-
-               /*     String url = null;
-                    String url2 = null;
-                    if (markers.size() <= 1) {
-                        Toast.makeText(getApplicationContext(), "Please add a marker first!", Toast.LENGTH_LONG).show();
-                    } else {
-                        try {
-                            url = makeURL3();
-                            url2 = altURL();
-                        } catch (UnsupportedEncodingException e) {
-                            e.printStackTrace();
-                        }
-                        pointview.setVisibility(View.VISIBLE);
-                        durationview.setVisibility(Vmesiew.VISIBLE);
-                        distanceview.setVisibility(View.VISIBLE);
-
-                        connectAsyncTask downloadTask = new connectAsyncTask(url);
-                        downloadTask.execute();
-
-                        Log.d("tntn", points.size() + "");
-                        for (int i = 0; i < points.size(); i++) {
-                            Log.d("tntn", points.get(i).toString() + "");
-                        }
-
-                        if (points.size() > 2) {
-                            //connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url2);
-                            connectAsyncTask2 downloadTask2 = new connectAsyncTask2(url, traffic.this, false);
-                            downloadTask2.execute();
-                        }
-
-                    }
-*/
 
                 } else if (item.getItemId() == R.id.places) {
                     myBottomSheet.show(getSupportFragmentManager(), myBottomSheet.getTag());
@@ -573,7 +547,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                     Log.e("Testing", String.valueOf(listOfRouteArray));
                     Log.e("Testing", String.valueOf(listOfIndicesOfCurrentRoutes));
 
-                } else if (item.getItemId() == R.id.reset) {
+                } /*else if (item.getItemId() == R.id.reset) {
                     //Correction starts here
                     for (Marker marker : markers) {
                         marker.remove();
@@ -626,9 +600,9 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                             Log.d("meme", "null location");
                         }
 
-                 /*       mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);*/
+                 *//*       mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);*//*
 
-/*                        MarkerOptions markerOptions = new MarkerOptions()
+*//*                        MarkerOptions markerOptions = new MarkerOptions()
                                 .position(latLng)
                                 .title("My Location")
                                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.kikomarke1r11))
@@ -647,7 +621,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                                 myLocation.getLongitude());
                         // Log.d("meme",myLatLng.toString());
 
-                        points.add(latLng);*/
+                        points.add(latLng);*//*
 
 
                         Log.e("Testing", "hello" + String.valueOf(polylines));
@@ -657,7 +631,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                     } catch (Exception e) {
 
                     }
-                }
+                }*/
 
 
                 return false;

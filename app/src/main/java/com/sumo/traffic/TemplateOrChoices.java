@@ -37,21 +37,21 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
     private boolean toAnimate = true;
     private boolean toFantasticScroll = true;
     static int packages ;
-
+TextView bottomline;
     private GestureDetectorCompat detector;
     private Toolbar appBar;
     private String[] messages = {
             "Traveler's Automated Route Application",
-            "Destination Packages",   //Top Downloads , Top Viewed
+            "Itinerary Sets",   //Top Downloads , Top Viewed
             "Itinerary Creator",
             // "Send Feedback",
             //  "Contact Us"
     };
 
     private String[] tagLines = {
-            "Hello, Welcome to TARA. Please have a look at what we offer.",
-            "Set of itineraries that can't be modify and delete. Each package contains different variety of destination",
-            "Allows the user to freely build and create itinerary by selecting destinations also creating own schedule."
+            "Hello, Welcome to TARA. Please have a look at what we offer. \n Slide down to select which mode you prefer.",
+            "Click this to proceed! \n These are Set of itineraries that contains different variety of destination, You just select any of the Set and you are ready to go.",
+            "Click this to proceed! \n Allows the user to freely build and create itinerary by selecting destinations."
     };
 
 
@@ -72,6 +72,8 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
         defaultChildHeight = displayHeight / 6;
         tilesContainer = (LinearLayout) findViewById(R.id.tileContainer);
         mainScrollView = (ScrollView) findViewById(R.id.mainScrollView);
+        bottomline = (TextView) findViewById(R.id.textView25);
+
         mainScrollView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -187,6 +189,7 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
                     case 2:
                         if (tilesContainer.getChildAt(2).getLayoutParams().height != firstChildHeight) {
                             downToUpScroll(HelperView.getCurrentView(), HelperView.getFollowingView());
+                            bottomline.setVisibility(View.VISIBLE);
                         }
                         else{
                             Intent intent = new Intent(this, ChoicesOfPlace.class);
@@ -216,12 +219,24 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
                 if (tilesContainer.getChildAt(1).getLayoutParams().height != firstChildHeight) {
                     downToUpScroll(HelperView.getCurrentView(), HelperView.getFollowingView());
                 }
+                else{
+                    Intent intent = new Intent(this, ChoicesOfPackage.class);
+                    startActivity(intent);
+                    packages = 1;
+                }
                 break;
 
             case "2":
 
                 if (tilesContainer.getChildAt(2).getLayoutParams().height != firstChildHeight) {
                     downToUpScroll(HelperView.getCurrentView(), HelperView.getFollowingView());
+                    bottomline.setVisibility(View.VISIBLE);
+                }
+                else{
+                    Intent intent = new Intent(this, ChoicesOfPlace.class);
+                    startActivity(intent);
+                    packages = 0;
+
                 }
                 break;
 
