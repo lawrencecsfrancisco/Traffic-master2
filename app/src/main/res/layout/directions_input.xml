@@ -44,7 +44,7 @@
 
    -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:weightSum="1">
@@ -55,29 +55,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:gravity="center"
             android:layout_marginTop="10dp">
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:id="@+id/imageView5"
                 android:src="@drawable/loaders1"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="110dp"
+
                 android:layout_gravity="right" />
         </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+     <TextView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:textColor="#000"
+         android:textAlignment="center"
+         android:textSize="16dp"
+         android:text="This is TARA Routing Simulation \n Enter the place you want to simulate\n FROM one place TO another.
+"/>
+        </LinearLayout>
+
+
 
 
         <!--               android:background="#BEFFB6"-->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="wrap_content"
         android:background="#EE7469"
         android:layout_marginLeft="10dp">
         <RelativeLayout
-            android:layout_width="295dp"
-            android:layout_height="295dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
             android:background="#FFF0D6"
@@ -193,13 +211,13 @@
       <!--  android:background="#BEFFB6"-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="wrap_content"
         android:background="#EE7469"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp">
         <RelativeLayout
-            android:layout_width="295dp"
-            android:layout_height="295dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
             android:background="#FFF0D6"
@@ -221,7 +239,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Check directions"
+                android:text="Simulate the Route"
                 android:id="@+id/btnLoadDirections"
                 android:onClick="direction"
                 android:textColor="#EE7469"

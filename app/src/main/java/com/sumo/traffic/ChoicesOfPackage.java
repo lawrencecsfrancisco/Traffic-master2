@@ -46,6 +46,7 @@ public class ChoicesOfPackage extends Activity {
     String placeid;
     ImageView mp1;
     RecyclerView r2,r3,r4,r5;
+    TextView sr1,sr2,sr3,sr4,sr5;
     com.example.compoundlayout.CircleGradientRadioLayout p11, p12, p13, p14, p15;
     com.example.compoundlayout.CircleGradientRadioLayout p21, p22, p23, p24, p25;
     com.example.compoundlayout.CircleGradientRadioLayout p31, p32, p33, p34, p35;
@@ -56,6 +57,18 @@ public class ChoicesOfPackage extends Activity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.activity_choices_of_package);
         progressDialog = new ProgressDialog(this);
+
+        sr1 = (TextView) findViewById(R.id.r1);
+        sr2 = (TextView) findViewById(R.id.r2);
+        sr3 = (TextView) findViewById(R.id.r3);
+        sr4 = (TextView) findViewById(R.id.r4);
+        sr5 = (TextView) findViewById(R.id.r5);
+
+        sr1.setVisibility(View.INVISIBLE);
+        sr2.setVisibility(View.INVISIBLE);
+        sr3.setVisibility(View.INVISIBLE);
+        sr4.setVisibility(View.INVISIBLE);
+        sr5.setVisibility(View.INVISIBLE);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -171,6 +184,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJ5UTioJW3lzMRCVEsXIinoQY";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr1.setVisibility(View.VISIBLE);
 
             }
         });
@@ -188,7 +202,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJZyfdAEC2lzMRjdk72SmJsyw";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
-
+                sr1.setVisibility(View.VISIBLE);
             }
         });
 
@@ -206,6 +220,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJJRUU-w23lzMRkCSPWgARC-A";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr1.setVisibility(View.VISIBLE);
 
             }
         });
@@ -224,6 +239,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJKeIIzxG3lzMREPRXb7ccU40";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr1.setVisibility(View.VISIBLE);
 
             }
         });
@@ -241,6 +257,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJsZziyUi2lzMR3jzSSV_20S0";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr1.setVisibility(View.VISIBLE);
 
             }
         });
@@ -271,6 +288,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJmad1wOG5lzMR3OKejNp3HIg";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr2.setVisibility(View.VISIBLE);
             }
         });
 
@@ -287,6 +305,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJCykyhw63lzMRDY_BQBLbE8o";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr2.setVisibility(View.VISIBLE);
             }
         });
 
@@ -304,6 +323,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJHao_OWO3lzMRjOuMs_XND84";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr2.setVisibility(View.VISIBLE);
             }
         });
 
@@ -321,6 +341,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJazWVwHy3lzMRAUHR5Esc9AA";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr2.setVisibility(View.VISIBLE);
             }
         });
 
@@ -337,6 +358,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJQdDOsX-3lzMRsMd8b7e3uDk";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr2.setVisibility(View.VISIBLE);
             }
         });
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_9), R.string._, R.string._, R.string._, R.string._, R.string.edsa, R.string.desc_edsa, R.string._, R.string._, R.string._, R.string._);
@@ -364,6 +386,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJ83np5BjIlzMRQnvbQuvP320";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr3.setVisibility(View.VISIBLE);
             }
         });
 
@@ -380,6 +403,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJLyKHcHO3lzMRkPD3eaV8zo4";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr3.setVisibility(View.VISIBLE);
             }
         });
 
@@ -397,6 +421,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJh1SYgtW5lzMRgkVhXmhwt9E";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr3.setVisibility(View.VISIBLE);
             }
         });
 
@@ -414,6 +439,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJBURBCm63lzMR65XYe4mXKhw";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr3.setVisibility(View.VISIBLE);
             }
         });
 
@@ -430,6 +456,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJp79Jhh24lzMRGBBcLU5fzio";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr3.setVisibility(View.VISIBLE);
             }
         });
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_14), R.string._, R.string._, R.string._, R.string._, R.string._, R.string._, R.string.bayani, R.string.desc_bayani, R.string._, R.string._);
@@ -457,6 +484,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJ2yEQTQe3lzMRbfDgt60K770";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr4.setVisibility(View.VISIBLE);
             }
         });
 
@@ -473,6 +501,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJAeHvngW3lzMRikJHv1z5cVI";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr4.setVisibility(View.VISIBLE);
             }
         });
 
@@ -490,6 +519,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJH0W3P_62lzMRMg5dO-FkrKI";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr4.setVisibility(View.VISIBLE);
             }
         });
 
@@ -507,6 +537,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJn9JPuQe3lzMRn3Wi8utObiI";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr4.setVisibility(View.VISIBLE);
             }
         });
 
@@ -523,6 +554,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJ7TL-17-3lzMRxP6C7aZp64A";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr4.setVisibility(View.VISIBLE);
             }
         });
         bindCompoundListener((CompoundLayout) findViewById(R.id.profile_18), R.string._, R.string._, R.string._, R.string._, R.string._, R.string._, R.string._, R.string._, R.string.sining, R.string.desc_sining);
@@ -549,6 +581,7 @@ public class ChoicesOfPackage extends Activity {
                 Toast.makeText(context, "No reviews", Toast.LENGTH_SHORT).show();
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr5.setVisibility(View.VISIBLE);
             }
         });
 
@@ -565,6 +598,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJ5222gju3lzMRTgrD9gxfVko";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr5.setVisibility(View.VISIBLE);
             }
         });
 
@@ -582,6 +616,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJK725zei3lzMRdjehQsQsUKw";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr5.setVisibility(View.VISIBLE);
             }
         });
 
@@ -599,6 +634,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJ3bGhD_i3lzMROoN7udn8v30";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr5.setVisibility(View.VISIBLE);
             }
         });
 
@@ -615,6 +651,7 @@ public class ChoicesOfPackage extends Activity {
                 placeid = "ChIJzVQIaoa3lzMR5AnOW2Sdfd0";
                 FetchReviews fetchReviews = new FetchReviews();
                 fetchReviews.execute();
+                sr5.setVisibility(View.VISIBLE);
             }
         });
         final ExpandableLayout expandableLayout = (ExpandableLayout) this.findViewById(R.id.expandablelayout);
@@ -634,6 +671,7 @@ public class ChoicesOfPackage extends Activity {
                 myAnim.setInterpolator(interpolator);
                 expandableLayout.startAnimation(myAnim);
                 expandableLayout.toggleExpansion();
+
             }
         });
 

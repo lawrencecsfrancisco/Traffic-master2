@@ -36,14 +36,15 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
     private int defaultChildHeight;
     private boolean toAnimate = true;
     private boolean toFantasticScroll = true;
-    static int packages ;
-TextView bottomline;
+    static int packages;
+    TextView bottomline;
     private GestureDetectorCompat detector;
     private Toolbar appBar;
     private String[] messages = {
             "Traveler's Automated Route Application",
             "Itinerary Sets",   //Top Downloads , Top Viewed
             "Itinerary Creator",
+            "Free Mode"
             // "Send Feedback",
             //  "Contact Us"
     };
@@ -51,9 +52,9 @@ TextView bottomline;
     private String[] tagLines = {
             "Hello, Welcome to TARA. Please have a look at what we offer. \n Slide down to select which mode you prefer.",
             "Click this to proceed! \n These are Set of itineraries that contains different variety of destination, You just select any of the Set and you are ready to go.",
-            "Click this to proceed! \n Allows the user to freely build and create itinerary by selecting destinations."
+            "Click this to proceed! \n Allows the user to freely build and create itinerary by selecting destinations.",
+            "Click this to proceed! \n Map only? Filter the places you want to explore and make them your destination."
     };
-
 
 
     @Override
@@ -82,7 +83,7 @@ TextView bottomline;
         });
         addTilesToContainer();
         View view = this.getWindow().getDecorView();
-        int selectedColor = Color.rgb(255,240, 214);
+        int selectedColor = Color.rgb(255, 240, 214);
         view.setBackgroundColor(selectedColor);
     }
 
@@ -97,14 +98,14 @@ TextView bottomline;
     public void addTilesToContainer() {
         View tileView;
         int[] images = {
-                 R.drawable.img_frontliner,
+                R.drawable.img_frontliner,
                 R.drawable.img_destmo,
                 R.drawable.img_itinerary,
-                //R.drawable.image_four,
+                R.drawable.img_freemode,
                 //   R.drawable.image_five
         };
 
-        int numberOfTiles = 3;
+        int numberOfTiles = 4;
         for (int i = 0; i < numberOfTiles; i++) {
             if (i == 0) {
                 tileView = LayoutInflater.from(mContext).inflate(R.layout.team_or_choi_chanel, null);
@@ -126,8 +127,7 @@ TextView bottomline;
                 tagLine.setText(tagLines[i]);
 
                 tilesContainer.addView(tileView);
-            }
-            else {
+            } else {
                 tileView = LayoutInflater.from(mContext).inflate(R.layout.team_or_choi_chanel, null);
                 tileView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         defaultChildHeight));
@@ -177,12 +177,11 @@ TextView bottomline;
                     case 1:
                         if (tilesContainer.getChildAt(1).getLayoutParams().height != firstChildHeight) {
                             downToUpScroll(HelperView.getCurrentView(), HelperView.getFollowingView());
-                        }
-                            else{
-                                Intent intent = new Intent(this, ChoicesOfPackage.class);
-                                startActivity(intent);
+                        } else {
+                            Intent intent = new Intent(this, ChoicesOfPackage.class);
+                            startActivity(intent);
                             packages = 1;
-                            }
+                        }
 
                         break;
 
@@ -190,8 +189,7 @@ TextView bottomline;
                         if (tilesContainer.getChildAt(2).getLayoutParams().height != firstChildHeight) {
                             downToUpScroll(HelperView.getCurrentView(), HelperView.getFollowingView());
                             bottomline.setVisibility(View.VISIBLE);
-                        }
-                        else{
+                        } else {
                             Intent intent = new Intent(this, ChoicesOfPlace.class);
                             startActivity(intent);
                             packages = 0;
@@ -201,6 +199,14 @@ TextView bottomline;
                         break;
 
                     case 3:
+                        if (tilesContainer.getChildAt(3).getLayoutParams().height != firstChildHeight) {
+                            downToUpScroll(HelperView.getCurrentView(), HelperView.getFollowingView());
+                        }
+                        else {
+                            Intent intent = new Intent(this, traffic.class);
+                            startActivity(intent);
+                            packages = 3;
+                        }
                         break;
 
                     case 4:
@@ -218,8 +224,7 @@ TextView bottomline;
 
                 if (tilesContainer.getChildAt(1).getLayoutParams().height != firstChildHeight) {
                     downToUpScroll(HelperView.getCurrentView(), HelperView.getFollowingView());
-                }
-                else{
+                } else {
                     Intent intent = new Intent(this, ChoicesOfPackage.class);
                     startActivity(intent);
                     packages = 1;
@@ -231,8 +236,7 @@ TextView bottomline;
                 if (tilesContainer.getChildAt(2).getLayoutParams().height != firstChildHeight) {
                     downToUpScroll(HelperView.getCurrentView(), HelperView.getFollowingView());
                     bottomline.setVisibility(View.VISIBLE);
-                }
-                else{
+                } else {
                     Intent intent = new Intent(this, ChoicesOfPlace.class);
                     startActivity(intent);
                     packages = 0;
@@ -241,6 +245,15 @@ TextView bottomline;
                 break;
 
             case "3":
+                if (tilesContainer.getChildAt(3).getLayoutParams().height != firstChildHeight) {
+                    downToUpScroll(HelperView.getCurrentView(), HelperView.getFollowingView());
+                    bottomline.setVisibility(View.VISIBLE);
+                } else {
+                    Intent intent = new Intent(this, traffic.class);
+                    startActivity(intent);
+                    packages = 3;
+
+                }
                 break;
 
             case "4":

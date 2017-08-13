@@ -282,7 +282,9 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         }
 
+
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+
         date = DateFormat.getDateTimeInstance().format(new Date());
         LayoutInflater li = LayoutInflater.from(context);
         View promptsView = li.inflate(R.layout.prompts, null);
@@ -406,14 +408,23 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             bottomNavigationView.findViewById(R.id.directions).setVisibility(View.GONE);
             bottomNavigationView.findViewById(R.id.places).setVisibility(View.GONE);
             bottomNavigationView.findViewById(R.id.reset).setVisibility(View.GONE);
-
+            fab4.setVisibility(View.VISIBLE);
         } else if (TemplateOrChoices.packages == 0) {
             fab2.setLabelText("Reselect");
             bottomNavigationView.findViewById(R.id.directions).setVisibility(View.GONE);
             bottomNavigationView.findViewById(R.id.places).setVisibility(View.GONE);
             bottomNavigationView.findViewById(R.id.reset).setVisibility(View.GONE);
+            fab4.setVisibility(View.VISIBLE);
+
+        } else if (TemplateOrChoices.packages == 3) {
+            fab2.setLabelText("Reselect");
+            bottomNavigationView.findViewById(R.id.directions).setVisibility(View.VISIBLE);
+            bottomNavigationView.findViewById(R.id.places).setVisibility(View.VISIBLE);
+            menured.setVisibility(View.GONE);
+            bottomNavigationView.findViewById(R.id.reset).setVisibility(View.GONE);
             fab4.setVisibility(View.GONE);
         }
+
 
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -514,7 +525,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         distanceview = (TextView) findViewById(R.id.tv3);
 
 
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -540,12 +550,18 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
 
                 } else if (item.getItemId() == R.id.traffic) {
+                    if (checklist == 0) {
+                        Toast.makeText(getApplicationContext(), "Add a marker in the map, This button create alternate route.", Toast.LENGTH_LONG).show();
 
+                    } else {
+                        Toast.makeText(context, "Alternate Route Created", Toast.LENGTH_SHORT).show();
+                        alternateRoute();
+                        Log.e("Testing", String.valueOf(polylines));
+                        Log.e("Testing", String.valueOf(listOfRouteArray));
+                        Log.e("Testing", String.valueOf(listOfIndicesOfCurrentRoutes));
 
-                    alternateRoute();
-                    Log.e("Testing", String.valueOf(polylines));
-                    Log.e("Testing", String.valueOf(listOfRouteArray));
-                    Log.e("Testing", String.valueOf(listOfIndicesOfCurrentRoutes));
+                    }
+
 
                 } /*else if (item.getItemId() == R.id.reset) {
                     //Correction starts here
@@ -664,8 +680,8 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
             edsa();
             eastwood();
-            maginhawa();
             churchgesu();
+            maginhawa();
             up();
 
 
@@ -4048,7 +4064,6 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
 
         if (!elatz.isEmpty() && !elongz.isEmpty()) {
             if (mList.size() > 1) {
-
 
                 Location user = new Location("");
                 user.setLatitude(latitude);
