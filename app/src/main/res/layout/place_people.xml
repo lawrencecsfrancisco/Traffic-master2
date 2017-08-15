@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:background="#000000"
         android:fillViewport="true">
 
@@ -29,9 +25,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Parish of Holy Sacrifice"
+                    android:text="People Power Monument"
                     android:textColor="#EE7469"
-                    android:textSize="32sp"
+                    android:textSize="30sp"
                     android:textStyle="normal|bold" />
             </LinearLayout>
             <!--End-->
@@ -39,21 +35,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@drawable/parishch">
+                android:background="@drawable/powerr">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="220dp"
                     android:orientation="horizontal"
                     android:background="#EE7469"
-                    android:weightSum="1"
                     android:visibility="gone"
+                    android:weightSum="1"
                     android:id="@+id/hiders">
 
                     <Button
                         android:layout_width="250dp"
                         android:layout_height="40dp"
-                        android:text="Vargas Museum"
+                        android:text="Edsa Shrine"
                         android:background="#FFF0D6"
                         android:textColor="#EE7469"
                         android:onClick="p1"
@@ -64,7 +60,7 @@
                     <Button
                         android:layout_width="250dp"
                         android:layout_height="40dp"
-                        android:text="UP ayala Technohub"
+                        android:text="Eastwood City"
                         android:background="#FFF0D6"
                         android:textColor="#EE7469"
                         android:id="@+id/p2"
@@ -83,7 +79,7 @@
                         android:layout_below="@+id/p2"
                         android:layout_alignStart="@+id/p2"
                         android:layout_marginTop="10dp"
-                        android:text="Ateneo Art Gallery" />
+                        android:text="Art In Island" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -98,8 +94,8 @@
                         android:gravity="center"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentEnd="true" />
-
                 </RelativeLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -114,7 +110,7 @@
                         android:isIndicator="true"
                         android:scaleX=".5"
                         android:scaleY=".5"
-                        android:rating="4.7"/>
+                        android:rating="4.5"/>
                 </LinearLayout><!--QUEZONMEMORIALCIRCLE -->
             </LinearLayout>
 
@@ -129,14 +125,15 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="About"
-                    android:id="@+id/textView"
                     android:textColor="#383732"
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
+                    android:id="@+id/textView"
                     android:textStyle="bold"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -145,7 +142,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"
-                        android:text="Known as Church of the Holy Sacrifice, is a landmark Catholic chapel on the University of the Philippines Diliman campus."
+                        android:text="It's a sculpture of towering people commemorating the People Power Revolution of 1986."
                         android:id="@+id/textView2"
                         android:textColor="#383732"
                         android:layout_below="@+id/textView"
@@ -164,6 +161,7 @@
                     android:layout_below="@+id/textView2"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -172,7 +170,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"
-                        android:text="9269496"
+                        android:text="..."
                         android:textColor="#383732"
                         android:id="@+id/textView4"
                         android:layout_below="@+id/textView3"
@@ -185,21 +183,23 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Address"
                     android:layout_marginLeft="10dp"
+                    android:id="@+id/textView5"
                     android:textColor="#383732"
                     android:textStyle="bold"
-                    android:id="@+id/textView5"
                     android:layout_below="@+id/textView4"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"
-                        android:text="Laurel Ave, U P Campus Diliman, Quezon City, 1101 Metro Manila"
+                        android:text="White Plains Ave, Quezon City, Metro Manila"
                         android:id="@+id/textView6"
                         android:layout_below="@+id/textView5"
                         android:textColor="#383732"
@@ -207,28 +207,42 @@
                         android:layout_toEndOf="@+id/textView" />
                 </LinearLayout>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Overview"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/textView7"
+                    android:textColor="#383732"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/textView4"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"
+                        android:text="Open 24 hours\nHistorical Landmark\nRecalling one event of the Philippines proud history."
+                        android:id="@+id/textView8"
+                        android:layout_below="@+id/textView5"
+                        android:textColor="#383732"
+                        android:layout_toRightOf="@+id/textView"
+                        android:layout_toEndOf="@+id/textView" />
+                </LinearLayout>
+
+
+                <!--BUtton-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp">
-                        <Button
-                            android:id="@+id/showInfo"
-                            style="?android:attr/buttonStyleSmall"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginBottom="10dp"
-                            android:background="@drawable/border"
-                            android:onClick="artadd"
-                            android:text="Details"
-                            android:textColor="#EE7469" />
-                    </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -274,22 +288,4 @@
                 android:layout_marginTop="10dp" />
         </LinearLayout>
     </ScrollView>
-
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/bottom_sheet"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:clipToPadding="true"
-        android:visibility="gone"
-        android:background="#EE7469"
-        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/showParish"
-            android:padding="16dp"
-            android:textColor="#ecf0f1"
-            android:textSize="16sp"/>
-    </android.support.v4.widget.NestedScrollView>
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>
