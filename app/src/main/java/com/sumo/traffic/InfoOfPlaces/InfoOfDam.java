@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -32,13 +34,19 @@ import java.util.Map;
 /**
  * Created by Amos on 12/22/2016.
  */
-public class InfoOfDam extends AppCompatActivity {
+public class InfoOfDam extends AppCompatActivity implements View.OnClickListener {
+    private BottomSheetBehavior mBottomSheetBehavior;
     public static int select = 0;
     RelativeLayout wat;
+    View bottomSheet;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.place_dam);
-
+        bottomSheet = findViewById( R.id.bottom_sheet );
+        Button button1 = (Button) findViewById( R.id.showInfo );
+        button1.setOnClickListener(this);
+        mBottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
+        bottomSheet.setVisibility(View.GONE);
  /*       if (ChoicesOfPlace.open == 1) {
             DisplayMetrics dm = new DisplayMetrics();
             getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -48,7 +56,7 @@ public class InfoOfDam extends AppCompatActivity {
 
             getWindow().setLayout((int)(width*.8),(int)(height*.8));
         }*/
-       wat = (RelativeLayout) findViewById(R.id.hiders);
+        wat = (RelativeLayout) findViewById(R.id.hiders);
         wat.setVisibility(View.GONE);
 
 
@@ -57,10 +65,35 @@ public class InfoOfDam extends AppCompatActivity {
         progressDialog.setMessage("Fetching Data, Please Wait...");
         progressDialog.show();
         recyclerView.setHasFixedSize(true);
-       FetchReviews fetchReviews = new FetchReviews();
+        FetchReviews fetchReviews = new FetchReviews();
         fetchReviews.execute();
 
+        mBottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(View bottomSheet, int newState) {
+                if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+                    mBottomSheetBehavior.setPeekHeight(0);
+                }
+            }
+            @Override
+            public void onSlide(View bottomSheet, float slideOffset) {
+            }
+        });
+
     }
+
+    @Override
+    public void onClick(View v) {
+        switch( v.getId() ) {
+            case R.id.showInfo: {
+                bottomSheet.setVisibility(View.VISIBLE);
+                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                break;
+            }
+        }
+    }
+
+
     public void artadd(View view)
     {
         select = 1;
