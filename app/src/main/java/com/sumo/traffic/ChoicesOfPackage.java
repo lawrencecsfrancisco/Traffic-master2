@@ -52,6 +52,7 @@ public class ChoicesOfPackage extends Activity {
     com.example.compoundlayout.CircleGradientRadioLayout p31, p32, p33, p34, p35;
     com.example.compoundlayout.CircleGradientRadioLayout p41, p42, p43, p44, p45;
     com.example.compoundlayout.CircleGradientRadioLayout p51, p52, p53, p54, p55;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +70,8 @@ public class ChoicesOfPackage extends Activity {
         sr3.setVisibility(View.INVISIBLE);
         sr4.setVisibility(View.INVISIBLE);
         sr5.setVisibility(View.INVISIBLE);
+
+
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);

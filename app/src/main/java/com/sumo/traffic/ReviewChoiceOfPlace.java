@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.sumo.traffic.InfoOfPlaces.InfoOfArt;
@@ -33,7 +34,6 @@ public class ReviewChoiceOfPlace extends AppCompatActivity {
     static RecyclerView recyclerViewStaff;
     static RecyclerView.Adapter adapterStaff;
     static List<placeitem> InitialListStaffs;
-
 
     int bayani = 0;
     int cof = 0;
@@ -139,7 +139,7 @@ public class ReviewChoiceOfPlace extends AppCompatActivity {
             if (ateneo == 0) {
 
                 infoateneo.setname("Ateneo Art Gallery");
-                infoateneo.settype("Church");
+                infoateneo.settype("Museum");
                 InitialListStaffs.add(infoateneo);
                 ateneo = 1;
             } else if (ateneo == 1) {
@@ -376,6 +376,14 @@ public class ReviewChoiceOfPlace extends AppCompatActivity {
         finish();
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        finish();
+        Intent i = new Intent(this, ChoicesOfPlace.class);
+        startActivity(i);
     }
 
 
