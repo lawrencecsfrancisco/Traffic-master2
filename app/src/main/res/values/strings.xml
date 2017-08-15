@@ -71,6 +71,24 @@
     <string name="asd"><u>Select Destination Package</u></string>
     <string name="asd2"><u>Select Itinerary Creator</u></string>
     <string name="_"></string>
+    
+    <!--moreDetails-->
+    <string name="showArt">Prohibited Items : Foods and Drinks, Tripod and Pets.\nEntrance Fee: Php 500.00 for Adult. \nStudents, Senior Citizens and PWD\'s get a discount of Php 100, just bring valid ID.
+   \nWhat to Bring ? : Camera, Jacket, Friend, Socks </string>
+    <string name="showQMC">Open 24 Hrs.\nEntrance Fee: Free.\nGO Biking for only Php 70.00 - 100.00 for an hour.\nPlay at their extensive playground.\nZipline! costs Php 150.00 for one-way ride and Php 200 for two-way ride</string>
+    <string name="showNinoy">Entrace Fee: Php 8.00 for Adult.\nStudent with ID Php 5.00.\nParking Fee : Car - Php 15.00.\nTricycle and Motorcycle - Php 8.00.\nGood place for Picnic.</string>
+    <string name="showVargas">Entrance Fee: Php 30.00.\nAir-conditioned museum.\nFree Pamphlets.\nExhibit consist mostly of art films/classic movies/documentaries.\nFoods and drinks are not allowed</string>
+    <string name="showEDsa">Great place to pray.\nA quiet and peaceful place to reflect.\nAir-conditioned church</string>
+    <string name="showCOF">Entrance Fee: Php 30.00 per person.\nChildren below 3ft are free.\nCircle of Fun Rides : Php 30.00 - Php 50.00 per ride.</string>
+    <string name="showBantayog">Admission Fee: Php 50.00.\nPoints of Interests:\n* Wall of Remembrance\n* Inang Bayan monument\n* Various protest artworks\nParking spaces are available for tour buses and private vehicle.</string>
+    <string name="showPeople">Open 24 hours.\nHistorical Landmark.\nRecalling one event of the Philippines proud history.</string>
+    <string name="showAteneo">Open to the public.\nEntrance Fee: Php 30.00 per head for groups larger than 20.\nObserve Silence.</string>
+    <string name="showWatershed">Entrance Fee : P50 for non Quezon City Residents.\nP40 for QC residents (must present proof of residence)\nP20 for QC students\nFree for all QC senior citizens and children below 3 ft in heignt.\nWhat to do ?\nHiking\nMountain-biking\nPicnic\nPhoto Shoots\nFishing</string>
+    <string name="showParish">Unique Ambiance for a Place of Worship/Meditation.\nPaintings on 15 walls, depicting images of the station of the cross.\nHuge murals by a national artist adorn the walls of the circular edifice.</string>
+    <string name="showEast">A Shopping and Dining Haven in the Business District.\nA good place to relax and chill out.\n Open 24 hrs.</string>
+    <string name="showMaginhawa">Roll--a long roll of food stalls, restaurants, coffee shops, and cafe where you can enjoy any food of your choice at a good (or reasonable) price.\nNice place to go on weekends</string>
+    <string name="showAyala">Great place to dine and stroll around.\nHas a good balance of buildings and nature.</string>
+    <string name="showDAM">Facilites:\n* Lopez Picnic Grounds\n* Shell Flower Terraces\n* Drilon Orchidarium\n* Mini Forest\nOpen daily including holidays.</string>
 
     <!--P1-->
     <string name="p1">Package 1</string>
