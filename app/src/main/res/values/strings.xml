@@ -91,8 +91,8 @@
     <!--  <string name="reminder1">Reminder : \n</string>-->
 
     <!-- Duration-->
-      
-   
+
+
     <string name="duration11">Approximate Duration : \n12 Hours (From 8 AM - 8 PM). \nApproximate Cost \nPhp 3500 - 5500 ,good for 4 - 6 person. \n</string>
     <string name="duration2">Approximate Duration : \n12 Hours(From 7 AM - 6 PM). \nApproximate Cost \nPhp 2600 - 6200 ,good for 2 - 5 person \n</string>
     <string name="duration3">Approximate Duration : \n12 Hours (From 8 AM - 8 PM). \nApproximate Cost \nPhp 4500 - 6500 ,good for 4 persons \n</string>
