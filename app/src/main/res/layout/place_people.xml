@@ -207,6 +207,36 @@
                         android:layout_toEndOf="@+id/textView" />
                 </LinearLayout>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Overview"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/textView7"
+                    android:textColor="#383732"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/textView4"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"
+                        android:text="Open 24 hours\nHistorical Landmark\nRecalling one event of the Philippines proud history."
+                        android:id="@+id/textView8"
+                        android:layout_below="@+id/textView5"
+                        android:textColor="#383732"
+                        android:layout_toRightOf="@+id/textView"
+                        android:layout_toEndOf="@+id/textView" />
+                </LinearLayout>
+
 
                 <!--BUtton-->
                 <LinearLayout
