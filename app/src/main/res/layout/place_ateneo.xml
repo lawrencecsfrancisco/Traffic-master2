@@ -216,10 +216,40 @@
                 </LinearLayout>
 
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Rates"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#383732"
+                    android:textStyle="bold"
+                    android:id="@+id/textView7"
+                    android:layout_below="@+id/textView4"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"
+                        android:text="Php 30.00 per head for groups larger than 20.\nOpen to public.\nObserve Silence."
+                        android:id="@+id/textView8"
+                        android:textColor="#383732"
+                        android:layout_below="@+id/textView5"
+                        android:layout_toRightOf="@+id/textView"
+                        android:layout_toEndOf="@+id/textView" />
+                </LinearLayout>
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -269,4 +299,6 @@
                 android:layout_marginTop="10dp" />
         </LinearLayout>
     </ScrollView>
+
+
 </LinearLayout>
