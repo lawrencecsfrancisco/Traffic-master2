@@ -203,6 +203,34 @@
                         android:layout_toEndOf="@+id/textView" />
                 </LinearLayout>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Point of Interests :"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#383732"
+                    android:textStyle="bold"
+                    android:id="@+id/textView7"
+                    android:layout_below="@+id/textView4"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"
+                        android:text="Lopez Picnic Grounds\nShell Flower Terraces\nDrilon Orchidarium\nMini Forest\nOpen daily including holidays"
+                        android:id="@+id/textView8"
+                        android:layout_below="@+id/textView5"
+                        android:textColor="#383732"
+                        android:layout_toRightOf="@+id/textView"
+                        android:layout_toEndOf="@+id/textView" />
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
