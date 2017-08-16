@@ -204,10 +204,40 @@
                         android:layout_toEndOf="@+id/textView" />
                 </LinearLayout>
 
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Rates :"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/textView7"
+                    android:textColor="#383732"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/textView4"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmallPopupMenu"
+                        android:text="Entrance Fee: Php 30.00 per person.\nChildren below 3ft are free\nCircle of Fun Rides : Php 30.00 - Php 50.00 per ride."
+                        android:id="@+id/textView8"
+                        android:layout_below="@+id/textView5"
+                        android:layout_toRightOf="@+id/textView"
+                        android:textColor="#383732"
+                        android:layout_toEndOf="@+id/textView" />
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -253,4 +283,6 @@
                 android:layout_marginTop="10dp" />
         </LinearLayout>
     </ScrollView>
+
+
 </LinearLayout>
