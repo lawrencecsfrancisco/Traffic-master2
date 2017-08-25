@@ -373,7 +373,7 @@ public class ReviewChoiceOfPlace extends AppCompatActivity {
     public void addmore(View view) {
         Intent i = new Intent(this, ChoicesOfPlace.class);
         startActivity(i);
-        finish();
+      //  finish();
 
 
     }
@@ -381,7 +381,7 @@ public class ReviewChoiceOfPlace extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        finish();
+       // finish();
         Intent i = new Intent(this, ChoicesOfPlace.class);
         startActivity(i);
     }
