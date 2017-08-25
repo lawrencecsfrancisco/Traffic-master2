@@ -51,9 +51,9 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
 
     private String[] tagLines = {
             "Hello, Welcome to TARA. Please have a look at what we offer. \n Slide down to select which mode you prefer.",
-            "Click this to proceed! \n These are Set of itineraries that contains different variety of destination, You just select any of the Set and you are ready to go.",
-            "Click this to proceed! \n Allows the user to freely build and create itinerary by selecting destinations.",
-            "Click this to proceed! \n Map only? Filter the places you want to explore and make them your destination."
+            "These are Set of itineraries that contains different variety of destination, You just select any of the Set and you are ready to go.",
+            "Allows the user to freely build and create itinerary by selecting destinations.",
+            "Map only? Filter the places you want to explore and make them your destination."
     };
 
 
@@ -178,7 +178,7 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
                         if (tilesContainer.getChildAt(1).getLayoutParams().height != firstChildHeight) {
                             downToUpScroll(HelperView.getCurrentView(), HelperView.getFollowingView());
                         } else {
-                            Intent intent = new Intent(this, ChoicesOfPackage.class);
+                            Intent intent = new Intent(this, Packagesets.class);
                             startActivity(intent);
                             packages = 1;
                         }
@@ -225,8 +225,9 @@ public class TemplateOrChoices extends AppCompatActivity implements View.OnClick
                 if (tilesContainer.getChildAt(1).getLayoutParams().height != firstChildHeight) {
                     downToUpScroll(HelperView.getCurrentView(), HelperView.getFollowingView());
                 } else {
-                    Intent intent = new Intent(this, ChoicesOfPackage.class);
+                    Intent intent = new Intent(this, Packagesets.class); //ChoicesOfPackage
                     startActivity(intent);
+                    finish();
                     packages = 1;
                 }
                 break;
