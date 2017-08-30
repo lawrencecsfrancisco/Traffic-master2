@@ -44,6 +44,7 @@ public class ChoicesOfPlace  extends AppCompatActivity {
 
                Intent i = new Intent (ChoicesOfPlace.this, ReviewChoiceOfPlace.class);
                 startActivity(i);
+                finishAffinity();
 
 
 

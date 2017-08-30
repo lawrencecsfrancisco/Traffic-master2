@@ -280,6 +280,7 @@ public class WeatherActivity extends Activity {
     {
         Intent i = new Intent(WeatherActivity.this, TemplateOrChoices   .class);
         startActivity(i);
+        finish();
     }
 }
 
