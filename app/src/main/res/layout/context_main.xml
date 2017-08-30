@@ -25,8 +25,8 @@
             android:layout_height="wrap_content"
             android:text="BEST PLACES IN QUEZON CITY"
             android:textAlignment="center"
-            android:textColor="#000"
-            android:textSize="40dp"
+            android:textColor="#383732"
+            android:textSize="20dp"
             />
     </LinearLayout>
 
@@ -35,9 +35,8 @@
             android:id="@+id/fab"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-
-            android:background="@drawable/border"
-            android:textColor="#EE7469"
+            android:background="#EE7469"
+            android:textColor="#fff"
             android:text="View selected PLACES"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/myRecycler"
