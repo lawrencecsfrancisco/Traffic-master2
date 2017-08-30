@@ -388,7 +388,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
                 elatz = new ArrayList<Double>();
                 elongz = new ArrayList<Double>();
                 ttsturns = new ArrayList<>();
-                Intent i = new Intent(traffic.this, ChoicesOfPackage.class);
+                Intent i = new Intent(traffic.this, Packagesets.class);
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
                 finish();
@@ -402,9 +402,8 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
         menured = (com.github.clans.fab.FloatingActionMenu) findViewById(R.id.menu_red);
 
 
-        if (TemplateOrChoices.packages == 1) {
+        if (Packagesets.packages == 1) {
             fab2.setLabelText("Destinations");
-
             bottomNavigationView.findViewById(R.id.directions).setVisibility(View.GONE);
             bottomNavigationView.findViewById(R.id.places).setVisibility(View.GONE);
             bottomNavigationView.findViewById(R.id.reset).setVisibility(View.GONE);
@@ -430,20 +429,20 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             @Override
             public void onClick(View view) {
 
-                if (TemplateOrChoices.packages == 1) {
-                    if (ChoicesOfPackage.packs == 1) {
+                if (Packagesets.packages == 1) {  // TemplateOrChoices
+                    if (Pack1.packs == 1) {   // ChoicesOfPacakge
                         Intent i = new Intent(traffic.this, bestplaces_package1.class);
                         startActivity(i);
-                    } else if (ChoicesOfPackage.packs == 2) {
+                    } else if (Pack2.packs == 2) {
                         Intent i = new Intent(traffic.this, bestplaces_package2.class);
                         startActivity(i);
-                    } else if (ChoicesOfPackage.packs == 3) {
+                    } else if (Pack3.packs == 3) {
                         Intent i = new Intent(traffic.this, bestplaces_package3.class);
                         startActivity(i);
-                    } else if (ChoicesOfPackage.packs == 4) {
+                    } else if (Pack4.packs == 4) {
                         Intent i = new Intent(traffic.this, bestplaces_package4.class);
                         startActivity(i);
-                    } else if (ChoicesOfPackage.packs == 5) {
+                    } else if (Pack5.packs == 5) {
                         Intent i = new Intent(traffic.this, bestplaces_package5.class);
                         startActivity(i);
                     }
@@ -657,7 +656,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
     }
 
     public void packganern() {
-        if (ChoicesOfPackage.packs == 1) {
+        if (Pack1.packs == 1) {
 
 
             ArtInIsland();
@@ -667,7 +666,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             amoranto();
 
 
-        } else if (ChoicesOfPackage.packs == 2) {
+        } else if (Pack2.packs == 2) {
 
             ateneogallery();
             santamaria();
@@ -676,7 +675,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             heritage();
 
 
-        } else if (ChoicesOfPackage.packs == 3) {
+        } else if (Pack3.packs == 3) {
 
             edsa();
             eastwood();
@@ -685,7 +684,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             up();
 
 
-        } else if (ChoicesOfPackage.packs == 4) {
+        } else if (Pack4.packs == 4) {
 
             cubaoexpo();
             rita();
@@ -694,7 +693,7 @@ public class traffic extends FragmentActivity implements LocationListener, OnMap
             wildlife();
 
 
-        } else if (ChoicesOfPackage.packs == 5) {
+        } else if (Pack5.packs == 5) {
 
             kamalig();
             armedforces();
