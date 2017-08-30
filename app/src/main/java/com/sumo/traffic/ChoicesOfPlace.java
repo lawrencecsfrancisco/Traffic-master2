@@ -44,8 +44,8 @@ public class ChoicesOfPlace  extends AppCompatActivity {
 
                Intent i = new Intent (ChoicesOfPlace.this, ReviewChoiceOfPlace.class);
                 startActivity(i);
-                finishAffinity();
-                finish();
+
+
 
 
 
@@ -98,7 +98,7 @@ public class ChoicesOfPlace  extends AppCompatActivity {
         movies.add(p);
         p=new Places();
         p.setName("Ninoy Aquino Parks and Wildlife Center");
-        p.setPos("Elliptical Road,Diliman,Quezon City,Metro Manila");
+        p.setPos("Elliptical Road, Diliman, Quezon City,Metro Manila");
         p.setImg(R.drawable.wildlife);
         movies.add(p);
         p=new Places();
@@ -108,7 +108,7 @@ public class ChoicesOfPlace  extends AppCompatActivity {
         movies.add(p);
         p=new Places();
         p.setName("Jorge B.Vargas Museum and Filipiniana Research Center");
-        p.setPos("Roxas Ave,Diliman,Quezon City,Metro Manila");
+        p.setPos("Roxas Ave, Diliman, Quezon City, Metro Manila");
         p.setImg(R.drawable.vargas);
         movies.add(p);
         p=new Places();
@@ -118,27 +118,27 @@ public class ChoicesOfPlace  extends AppCompatActivity {
         movies.add(p);
         p=new Places();
         p.setName("Art In Island");
-        p.setPos("175 15th Ave.,Brgy.Socorro,Cubao,Quezon City,1109 Metro Manila");
+        p.setPos("175 15th Ave., Brgy.Socorro, Cubao, Quezon City, 1109 Metro Manila");
         p.setImg(R.drawable.artin);
         movies.add(p);
         p=new Places();
         p.setName("Circle of Fun");
-        p.setPos("Diliman, Quezon City, Metro Manila            ");
+        p.setPos("Diliman, Quezon City, Metro Manila");
         p.setImg(R.drawable.foc);
         movies.add(p);
         p=new Places();
         p.setName("Bantayog ng mga Bayani Center");
-        p.setPos("Bantayog Rd,Diliman,Quezon City,Metro Manila");
+        p.setPos("Bantayog Rd, Diliman, Quezon City, Metro Manila");
         p.setImg(R.drawable.bay);
         movies.add(p);
         p=new Places();
         p.setName("People Power Monument");
-        p.setPos("White Plains Ave,Quezon City,Metro Manila");
+        p.setPos("White Plains Ave, Quezon City, Metro Manila");
         p.setImg(R.drawable.monument);
         movies.add(p);
         p=new Places();
         p.setName("Ateneo Art Gallery");
-        p.setPos("Ground Floor,Rizal Library,University Rd,Diliman,Quezon City,Metro Manila");
+        p.setPos("Ground Floor, Rizal Library, University Rd, Diliman,Quezon City,Metro Manila");
         p.setImg(R.drawable.ateneo);
         movies.add(p);
         p=new Places();
@@ -148,7 +148,7 @@ public class ChoicesOfPlace  extends AppCompatActivity {
         movies.add(p);
         p=new Places();
         p.setName("Parish of the Holy Sacrifice");
-        p.setPos("Laurel Ave,UP Campus Diliman,Quezon City,1101 Metro Manila");
+        p.setPos("Laurel Ave, UP Campus Diliman, Quezon City,1101 Metro Manila");
         p.setImg(R.drawable.parish);
         movies.add(p);
         p=new Places();
